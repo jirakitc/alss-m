@@ -1,0 +1,24 @@
+<label for="">ผู้ใช้งาน : {{ details?.firstname }}</label> <br>
+<label for="" name="user_id">userid : {{ details?.id }}</label>
+<hr>
+<div class="row mb-5">
+
+  <div class="card" style="width: 18rem;" *ngFor="let item of room">
+      <form #enrollForm="ngForm" (submit)="onSubmit(enrollForm.value)">
+          <input type="hidden" [(ngModel)]="item.class_id" name="class_id" class="form-control">
+          <input type="hidden" [(ngModel)]="item.class_name" name="class_name" class="form-control">
+          <input type="hidden" [(ngModel)]="details.id" name="user_id" class="form-control">
+          <button type="submit" class="btn btn-primary">test enroll</button>
+      </form>
+    <div class="card-body">
+      <h5 class="card-title">{{item.class_name}}</h5>
+      <h6 class="card-text">{{item.class_id}}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">รายวิชา : {{item.class_Subject}}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">อาจารย์ผู้สอน : {{item.teacher_name}}</h6>
+      <p class="card-text">{{item.class_description}}</p>
+      <button type="submit" class="btn btn-primary" >ลงทะเบียน</button>
+    </div>
+  </div>
+
+</div>
+<button type="button" class="btn btn-dark" (click)="goBack()">กลับ</button>

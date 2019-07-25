@@ -1,0 +1,56 @@
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Location } from '@angular/common';
+
+import { Room , Subject} from '../../services/interface';
+import { UserService } from '../../user.service';
+import { ClassService } from 'src/app/services/class.service';
+@Component({
+  selector: 'app-add-class',
+  templateUrl: './add-class.component.html',
+  styleUrls: ['./add-class.component.css']
+})
+export class AddClassComponent implements OnInit {
+
+  room = new Room();
+  subject : Subject[];
+
+  constructor(
+    private location: Location,
+    private http: HttpClient,
+    private userService : UserService,
+    private classService : ClassService
+  ) { }
+  goBack(): void {
+    this.location.back();
+  }
+
+  ngOnInit() {
+    this.getSubject();
+  }
+
+  //แบบ 1
+  addClass(data){
+    // alert(JSON.stringify(data))
+    this.http.post<any>('http://localhost:8080/api/add-class',data)
+    .subscribe(result=>{
+      alert(JSON.stringify(result))
+    })
+  }
+  
+  //แบบ 2  <---- ใช้อันนี้อยู่
+  update(): void {
+    this.userService.addClass(this.room)
+        .subscribe(result => alert(JSON.stringify(result)));
+  }
+
+  getSubject() {
+    return this.classService.getSubject()
+      .subscribe(
+        subject => {
+          console.log(subject);
+          this.subject = subject
+        }
+      );
+  }
+}

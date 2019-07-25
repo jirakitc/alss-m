@@ -1,0 +1,48 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">โปรไฟล์</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Data</li>
+    </ol>
+</nav>
+<div class="row">
+    <div class="col col-sm-3">
+        <!-- ข้อมูลผู้ใช้ -->
+        <div class="card">
+            <div class="card-header" style="text-align: center">ข้อมูลผู้ใช้</div>
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col" style="text-align: right">ชื่อผู้ใช้ : </div>
+                    <div class="col">{{ details?.firstname }}</div>
+                </div>
+                <div class="row">
+                    <div class="col" style="text-align: right">นามสกุล :</div>
+                    <div class="col">{{ details?.lastname }}</div>
+                </div>
+                <div class="row">
+                    <div class="col" style="text-align: right">Email :</div>
+                    <div class="col">{{ details?.email }}</div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="btn btn-warning btn-sm" [routerLink]="['/users', details?.id]">Edit Profile</div>
+                    </div>
+                    <div class="col">
+                        <div class="btn btn-danger btn-sm" (click)="auth.logout()">Logout</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- ฟังชั่น -->
+        <div class="card">
+            <div class="card-header" style="text-align: center">เมนู</div>
+            <div class="card-body">
+                <div class="btn btn-primary btn-lg btn-block" routerLink="/enroll">ลงทะเบียนเรียน</div>
+            </div>
+        </div>
+    </div>
+    <div class="col">zone2</div>
+    <div class="col col-sm-3">zone3</div>
+</div>

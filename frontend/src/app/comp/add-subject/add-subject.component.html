@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-header">เพิ่มวิชา</div>
+  <div class="card-body">
+      <form #addSubjectForm="ngForm" (submit)="update()">
+    <div class="form-group">
+      <label for="">ชื่อวิชา</label>
+      <input [(ngModel)]="subject.subject_Name" name="subject_Name" type="text" class="form-control" placeholder="ชื่อวิชา" #subject_name="ngModel">
+
+    </div>
+    <div class="form-group">
+      <label for="">คำอธิบายรายวิชา</label>
+      <textarea [(ngModel)]="subject.subject_Description" name="subject_Description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="คำอธิบายรายวิชา"></textarea>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">เพิ่มวิชา</button>
+    <a routerLink="/home">กลับหน้าแรก</a>
+  </form>
+</div>
+  </div>

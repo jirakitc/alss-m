@@ -1,0 +1,31 @@
+<h5>ผู้ใช้งานทั้งหมด</h5>
+<!-- <ul *ngFor="let cust of customers">
+  <li class="list-group-item list-group-item-action" [routerLink]="['/customers', cust.id]" style="color:black"><span class="badge badge-dark">{{cust.id}}</span>  {{ cust.firstname }}   |   Username : {{ cust.username }}  |  สถานะผู้ใช้ : {{cust.type}}</li>
+</ul> -->
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>ชื่อผู้ใช้</th>
+      <th>นามสกุล</th>
+      <th>Username</th>
+      <th>E-mail</th>
+      <th>Password</th>
+      <th>ส่วนจัดการ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cust of customers">
+        <td>{{cust.id}}</td>
+      <td>{{cust.firstname}}</td>
+      <td>{{cust.lastname}}</td>
+      <td>{{cust.username}}</td>
+      <td>{{cust.email}}</td>
+      <td>{{cust.password}}</td>
+      <td><button class="btn btn-info btn-sm" [routerLink]="['/users', cust.id]">จัดการผู้ใช้</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<button type="button" class="btn btn-dark" (click)="goBack()">กลับ</button>

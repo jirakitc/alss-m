@@ -1,0 +1,36 @@
+<div class="card">
+    <div class="card-header">เพื่มห้องเรียน</div>
+    <div class="card-body">
+        <form #addClassForm="ngForm" (submit)="update()">
+      <div class="form-group">
+        <label for="">ชื่อห้องเรียน</label>
+        <input [(ngModel)]="room.class_name" name="class_name" type="text" class="form-control" placeholder="ชื่อห้องเรียน" #class_name="ngModel">
+      </div>
+
+      <label for="">รายวิชาที่เปิดสอน</label>
+      <select class="custom-select" name="subject_Name" id="subject_Name" [(ngModel)]="room.subject_Name" required>
+        <option *ngFor="let item of subject" value={{item.subject_Name}}>{{item.subject_Name}}</option>
+      </select>
+
+      <div class="form-group">
+        <label for="">ชื่ออาจารย์ผู้สอน</label>
+        <input [(ngModel)]="room.teacher_name" name="teacher_name" type="text" class="form-control" placeholder="ชื่ออาจารย์ผู้สอน">
+      </div>
+      <div class="form-group">
+        <label for="">จำนวนผู้เรียน</label>
+        <input [(ngModel)]="room.total_student" name="total_student" type="text" class="form-control" placeholder="จำนวนผู้เรียน">
+      </div>
+
+      <button type="submit" class="btn btn-primary">เพิ่มห้องเรียน</button>
+      <a routerLink="/home">กลับหน้าแรก</a>
+    </form>
+  </div>
+    </div>
+     
+        
+        <!-- <div class="btn-group ">
+            <button type="button" class="btn btn-success" (click)="addCustomer()" [disabled]="!addCustomerForm.form.valid">สมัครสมาชิก</button>
+        </div>
+      </form>
+  </div>
+  </div> -->

@@ -1,0 +1,98 @@
+<h4><span class="badge badge-light ">{{customer.id}}</span> ผู้ใช้งาน {{customer.firstname}}</h4>
+<div [hidden]="submitted">
+    <form (ngSubmit)="update()" #detailCustomerForm="ngForm">
+        <div class="form-group">
+            <label for="username"><b>Username</b></label>
+            <input type="text" class="form-control" id="username" required
+            [(ngModel)]="customer.username" name="username" #username="ngModel" disabled>
+            <div [hidden]="username.valid || username.pristine"
+                 class="alert alert-danger">
+                Username is required
+            </div>
+          </div>
+
+      <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input type="text" class="form-control" id="firstname" required
+        [(ngModel)]="customer.firstname" name="firstname" #firstname="ngModel">
+        <div [hidden]="firstname.valid || firstname.pristine"
+             class="alert alert-danger">
+            กรุณากรอกชื่อจริง
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input type="text" class="form-control" id="lastname" required
+        [(ngModel)]="customer.lastname" name="lastname" #lastname="ngModel">
+        <div [hidden]="lastname.valid || lastname.pristine"
+             class="alert alert-danger">
+             กรุณากรอกนามสกุล
+        </div>
+      </div>
+      <div class="form-group">
+          <label for="Email">Email</label>
+          <input type="text" class="form-control" id="email" placeholder="Email" 
+          required
+          [(ngModel)]="customer.email" name="email" #email="ngModel">
+          <div [hidden]="email.valid || email.pristine"
+               class="alert alert-danger">
+               กรุณากรอกอีเมลล์
+          </div>
+        </div>
+
+      
+      <div class="form-group">
+          <label for="Password">Password</label>
+          <input type="text" class="form-control" id="password" placeholder="password" 
+          required
+          [(ngModel)]="customer.password" name="password" #password="ngModel">
+          <div [hidden]="password.valid || password.pristine"
+               class="alert alert-danger">
+               กรุณากรอกรหัสผ่าน
+          </div>
+        </div>
+      
+      <!-- <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" class="form-control" id="age" required
+        [(ngModel)]="customer.age" name="age" #age="ngModel">
+        <div [hidden]="age.valid || age.pristine"
+             class="alert alert-danger">
+            Age is required
+        </div>
+      </div> -->
+      <div class="form-group">
+          <label for="type">ประเภทผู้ใช้</label>
+          <select class="custom-select" id="type" [(ngModel)]="customer.type" name="type" aria-label="Example select with button addon" required disabled>
+              <option selected>ประเภทผู้ใช้</option>
+              <option value="1">Student</option>
+              <option value="2">Teacher</option>
+              <option value="3">Admin</option>
+          </select>
+        </div>
+
+      <div class="row">
+        <div class="col-10"><button type="button" class="btn btn-dark" (click)="goBack()"> < กลับ</button></div>
+        <div class="col-2">
+          <div class="btn-group">
+          <button type="submit" class="btn btn-warning" (click)="update()" [disabled]="!detailCustomerForm.form.valid">อัพเดท</button>
+          <button type="button" class="btn btn-danger" (click)="delete()">ลบข้อมูล</button>
+        </div>
+        </div>
+      </div>  
+
+      <!-- <div class="btn-group ">
+        <button type="button" class="btn btn-dark btn-sm" (click)="goBack()"> < กลับ</button>
+        <button type="submit" class="btn btn-warning btn-sm" (click)="update()" [disabled]="!detailCustomerForm.form.valid">อัพเดท</button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="delete()">ลบข้อมูล</button>
+	    </div> -->
+    </form>
+</div>
+ 
+<div [hidden]="!submitted">
+    <p>{{message}}</p>
+    <div class="btn-group btn-group-sm">
+      <button type="button" class="btn btn-dark" (click)="goBack()">กลับ</button>
+    </div>
+</div>
