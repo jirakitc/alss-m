@@ -10,8 +10,9 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 
-### frontend backend###
+### frontend ###
 frontend/node_modules/*
+### backend ###
 backend/nodejs/node_modules/*
 
 ### VisualStudioCode Patch ###
