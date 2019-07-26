@@ -18,7 +18,7 @@ const connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : '',
-  database : 'alss_web3'
+  database : 'alss_web4'
 });
 
 //เพิ่ม route ตรงนี้

@@ -1,5 +1,5 @@
 const env = {
-  database: 'alss_web3',
+  database: 'alss_web4',
   username: 'root',
   password: '',
   host: 'localhost',

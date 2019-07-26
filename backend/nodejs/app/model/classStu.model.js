@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
 	const classStu = sequelize.define('class_student', {
-        cs_list: {
+        cs_id: {
             type: Sequelize.INTEGER,
             primaryKey:true,
             autoIncrement:true,
