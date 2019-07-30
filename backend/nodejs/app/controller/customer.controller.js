@@ -50,7 +50,7 @@ exports.delete = (req, res) => {
 	});
 };
 
-exports.create = (req,res)=>{
+exports.create2 = (req,res)=>{
     const data = {
       firstname: req.body.firstname,
       lastname: req.body.lastname,

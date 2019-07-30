@@ -14,6 +14,7 @@ export class AddClassComponent implements OnInit {
 
   room = new Room();
   subject : Subject[];
+  submitted = false;
 
   constructor(
     private location: Location,
@@ -41,7 +42,10 @@ export class AddClassComponent implements OnInit {
   //แบบ 2  <---- ใช้อันนี้อยู่
   update(): void {
     this.userService.addClass(this.room)
-        .subscribe(result => alert(JSON.stringify(result)));
+        .subscribe(result => {
+          alert(JSON.stringify(result));
+          this.goBack();
+        });
   }
 
   getSubject() {

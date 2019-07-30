@@ -19,6 +19,7 @@ import { AddClassComponent } from './comp/add-class/add-class.component';
 import { EnrollComponent } from './comp/enroll/enroll.component';
 import { AddSubjectComponent } from './comp/add-subject/add-subject.component';
 import { EnrollclassComponent } from './comp/enrollclass/enrollclass.component';
+import { ClassDataComponent } from './comp/profile/class-data/class-data.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { EnrollclassComponent } from './comp/enrollclass/enrollclass.component';
     AddClassComponent,
     EnrollComponent,
     AddSubjectComponent,
-    EnrollclassComponent
+    EnrollclassComponent,
+    ClassDataComponent,
   ],
   imports: [
     BrowserModule,

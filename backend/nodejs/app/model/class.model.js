@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
 	const Room = sequelize.define('class', {
 		class_id: {
-			type: Sequelize.INTEGER,
+			type: Sequelize.STRING,
 			primaryKey: true
 		},
 		class_name: Sequelize.STRING,

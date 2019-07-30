@@ -1,5 +1,5 @@
 <label for="">ผู้ใช้งาน : {{ details?.firstname }}</label> <br>
-<label for="" name="user_id">userid : {{ details?.id }}</label>
+<label for="" name="user_id">userid : {{ details?.user_id }}</label>
 <hr>
 <div class="row mb-5">
 
@@ -7,7 +7,7 @@
       <form #enrollForm="ngForm" (submit)="onSubmit(enrollForm.value)">
           <input type="hidden" [(ngModel)]="item.class_id" name="class_id" class="form-control">
           <input type="hidden" [(ngModel)]="item.class_name" name="class_name" class="form-control">
-          <input type="hidden" [(ngModel)]="details.id" name="user_id" class="form-control">
+          <input type="hidden" [(ngModel)]="details.user_id" name="user_id" class="form-control">
           <button type="submit" class="btn btn-primary">test enroll</button>
       </form>
     <div class="card-body">

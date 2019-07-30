@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 
 
-import { Room , Subject } from './interface';
+import { Room , Subject , classStu } from './interface';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +20,9 @@ export class ClassService {
 
   getSubject (): Observable<Subject[]> {
     return this.http.get<Subject[]>('http://localhost:8080/api/get_subject')
+  }
+
+  getCS(): Observable<classStu[]>{
+    return this.http.get<classStu[]>('http://localhost:8080/api/getcs') 
   }
 }

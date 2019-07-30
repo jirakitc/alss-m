@@ -3,6 +3,7 @@ const Subject = db.subject;
 
 exports.create_Subject = (req,res) =>{
 	let subject_Data = {
+		subject_id: req.body.subject_id,
         subject_Name: req.body.subject_Name,
         subject_Description: req.body.subject_Description
     }

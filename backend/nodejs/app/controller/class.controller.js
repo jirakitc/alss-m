@@ -3,7 +3,8 @@ const Room = db.class;
 
 exports.create_Class = (req,res) =>{
 	let class_Data = {
-        class_name: req.body.class_name,
+		class_name: req.body.class_name,
+		class_id: req.body.class_id,
         class_Subject: req.body.subject_Name,
         teacher_name: req.body.teacher_name,
         total_student: req.body.total_student

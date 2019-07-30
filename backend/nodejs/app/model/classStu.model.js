@@ -5,9 +5,9 @@ module.exports = (sequelize, Sequelize) => {
             primaryKey:true,
             autoIncrement:true,
         },
-        class_id: Sequelize.INTEGER,
+        class_id: Sequelize.STRING,
         class_name:Sequelize.STRING,
-        user_id: Sequelize.INTEGER,          
+        user_id: Sequelize.STRING,          
 		}, { timestamps: true });
 	
 	return classStu;

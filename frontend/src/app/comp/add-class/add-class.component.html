@@ -7,6 +7,15 @@
         <input [(ngModel)]="room.class_name" name="class_name" type="text" class="form-control" placeholder="ชื่อห้องเรียน" #class_name="ngModel">
       </div>
 
+      <div class="form-group">
+        <label for="Username">Class ID</label>
+        <input type="text" class="form-control" id="user_id" placeholder="กรอก Class ID 5 หลัก" required
+          [(ngModel)]="room.class_id" name="class_id" #class_id="ngModel" minlength="5" maxlength="5">
+        <div [hidden]="class_id.valid || class_id.pristine" class="alert alert-danger">
+          โปรดกรอก Class ID 5 หลัก
+        </div>
+      </div>
+
       <label for="">รายวิชาที่เปิดสอน</label>
       <select class="custom-select" name="subject_Name" id="subject_Name" [(ngModel)]="room.subject_Name" required>
         <option *ngFor="let item of subject" value={{item.subject_Name}}>{{item.subject_Name}}</option>

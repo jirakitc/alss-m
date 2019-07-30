@@ -44,10 +44,10 @@ export class EnrollComponent implements OnInit {
   }
 
   onSubmit(data){   //ใช้อันนี้อยู่
-    alert('ลงทะเบียนสำเร็จ')
+    //alert('ลงทะเบียนสำเร็จ')
     this.http.post<any>('http://localhost:8080/api/enroll',data)
     .subscribe(result=>{
-      // alert(JSON.stringify(result))
+       alert(JSON.stringify(result))
     })
   }
 

@@ -32,20 +32,19 @@ exports.enroll_Class = (req, res) => {
         class_name: req.body.class_name,
         user_id: req.body.user_id
     }
-	classStu.findOne({
-		where : {
-			class_id : studata.class_id,
-			user_id : studata.user_id
-		},
-		limit: 1
-	}).then(class_id =>{
-		if (class_id >= 1){
-			res.json('username already exists')
-		} else {
-			classStu.create(studata).then(result =>{
-				res.json(result);
-			})
-
-		}	
+	classStu.create(studata).then(result =>{
+		res.json(result);
 	})
 };
+
+exports.getClassStu = (req, res) => {
+	// 	classStu.findAll().then(data => {
+	// 		console.log(data);
+	// 		res.json(data);
+	// })
+
+	classStu.findAll({
+		where: { user_id: '590200' }
+	})
+	.then(data =>res.json(data))
+}

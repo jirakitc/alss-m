@@ -1,20 +1,32 @@
 <div class="card">
   <div class="card-header">เพิ่มวิชา</div>
   <div class="card-body">
-      <form #addSubjectForm="ngForm" (submit)="update()">
-    <div class="form-group">
-      <label for="">ชื่อวิชา</label>
-      <input [(ngModel)]="subject.subject_Name" name="subject_Name" type="text" class="form-control" placeholder="ชื่อวิชา" #subject_name="ngModel">
+    <form #addSubjectForm="ngForm" (submit)="update()">
 
-    </div>
-    <div class="form-group">
-      <label for="">คำอธิบายรายวิชา</label>
-      <textarea [(ngModel)]="subject.subject_Description" name="subject_Description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="คำอธิบายรายวิชา"></textarea>
-    </div>
+        <div class="form-group">
+            <label for="">รหัสวิชา</label>
+            <input [(ngModel)]="subject.subject_id" name="subject_id" type="text" class="form-control"
+              placeholder="รหัสวิชา 4 หลัก" #subject_id="ngModel" minlength="4" maxlength="4">
+              <div [hidden]="subject_id.valid || subject_id.pristine" class="alert alert-danger">
+                โปรดกรอกรหัสวิชา 4 หลัก
+              </div>
+          </div>
+      
+      <div class="form-group">
+        <label for="">ชื่อวิชา</label>
+        <input [(ngModel)]="subject.subject_Name" name="subject_Name" type="text" class="form-control"
+          placeholder="ชื่อวิชา" #subject_name="ngModel">
+      </div>
+
+      <div class="form-group">
+        <label for="">คำอธิบายรายวิชา</label>
+        <textarea [(ngModel)]="subject.subject_Description" name="subject_Description" class="form-control"
+          id="exampleFormControlTextarea1" rows="3" placeholder="คำอธิบายรายวิชา"></textarea>
+      </div>
 
 
-    <button type="submit" class="btn btn-primary">เพิ่มวิชา</button>
-    <a routerLink="/home">กลับหน้าแรก</a>
-  </form>
-</div>
+      <button type="submit" class="btn btn-primary">เพิ่มวิชา</button>
+      <a routerLink="/home">กลับหน้าแรก</a>
+    </form>
   </div>
+</div>
