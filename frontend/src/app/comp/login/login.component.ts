@@ -31,30 +31,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.getData();
-  }
-  onLogin(data){
-    alert(JSON.stringify(data));
-    this.http.post<any>('http://localhost:8080/api/login',data).subscribe(results=>{
-    alert(JSON.stringify(results));
-    // this.getData();
-  });
-  }
-
-  getData(){
-    this.http.get<any>('http://localhost:8080/api/login').subscribe(result=>{
-      this.uDataArray = result.data;
-    })
-  }
-
-  getLogin2(data){
-    alert(JSON.stringify(data));
-    this.http.post<User[]>('http://localhost:8080/api/login2',data)
-    .subscribe(
-      customers => {
-       //console.log(customers);
-       alert(JSON.stringify(customers));
-    })
   }
   
   login() {

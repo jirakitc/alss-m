@@ -2,12 +2,13 @@ const jwt = require('jsonwebtoken')
 const db = require('../config/db.config.js');
 const Customer = db.customers;
 
+
 process.env.SECRET_KEY = 'secret'
 
 // Post a Customer
 exports.create = (req, res) => {	
 	// Save to MySQL database
-	let customer = req.body;
+	let customer = req.body
 	Customer.create(customer).then(result => {		
 		// Send created customer to client
 		res.json(result);
@@ -82,18 +83,6 @@ exports.create2 = (req,res)=>{
 			  });
 		}
 	})
-
-	// Customer.create({
-	// 	firstname: data.firstname,
-	// 	lastname: data.lastname,
-	// 	email: data.email,
-	// 	username: data.username,
-	// 	password: data.password,
-	// 	type: 1
-	//   }).then(() => {
-	// 	console.log('user created in db');
-	// 	res.status(200).send({ message: 'user created' });
-	//   });
   }
 
 exports.Login = (req,res) =>{
@@ -136,4 +125,11 @@ exports.Profile = (req,res) =>{
 	  .catch(err => {
 		res.send('error: ' + err)
 	  })
+}
+
+exports.getUID = (req,res) =>{
+	Customer.max('user_id')
+	.then(max =>{
+		res.json(max)
+	})
 }

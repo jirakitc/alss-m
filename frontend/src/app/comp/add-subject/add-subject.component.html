@@ -1,32 +1,46 @@
-<div class="card">
-  <div class="card-header">เพิ่มวิชา</div>
-  <div class="card-body">
-    <form #addSubjectForm="ngForm" (submit)="update()">
-
-        <div class="form-group">
-            <label for="">รหัสวิชา</label>
-            <input [(ngModel)]="subject.subject_id" name="subject_id" type="text" class="form-control"
-              placeholder="รหัสวิชา 4 หลัก" #subject_id="ngModel" minlength="4" maxlength="4">
-              <div [hidden]="subject_id.valid || subject_id.pristine" class="alert alert-danger">
-                โปรดกรอกรหัสวิชา 4 หลัก
-              </div>
+<form #registerForm="ngForm" (submit)="onSubmit(registerForm.value)">
+    <div class="card">
+      <div class="card-header">เพิ่มวิชา</div>
+      <div class="card-body">
+  
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="">ชื่อวิชา</label>
+              <input ngModel name="subject_Name" type="text" class="form-control" placeholder="ชื่อวิชา">
+            </div>
           </div>
-      
-      <div class="form-group">
-        <label for="">ชื่อวิชา</label>
-        <input [(ngModel)]="subject.subject_Name" name="subject_Name" type="text" class="form-control"
-          placeholder="ชื่อวิชา" #subject_name="ngModel">
+          <div class="col">
+            <div class="form-group">
+              <label for="">รหัสวิชา</label>
+              <input [(ngModel)]="subjectID" name="subject_id" type="text" class="form-control">
+            </div>
+          </div>
+        </div>
+  
+  
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="">คำอธิบายวิชา</label>
+              <input ngModel name="subject_Description" type="text" class="form-control" placeholder="คำอธิบายวิชา">
+            </div>
+          </div>
+        </div>
+  
       </div>
-
-      <div class="form-group">
-        <label for="">คำอธิบายรายวิชา</label>
-        <textarea [(ngModel)]="subject.subject_Description" name="subject_Description" class="form-control"
-          id="exampleFormControlTextarea1" rows="3" placeholder="คำอธิบายรายวิชา"></textarea>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col"><button type="submit" class="btn btn-primary">เพิ่มวิชา</button></div>
+          <div class="col">เป็นสมาชิกอยู่แล้ว <a routerLink="/home">กลับหน้าแรก</a></div>
+        </div>
       </div>
-
-
-      <button type="submit" class="btn btn-primary">เพิ่มวิชา</button>
-      <a routerLink="/home">กลับหน้าแรก</a>
-    </form>
+    </div>
+  </form>
+  
+  <!-- <div class="btn-group ">
+            <button type="button" class="btn btn-success" (click)="addCustomer()" [disabled]="!addCustomerForm.form.valid">สมัครสมาชิก</button>
+        </div>
+      </form>
   </div>
-</div>
+  </div> -->

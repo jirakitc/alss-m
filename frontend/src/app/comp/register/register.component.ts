@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Location } from '@angular/common';
+import { Location, JsonPipe } from '@angular/common';
 
 import { User } from '../../services/interface';
 import { UserService } from '../../user.service';
@@ -14,6 +14,8 @@ export class RegisterComponent implements OnInit {
 
   customer = new User();
   submitted = false;
+  UID:number;
+  type:number =1;
 
   constructor(
     private userService: UserService,
@@ -33,6 +35,15 @@ export class RegisterComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.getmaxUID();
   }
 
+  getmaxUID(){
+    this.http.get<any>('http://localhost:8080/api/getUID')
+    .subscribe(userid=>{
+      //alert(JSON.stringify(userid))
+      this.UID = userid
+      this.UID++;
+    })
+  }
 }

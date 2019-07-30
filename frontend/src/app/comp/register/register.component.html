@@ -1,35 +1,63 @@
-<div class="card">
-  <div class="card-header">สมัครสมากชิก</div>
-  <div class="card-body">
-  <form #registerForm="ngForm" (submit)="onSubmit(registerForm.value)">
-    <div class="form-group">
-      <label for="">Username</label>
-      <input ngModel name="username" type="text" class="form-control" placeholder="Username">
+<form #registerForm="ngForm" (submit)="onSubmit(registerForm.value)">
+  <div class="card">
+    <div class="card-header">สมัครสมากชิก</div>
+    <div class="card-body">
+
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="">Username</label>
+            <input ngModel name="username" type="text" class="form-control" placeholder="Username">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="">UID</label>
+            <input [(ngModel)]="UID" name="user_id" type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="">ชื่อจริง</label>
+            <input ngModel name="firstname" type="text" class="form-control" placeholder="Firstname">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="">นามสกุล</label>
+            <input ngModel name="lastname" type="text" class="form-control" placeholder="Lastname">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="">อีเมลล์</label>
+        <input ngModel name="email" type="text" class="form-control" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <label for="">รหัสผ่าน</label>
+        <input ngModel name="password" type="password" class="form-control" placeholder="Password">
+      </div>
+
+      <div class="form-group">
+          <input [(ngModel)]="type" name="type" type="hidden" class="form-control" placeholder="Password">
+        </div>
+
     </div>
-    <div class="form-group">
-      <label for="">Firstname</label>
-      <input ngModel name="firstname" type="text" class="form-control" placeholder="Firstname">
+    <div class="card-footer">
+      <div class="row">
+        <div class="col"><button type="submit" class="btn btn-primary">สมัครสมาชิก</button></div>
+        <div class="col">เป็นสมาชิกอยู่แล้ว <a routerLink="/home">เข้าสู่ระบบ</a></div>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="">Lastname</label>
-      <input ngModel name="lastname" type="text" class="form-control" placeholder="Lastname">
-    </div>
-    <div class="form-group">
-      <label for="">Email</label>
-      <input ngModel name="email" type="text" class="form-control" placeholder="Email">
-    </div>
-    <div class="form-group">
-      <label for="">Password</label>
-      <input ngModel name="password" type="password" class="form-control" placeholder="Password">
-    </div>
-    <button type="submit" class="btn btn-primary">สมัครสมาชิก</button>
-    <a routerLink="/home">กลับหน้าแรก</a>
-  </form>
-</div>
   </div>
-   
-      
-      <!-- <div class="btn-group ">
+</form>
+
+<!-- <div class="btn-group ">
           <button type="button" class="btn btn-success" (click)="addCustomer()" [disabled]="!addCustomerForm.form.valid">สมัครสมาชิก</button>
       </div>
     </form>

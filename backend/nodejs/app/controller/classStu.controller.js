@@ -1,5 +1,8 @@
+const jwt = require('jsonwebtoken');
 const db = require('../config/db.config.js');
 const classStu = db.classStu;
+
+process.env.SECRET_KEY = 'secret';
 
 exports.enroll_ClassX = (req,res) =>{
 	let class_Data = {
@@ -38,13 +41,12 @@ exports.enroll_Class = (req, res) => {
 };
 
 exports.getClassStu = (req, res) => {
-	// 	classStu.findAll().then(data => {
-	// 		console.log(data);
-	// 		res.json(data);
-	// })
+
 
 	classStu.findAll({
-		where: { user_id: '590200' }
+		where : {
+			user_id : '100007'
+		}
 	})
 	.then(data =>res.json(data))
 }

@@ -28,13 +28,6 @@ export class ClassDataComponent implements OnInit {
   }
 
   getCS() {
-    // return this.classService.getCS()
-    //   .subscribe(
-    //     room => {
-    //       //console.log(room);
-    //       this.room = room
-    //     }
-    //   );
     return this.classService.getCS()
     .subscribe(
       data => {

@@ -15,6 +15,7 @@ export class AddClassComponent implements OnInit {
   room = new Room();
   subject : Subject[];
   submitted = false;
+  classID : number;
 
   constructor(
     private location: Location,
@@ -28,18 +29,18 @@ export class AddClassComponent implements OnInit {
 
   ngOnInit() {
     this.getSubject();
+    this.getmaxID();
   }
 
-  //แบบ 1
+  //แบบ 1 <---- ใช้อันนี้อยู่
   addClass(data){
-    // alert(JSON.stringify(data))
     this.http.post<any>('http://localhost:8080/api/add-class',data)
     .subscribe(result=>{
       alert(JSON.stringify(result))
     })
   }
   
-  //แบบ 2  <---- ใช้อันนี้อยู่
+  //แบบ 2 
   update(): void {
     this.userService.addClass(this.room)
         .subscribe(result => {
@@ -54,7 +55,15 @@ export class AddClassComponent implements OnInit {
         subject => {
           console.log(subject);
           this.subject = subject
-        }
-      );
+        });
+  }
+
+  getmaxID(){
+    this.http.get<any>('http://localhost:8080/api/get_maxClassID')
+    .subscribe(res=>{
+      //alert(JSON.stringify(userid))
+      this.classID = res
+      this.classID++;
+    })
   }
 }

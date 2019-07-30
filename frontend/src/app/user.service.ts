@@ -34,7 +34,7 @@ export class UserService {
 
   
   addSubject (subject: Subject): Observable<Subject> {
-    return this.http.post<Subject>('http://localhost:8080/api/add_subject', subject, httpOptions);
+    return this.http.post<Subject>('http://localhost:8080/api/create_subject', subject, httpOptions);
   }
 
   deleteCustomer (user: User | number): Observable<User> {

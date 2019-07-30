@@ -23,4 +23,7 @@ module.exports = function(app) {
 
     app.get('/api/profile', customers.Profile); //ดึงโปรไฟล์
 
+    app.get('/api/getUID', customers.getUID); //หาเลข  UID
+
+
 }
