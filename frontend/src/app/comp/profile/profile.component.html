@@ -1,10 +1,4 @@
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">โปรไฟล์</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Data</li>
-    </ol>
-</nav>
+
 <div class="row">
     <div class="col col-sm-3">
         <!-- ข้อมูลผู้ใช้ -->
@@ -39,10 +33,19 @@
         <div class="card">
             <div class="card-header" style="text-align: center">เมนู</div>
             <div class="card-body">
-                <div class="btn btn-primary btn-lg btn-block" routerLink="/enroll">ลงทะเบียนเรียน</div>
+                <div class="btn btn-primary btn-lg btn-block btn-sm" routerLink="/enroll">ลงทะเบียนเรียน</div>
+                <div class="btn btn-primary btn-lg btn-block btn-sm" (click)="toggleClassShow()" >ห้องเรียน</div>
+                <div class="btn btn-primary btn-lg btn-block btn-sm" (click)="toggleSubjectShow()" >ตรวจสอบรายวิชา</div>
             </div>
         </div>
     </div>
-    <div class="col"><app-class-data></app-class-data></div>
-    <div class="col col-sm-3">zone3</div>
+    <div class="col">
+        <div *ngIf="classShown" id="divshow">
+                <app-class></app-class>
+        </div>
+        <div *ngIf="subjectShown" id="divshow">
+            <app-class-data></app-class-data>
+        </div>
+    </div>
+    <div class="col col-sm-3"></div>
 </div>

@@ -8,14 +8,12 @@ import { AuthService , UserDetails } from 'src/app/services/auth.service';
 import { Room , classStu } from 'src/app/services/interface';
 import { UserService } from 'src/app/user.service';
 
-
 @Component({
-  selector: 'app-enroll',
-  templateUrl: './enroll.component.html',
-  styleUrls: ['./enroll.component.css']
+  selector: 'app-class',
+  templateUrl: './class.component.html',
+  styleUrls: ['./class.component.css']
 })
-export class EnrollComponent implements OnInit {
-
+export class ClassComponent implements OnInit {
   room : Room[];
   details : UserDetails[];
   stuData = new classStu();
@@ -60,7 +58,6 @@ export class EnrollComponent implements OnInit {
     return this.classService.getRoom()
       .subscribe(
         room => {
-          //console.log(room);
           this.room = room
         }
       );
@@ -75,4 +72,5 @@ export class EnrollComponent implements OnInit {
       }
     )
   };
+
 }

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './route/app-routing.module';
 import { AppComponent } from './app.component';
 import { AddUserComponent } from './comp/add-user/add-user.component';
 import { UserComponent } from './comp/user/user.component';
@@ -18,8 +18,15 @@ import { ChatComponent } from './comp/chat/chat.component';
 import { AddClassComponent } from './comp/add-class/add-class.component';
 import { EnrollComponent } from './comp/enroll/enroll.component';
 import { AddSubjectComponent } from './comp/add-subject/add-subject.component';
-import { EnrollclassComponent } from './comp/enrollclass/enrollclass.component';
 import { ClassDataComponent } from './comp/profile/class-data/class-data.component';
+import { ShowClassEnrolledComponent } from './comp/profile/show-class-enrolled/show-class-enrolled.component';
+
+import { AuthGuardService } from './services/auth-guard.service'
+import { AuthService} from './services/auth.service';
+import { AdmincenterComponent } from './comp/admin/admincenter/admincenter.component'
+import { RoleGuardService } from './services/role-guard.service';
+import { ClassComponent } from './comp/class/class.component';
+import { MainComponent } from './class/main/main.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +44,11 @@ import { ClassDataComponent } from './comp/profile/class-data/class-data.compone
     AddClassComponent,
     EnrollComponent,
     AddSubjectComponent,
-    EnrollclassComponent,
     ClassDataComponent,
+    ShowClassEnrolledComponent,
+    AdmincenterComponent,
+    ClassComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +56,7 @@ import { ClassDataComponent } from './comp/profile/class-data/class-data.compone
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService, AuthGuardService , RoleGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

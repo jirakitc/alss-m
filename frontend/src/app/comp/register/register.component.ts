@@ -27,7 +27,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(data){
-    alert(JSON.stringify(data))
     this.http.post<any>('http://localhost:8080/api/register',data)
     .subscribe(result=>{
       alert(JSON.stringify(result))

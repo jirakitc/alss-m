@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col col-sm-3">
+    <div class="card">
+      <div class="card-header">
+        <button class="btn btn-dark" (click)="goBack()">กลับ</button>
+      </div>
+      <div class="card-body">
+        ตรงนี้ใส่เมนู กับรายชื่อ
+      </div>
+    </div>
+    <br>
+    <div class="card">
+      <div class="card-header">
+        function
+      </div>
+      <div class="card-body">
+        ปุ่มเข้าหน้าแชทใส่ตรงนี้
+      </div>
+    </div>
+  </div>
+
+  <div class="col col-sm-9">
+  <div class="card">
+    <h3 class="card-header bg-warning" *ngFor="let item of room">
+      {{item.class_name}}
+    </h3>
+    <div class="card-body">
+      ตรงนี้เอาไว้แสดงเนื้อหา
+    </div>
+  </div>
+</div>

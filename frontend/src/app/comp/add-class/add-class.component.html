@@ -21,7 +21,7 @@
             
             <div class="form-group">
             <label for="">รายวิชาที่เปิดสอน</label>
-            <select class="custom-select" name="subject_Name" id="subject_Name" [(ngModel)]="room.subject_Name" required>
+            <select class="custom-select" name="class_Subject" id="class_Subject" [(ngModel)]="class_Subject" required>
               <option *ngFor="let item of subject" value={{item.subject_Name}}>{{item.subject_Name}}</option>
             </select>
           </div>

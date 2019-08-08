@@ -1,20 +1,18 @@
 <div class="card">
-    ชื่อ : {{details?.firstname}}  {{details?.lastname}} <br>
-    รหัสผู้ใช้ : {{details?.user_id}}
-    <br><br><br>
-    วิชาที่ลงทะเบียนแล้ว
-    <table class="table table-hover table-borderless">
-        <thead>
-          <tr>
-            <th>ชื่อวิชา</th>
-            <th>รหัสวิชา</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of room">
-            <td>{{item.class_name}}</td>
-            <td>{{item.class_id}}</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="row">
+        <div class="col">ผู้ใช้งาน  :</div>
+        <div class="col">{{details?.firstname}}  {{details?.lastname}}</div>
+    </div>
+    <div class="row">
+            <div class="col">รหัสผู้ใช้ :</div>
+            <div class="col"> {{details?.user_id}}</div>
+    </div>
+    <div class="row">
+            <div class="col">อีเมลล์ :</div>
+            <div class="col">{{details?.email}}</div>
+    </div>
+
+    ข้อมูลห้องเรียน
+    <button class="btn btn-info btn-sm" [routerLink]="['/profile', details?.user_id]">ตรวจสอบวิชา</button>
+
 </div>

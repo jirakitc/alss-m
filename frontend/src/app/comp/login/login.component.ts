@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
     firstname: '',
     lastname: '',
     email: '',
-    password: ''
+    password: '',
+    type: '',
   }
 
   uDataArray:any[] = []
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/profile')
       },
       err => {
-        console.error(err)
+        alert(JSON.stringify(555))
       }
     )
   }

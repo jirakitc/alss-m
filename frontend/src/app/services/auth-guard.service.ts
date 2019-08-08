@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, CanActivate ,CanActivateChild,ActivatedRouteSnapshot,RouterStateSnapshot } from '@angular/router'
 
 import { AuthService } from './auth.service';
+import decode from 'jwt-decode'
 
 
 @Injectable({
@@ -17,8 +18,10 @@ export class AuthGuardService implements CanActivate{
   canActivate() {
     if (!this.auth.isLoggedIn()) {
       this.router.navigateByUrl('/')
+      console.log('canActive false')
       return false
     }
+    console.log('canActive Run')
     return true
   }
 }

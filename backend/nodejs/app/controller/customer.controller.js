@@ -9,10 +9,20 @@ process.env.SECRET_KEY = 'secret'
 exports.create = (req, res) => {	
 	// Save to MySQL database
 	let customer = req.body
-	Customer.create(customer).then(result => {		
-		// Send created customer to client
-		res.json(result);
-	});
+	Customer.findOne({
+		where : {
+			username : req.body.username
+		}
+	}).then(user =>{
+		if (user != null){
+			res.json('username already exists')
+		} else {
+			Customer.create(customer).then(result => {		
+				// Send created customer to client
+				res.json(result);
+			});
+		}
+	})
 };
  
 // Fetch all Customers
@@ -99,6 +109,7 @@ exports.Login = (req,res) =>{
 			})
 			res.json({ token: token })
 		  } else {
+			console.log('user not exit')
 			res.send('User does not exist')
 		  }
 		})

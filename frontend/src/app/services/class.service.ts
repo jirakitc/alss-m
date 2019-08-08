@@ -9,6 +9,8 @@ import { Room , Subject , classStu } from './interface';
   providedIn: 'root'
 })
 export class ClassService {
+  private getCSUrl = 'http://localhost:8080/api/getcs';
+  private getClassDataUrl = 'http://localhost:8080/api/getClassID';
 
   constructor(
     private http: HttpClient
@@ -22,7 +24,13 @@ export class ClassService {
     return this.http.get<Subject[]>('http://localhost:8080/api/get_subject')
   }
 
-  getCS(): Observable<classStu[]>{
-    return this.http.get<classStu[]>('http://localhost:8080/api/getcs') 
+  getCS(userId : number): Observable<classStu[]>{
+    const url = `${this.getCSUrl}/${userId}`;
+    return this.http.get<classStu[]>(url); 
+  }
+
+  getClassData(classId : number): Observable<Room[]>{
+    const url = `${this.getClassDataUrl}/${classId}`;
+    return this.http.get<Room[]>(url); 
   }
 }

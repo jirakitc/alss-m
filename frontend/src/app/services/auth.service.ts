@@ -12,6 +12,7 @@ export interface UserDetails {
   type: number;
   email: string;
   username: string;
+  exp: number;
 }
 interface TokenResponse {
   token: string
@@ -22,6 +23,7 @@ export interface TokenPayload {
   lastname: string
   email: string
   password: string
+  type: string
 }
 
 
@@ -29,6 +31,7 @@ export interface TokenPayload {
   providedIn: 'root'
 })
 export class AuthService {
+  // ประกาศตัวแปร
   private token: string;
 
   constructor(
@@ -64,7 +67,7 @@ export class AuthService {
   public isLoggedIn(): boolean {
     const user = this.getUserDetails()
     if (user) {
-      //return user.exp > Date.now() / 1000
+      return user.exp > Date.now() / 5000
     } else {
       return false
     }

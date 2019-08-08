@@ -1,5 +1,6 @@
 const db = require('../config/db.config.js');
 const Room = db.class;
+const classStu = db.classStu;
 
 exports.create_Class = (req,res) =>{
 	let class_Data = req.body
@@ -28,4 +29,13 @@ exports.getMaxID = (req,res) =>{
 	.then(max =>{
 		res.json(max)
 	})
+}
+
+exports.getClassID = (req, res) => {  
+	Room.findAll({
+		where : {
+			class_id : req.params.classId
+		}
+	})
+	.then(data =>res.json(data))
 }

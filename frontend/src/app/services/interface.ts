@@ -4,9 +4,15 @@ export class User {
     firstname: string;
     lastname: string;
     age: number;
-    type: number;
+    type: Role;
     email: string;
     username: string;
+}
+
+export enum Role {
+    Student = 1,
+    Teacher = 2,
+    Admin = 3,
 }
 
 export class Room {
@@ -29,5 +35,5 @@ export class classStu {
     id: number;
     class_id: string;
     class_name: string;
-    user_id:string;
+    user_id: string;
 }

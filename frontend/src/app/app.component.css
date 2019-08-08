@@ -1,6 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Kanit);
+@import url(https://fonts.googleapis.com/css?family=Muli);
+@import url(https://fonts.googleapis.com/css?family=Sarabun);
 
 .container {
     padding: 10px;
-    font-family: 'Kanit';
+    font-family: 'Sarabun';
 }
