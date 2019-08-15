@@ -1,6 +1,7 @@
+<h3>ห้องเรียน</h3>
+<div class="card-deck mr-md-3">
 <div class="row" *ngFor="let item of room">
-<div class="col">
-    <div class="card w-100">
+    <div class="card mb-3" style="width: 18rem;">
         <h4 class="card-header bg-warning">{{item.class_name}}</h4>
         <form #enrollForm="ngForm" (submit)="onSubmit(enrollForm.value)">
           <!-- <form #enrollForm="ngForm" (submit)="enroll()"> -->
@@ -16,13 +17,15 @@
                 <h6 class="card-subtitle mb-2 text-muted">อาจารย์ผู้สอน : {{item.teacher_name}}</h6>
                 <p class="card-text">{{item.class_description}}</p>
             </div>
-            <div class="col text-right">
+            <!-- <div class="col text-right">
                 <button class="btn btn-info btn-sm" [routerLink]="['/class', item.class_id]">เข้าสู่ห้องเรียน</button>
-            </div>
+            </div> -->
           </div>
+          </div>
+          <div class="card-footer">
+              <button class="btn btn-info btn-sm btn-block" [routerLink]="['/class', item.class_id]">เข้าสู่ห้องเรียน</button>
           </div>
         </form>
       </div>
-      <br>
 </div>
 </div>

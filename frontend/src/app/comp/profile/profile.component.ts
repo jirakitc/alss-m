@@ -30,6 +30,9 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit() {
+    this.getProfile()
+  }
+  getProfile(){
     this.auth.profile().subscribe(
       user => {
         this.details = user
