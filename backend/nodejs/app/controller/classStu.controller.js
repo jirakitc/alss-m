@@ -20,7 +20,7 @@ exports.enroll_Class = (req, res) => {
 };
 
 exports.getClassStu = (req, res) => {  
-	var decoded = jwt.verify(req.headers['auth'], process.env.SECRET_KEY)
+	var decoded = jwt.verify(req.headers['classauth'], process.env.SECRET_KEY)
 
 	classStu.findAll({
 		where : {

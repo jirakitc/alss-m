@@ -97,7 +97,7 @@ export class AuthService {
 
   public class_Profile(): Observable<any> {
     return this.http.get('http://localhost:8080/api/getcs', {
-      headers: { auth: ` ${this.getToken()}` }
+      headers: { classAuth: ` ${this.getToken()}` }
     })
   }
 
