@@ -4,5 +4,7 @@ module.exports = function(app) {
 
     app.post('/api/enroll', classStu.enroll_Class)
 
-    app.get('/api/getcs/:userId' , classStu.getClassStu)
+    //app.get('/api/getcs/:userId' , classStu.getClassStu)
+
+    app.get('/api/getcs' , classStu.getClassStu)
 }

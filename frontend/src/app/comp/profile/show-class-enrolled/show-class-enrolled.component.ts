@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./show-class-enrolled.component.css']
 })
 export class ShowClassEnrolledComponent implements OnInit {
-  details: UserDetails
+  details: UserDetails;
   room : classStu[];
 
   constructor(
@@ -22,10 +22,38 @@ export class ShowClassEnrolledComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getProfile();
+  }
+
+  getclass_Profile(){
+    this.auth.class_Profile().subscribe(
+      user => {
+        this.room = user
+      },
+      err =>{
+        console.error(err)
+      }
+    )
+  }
+
+  getParam(){
     const userId = +this.route.snapshot.paramMap.get('userId');
     this.classService.getCS(userId)
       .subscribe(data => {
         this.room = data
       });
+  }
+
+  getProfile(){
+    this.auth.profile().subscribe(
+      user => {
+        this.details = user
+      },
+      err => {
+        console.error(err)
+      }
+    )
+    // enter next code here
+    this.getclass_Profile()
   }
 }

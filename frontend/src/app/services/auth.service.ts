@@ -8,7 +8,7 @@ export interface UserDetails {
   id: number;
   firstname: string;
   lastname: string;
-  age: number;
+  user_id: number;
   type: number;
   email: string;
   username: string;
@@ -18,12 +18,13 @@ interface TokenResponse {
   token: string
 }
 export interface TokenPayload {
-  id: number
-  firstname: string
-  lastname: string
-  email: string
-  password: string
-  type: string
+  id: number;
+  firstname: string;
+  lastname: string;
+  user_id: number;
+  email: string;
+  password: string;
+  type: string;
 }
 
 
@@ -91,6 +92,12 @@ export class AuthService {
   public profile(): Observable<any> {
     return this.http.get('http://localhost:8080/api/profile', {
       headers: { Authorization: ` ${this.getToken()}` }
+    })
+  }
+
+  public class_Profile(): Observable<any> {
+    return this.http.get('http://localhost:8080/api/getcs', {
+      headers: { auth: ` ${this.getToken()}` }
     })
   }
 

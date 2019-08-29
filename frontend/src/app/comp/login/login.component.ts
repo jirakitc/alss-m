@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
     id: 0,
     firstname: '',
     lastname: '',
+    user_id: 0,
     email: '',
     password: '',
     type: '',
@@ -40,7 +41,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/profile')
       },
       err => {
-        alert(JSON.stringify(555))
+        alert(JSON.stringify("login failed"))
       }
     )
   }
