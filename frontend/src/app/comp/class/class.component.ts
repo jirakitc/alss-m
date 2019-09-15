@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 
 
 import { ClassService } from 'src/app/services/class.service';
-import { AuthService , UserDetails } from 'src/app/services/auth.service';
-import { Room , classStu } from 'src/app/services/interface';
+import { AuthService } from 'src/app/services/auth.service';
+import { Room , classStu, User } from 'src/app/services/interface';
 import { UserService } from 'src/app/user.service';
 
 @Component({
@@ -15,19 +15,19 @@ import { UserService } from 'src/app/user.service';
 })
 export class ClassComponent implements OnInit {
   room : Room[];
-  details : UserDetails[];
+  roomDT : Room[]
+  details : User[];
   stuData = new classStu();
 
   constructor(
-    private classService: ClassService,
     private userService: UserService,
+    private classService : ClassService,  
     private location : Location,
     private auth: AuthService,
     private http: HttpClient
   ) { }
 
   ngOnInit() {
-    this.getRooms()
     this.getprofile()
   }
 
@@ -55,10 +55,18 @@ export class ClassComponent implements OnInit {
   }
 
   getRooms() {
-    return this.classService.getRoom()
+    return this.auth.class_Profile()
       .subscribe(
         room => {
           this.room = room
+        }
+      );
+  }
+  getRoomsData() {
+    return this.classService.getRoom()
+      .subscribe(
+        roomDT => {
+          this.roomDT = roomDT
         }
       );
   }
@@ -71,6 +79,8 @@ export class ClassComponent implements OnInit {
         console.error(err)
       }
     )
+    this.getRooms();
+    this.getRoomsData();
   };
 
 }

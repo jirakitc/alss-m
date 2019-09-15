@@ -27,6 +27,7 @@ import { AdmincenterComponent } from './comp/admin/admincenter/admincenter.compo
 import { RoleGuardService } from './services/role-guard.service';
 import { ClassComponent } from './comp/class/class.component';
 import { MainComponent } from './class/main/main.component';
+import { UploadCoverComponent } from './comp/upload-cover/upload-cover.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { MainComponent } from './class/main/main.component';
     AdmincenterComponent,
     ClassComponent,
     MainComponent,
+    UploadCoverComponent,
   ],
   imports: [
     BrowserModule,

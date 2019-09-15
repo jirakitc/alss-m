@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService , UserDetails } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
+
+import { User } from '../../services/interface'
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +12,7 @@ export class ProfileComponent implements OnInit {
   
   classShown: boolean = false ;
   subjectShown: boolean = false ;
-  details: UserDetails
+  details: User
 
 
   constructor(

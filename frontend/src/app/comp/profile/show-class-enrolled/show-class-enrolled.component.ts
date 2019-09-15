@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService , UserDetails } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { ClassService } from 'src/app/services/class.service';
-import { Room , classStu } from '../../../services/interface'
+import { Room , classStu , User } from '../../../services/interface'
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./show-class-enrolled.component.css']
 })
 export class ShowClassEnrolledComponent implements OnInit {
-  details: UserDetails;
+  details: User;
   room : classStu[];
 
   constructor(

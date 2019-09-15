@@ -23,6 +23,7 @@ import { AuthGuardService } from '../services/auth-guard.service';
 import { RoleGuardService } from '../services/role-guard.service';
 import { ClassComponent } from '../comp/class/class.component';
 import { MainComponent } from '../class/main/main.component';
+import { UploadCoverComponent } from '../comp/upload-cover/upload-cover.component';
 
 const routes: Routes = [
   {path: 'user', component: UserComponent},
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path: 'login',component: LoginComponent},
   {path: 'register',component: RegisterComponent},
   {path: 'add-class',component: AddClassComponent},
+  {path: 'uploadc',component: UploadCoverComponent},
   {path: 'enroll',component: EnrollComponent, canActivate: [AuthGuardService]},
   {path: 'add_subject',component: AddSubjectComponent, canActivate: [AuthGuardService]},
 

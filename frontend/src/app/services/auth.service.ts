@@ -4,28 +4,12 @@ import { Router } from '@angular/router'
 import { Observable, of } from 'rxjs'
 import { map } from 'rxjs/operators'
 
-export interface UserDetails {
-  id: number;
-  firstname: string;
-  lastname: string;
-  user_id: number;
-  type: number;
-  email: string;
-  username: string;
-  exp: number;
-}
+import { User , TokenPayload } from '../services/interface'
+
 interface TokenResponse {
   token: string
 }
-export interface TokenPayload {
-  id: number;
-  firstname: string;
-  lastname: string;
-  user_id: number;
-  email: string;
-  password: string;
-  type: string;
-}
+
 
 
 @Injectable({
@@ -53,7 +37,7 @@ export class AuthService {
   }
 
   
-  public getUserDetails(): UserDetails {
+  public getUserDetails(): User {
     const token = this.getToken()
     let payload
     if (token) {
@@ -100,6 +84,7 @@ export class AuthService {
       headers: { classAuth: ` ${this.getToken()}` }
     })
   }
+
 
   public logout(): void {
     this.token = ''

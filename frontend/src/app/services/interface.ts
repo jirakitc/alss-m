@@ -1,12 +1,12 @@
 export class User {
     id: number;
-    user_id: string;
     firstname: string;
     lastname: string;
-    age: number;
-    type: Role;
+    user_id: number;
+    type: number;
     email: string;
     username: string;
+    exp: number;
 }
 
 export enum Role {
@@ -37,3 +37,13 @@ export class classStu {
     class_name: string;
     user_id: string;
 }
+
+export interface TokenPayload {
+    id: number;
+    firstname: string;
+    lastname: string;
+    user_id: number;
+    email: string;
+    password: string;
+    type: string;
+  }

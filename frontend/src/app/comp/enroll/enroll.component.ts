@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 
 
 import { ClassService } from 'src/app/services/class.service';
-import { AuthService , UserDetails } from 'src/app/services/auth.service';
-import { Room , classStu } from 'src/app/services/interface';
+import { AuthService } from 'src/app/services/auth.service';
+import { Room , classStu, User } from 'src/app/services/interface';
 import { UserService } from 'src/app/user.service';
 
 
@@ -17,7 +17,7 @@ import { UserService } from 'src/app/user.service';
 export class EnrollComponent implements OnInit {
 
   room : Room[];
-  details : UserDetails[];
+  details : User[];
   stuData = new classStu();
 
   constructor(
@@ -29,7 +29,6 @@ export class EnrollComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getRooms()
     this.getprofile()
   }
 
@@ -74,5 +73,6 @@ export class EnrollComponent implements OnInit {
         console.error(err)
       }
     )
+    this.getRooms()
   };
 }

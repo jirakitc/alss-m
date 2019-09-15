@@ -1,52 +1,61 @@
+<form #registerForm="ngForm" (submit)="addClass(registerForm.value)">
+  <div class="card">
+    <div class="card-header">เพิ่มห้องเรียน</div>
+    <div class="card-body">
 
-    <form #registerForm="ngForm" (submit)="addClass(registerForm.value)">
-        <div class="card">
-          <div class="card-header">เพิ่มห้องเรียน</div>
-          <div class="card-body">
-      
-            <div class="row">
-              <div class="col">
-                <div class="form-group">
-                  <label for="">ชื่อห้องเรียน</label>
-                  <input [(ngModel)]="room.class_name" name="class_name" type="text" class="form-control" placeholder="ชื่อห้องเรียน" #class_name="ngModel">
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group">
-                  <label for="">รหัสห้องเรียน</label>
-                  <input [(ngModel)]="classID" name="class_id" type="text" class="form-control">
-                </div>
-              </div>
-            </div>
-            
-            <div class="form-group">
-            <label for="">รายวิชาที่เปิดสอน</label>
-            <select class="custom-select" name="class_Subject" id="class_Subject" [(ngModel)]="class_Subject" required>
-              <option *ngFor="let item of subject" value={{item.subject_Name}}>{{item.subject_Name}}</option>
-            </select>
-          </div>
-
+      <div class="row">
+        <div class="col">
           <div class="form-group">
-              <label for="">อาจารย์ผู้สอน</label>
-              <input [(ngModel)]="room.teacher_name" name="teacher_name" type="text" class="form-control" placeholder="ชื่ออาจารย์ผู้สอน">
-            </div>
-
-            <div class="form-group">
-                <label for="">จำนวนผู้เรียน</label>
-                <input [(ngModel)]="room.total_student" name="total_student" type="text" class="form-control" placeholder="จำนวนผู้เรียน">
-              </div>
-      
-          </div>
-          <div class="card-footer">
-            <div class="row">
-              <div class="col"><button type="submit" class="btn btn-primary">เพิ่มห้องเรียน</button></div>
-              <div class="col"><a routerLink="/home">กลับหน้าแรก</a></div>
-            </div>
+            <label for="">ชื่อห้องเรียน</label>
+            <input [(ngModel)]="room.class_name" name="class_name" type="text" class="form-control"
+              placeholder="ชื่อห้องเรียน" #class_name="ngModel">
           </div>
         </div>
-      </form>
-      
-      <!-- <div class="btn-group ">
+        <div class="col">
+          <div class="form-group">
+            <label for="">รหัสห้องเรียน</label>
+            <input [(ngModel)]="classID" name="class_id" type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="">รายวิชาที่เปิดสอน</label>
+        <select class="custom-select" name="class_Subject" id="class_Subject" [(ngModel)]="class_Subject" required>
+          <option *ngFor="let item of subject" value={{item.subject_Name}}>{{item.subject_Name}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="">อาจารย์ผู้สอน</label>
+        <input [(ngModel)]="room.teacher_name" name="teacher_name" type="text" class="form-control"
+          placeholder="ชื่ออาจารย์ผู้สอน">
+      </div>
+
+      <!-- อัพรูป -->
+      <!-- <div class="form-group">
+      <label for="">อัพโหลดรูปปก</label>
+      <input type="file" (change)="onFileSelected($event)" [(ngModel)]="room.img" name="img">
+      <button mat-raised-button color="primary" (click)="onUpload()">Register</button>
+      </div> -->
+
+      <div class="form-group">
+        <label for="">จำนวนผู้เรียน</label>
+        <input [(ngModel)]="room.total_student" name="total_student" type="text" class="form-control"
+          placeholder="จำนวนผู้เรียน">
+      </div>
+
+    </div>
+    <div class="card-footer">
+      <div class="row">
+        <div class="col"><button type="submit" class="btn btn-primary" (click)="onUpload()">เพิ่มห้องเรียน</button></div>
+        <div class="col"><a routerLink="/home">กลับหน้าแรก</a></div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- <div class="btn-group ">
                 <button type="button" class="btn btn-success" (click)="addCustomer()" [disabled]="!addCustomerForm.form.valid">สมัครสมาชิก</button>
             </div>
           </form>

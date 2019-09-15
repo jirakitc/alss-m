@@ -6,6 +6,8 @@ module.exports = function(app) {
 
     app.get('/api/get-class', class_Data.getClass)
 
+    app.get('/api/get-enrolled-class' , class_Data.getEnrollClass)
+
     app.get('/api/get_maxClassID',class_Data.getMaxID)
 
     app.get('/api/getClassID/:classId', class_Data.getClassID)

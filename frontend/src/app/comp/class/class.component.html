@@ -2,13 +2,13 @@
 <div class="card-deck mr-md-3">
 <div class="row" *ngFor="let item of room">
     <div class="card mb-3" style="width: 18rem;">
-        <h4 class="card-header bg-warning">{{item.class_name}}</h4>
+        <img src="..." class="card-img-top" alt="...">
+        <h5 class="card-header bg-warning">{{item.class_name}}</h5>
         <form #enrollForm="ngForm" (submit)="onSubmit(enrollForm.value)">
           <!-- <form #enrollForm="ngForm" (submit)="enroll()"> -->
           <input type="hidden" [(ngModel)]="item.class_id" name="class_id" class="form-control">
           <input type="hidden" [(ngModel)]="item.class_name" name="class_name" class="form-control">
           <input type="hidden" [(ngModel)]="details.user_id" name="user_id" class="form-control">
-    
           <div class="card-body">
             <div class="row">
             <div class="col">
