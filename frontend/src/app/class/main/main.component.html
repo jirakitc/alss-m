@@ -4,28 +4,77 @@
       <div class="card-header">
         <button class="btn btn-dark" (click)="goBack()">กลับ</button>
       </div>
-      <div class="card-body">
+      <!-- <div class="card-body">
         ตรงนี้ใส่เมนู กับรายชื่อ
-      </div>
+      </div> -->
     </div>
     <br>
     <div class="card">
       <div class="card-header">
-        function
+        Function
       </div>
       <div class="card-body">
-        ปุ่มเข้าหน้าแชทใส่ตรงนี้
+        <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#uploadModal">
+          เพิ่มเนื้อหา
+        </button>
       </div>
     </div>
   </div>
 
   <div class="col col-sm-9">
+    <!-- หน้าโชว์บท++++++++++++++++++++++++++++++++++++++++++ -->
   <div class="card">
     <h3 class="card-header bg-warning" *ngFor="let item of room">
       {{item.class_name}}
     </h3>
     <div class="card-body">
-      ตรงนี้เอาไว้แสดงเนื้อหา
+      <div *ngFor="let item of _content">
+        <button class="btn btn-outline-success btn-block btn-lg">{{item.content_name}}</button>
+        <br>
+      </div>
+            
+    </div>
+    </div>
+  </div>
+  <!-- หน้าโชว์บท++++++++++++++++++++++++++++++++++++++++++ -->
+
+  <!-- หน้าโชว์เนื้อหา++++++++++++++++++++++++++++++++++++++++++ -->
+  <div class="col scroll">
+    <div class="card">
+      <pdf-viewer [src]="src" [original-size]="false" [render-text]="true" style="display: block;"></pdf-viewer>
+    </div>
+  </div>
+    <!-- หน้าโชว์เนื้อหา++++++++++++++++++++++++++++++++++++++++++ -->
+</div>
+
+<!-- หน้าอัพโหลด -->
+<form #contentForm="ngForm">
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">อัพโหลดเนื้อหา</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="">ชื่อเรื่อง</label>
+        <!-- ++++++++++++++++++ชื่อเรื่อง&บท++++++++++++++++++ -->
+        <input type="text" ngModel class="form-control" name="content_name" id="content_name" placeholder="กรอกชื่อเรื่อง">
+        <!-- ++++++++++++++++++ ClassId ++++++++++++++++++ -->
+        <input type="hidden" name="class_id" id="class_id" *ngFor="let item of room" [(ngModel)]="item.class_id">
+        <input class="form-control" name="content_address" [(ngModel)]="subf" placeholder="ที่อยู่ไฟล์" id="content_address" type="text">
+
+        <!-- ++++++++++++++++++ชื่อไฟล์++++++++++++++++++ -->
+        <input type="file" name="fileUpload" id="fileUpload" [(ngModel)]="subf" ng2FileSelect [uploader]="uploader">
+        <button type="button" class="btn btn-dark" (click)="uploader.uploadAll()">อัพโหลด</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+        <button type="button" class="btn btn-primary" (click)="upload(contentForm.value)">บันทึก</button>
+      </div>
     </div>
   </div>
 </div>
+</form>

@@ -5,11 +5,11 @@ import { User } from '../../services/interface';
 import { UserService } from '../../user.service';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  selector: 'app-userad',
+  templateUrl: './userad.component.html',
+  styleUrls: ['./userad.component.css']
 })
-export class UserComponent implements OnInit {
+export class UseradComponent implements OnInit {
   customer = new User() ;
   customers: User[];
   message: string;
@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
   constructor(
     private userService : UserService,
     private location : Location
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.getCustomers();

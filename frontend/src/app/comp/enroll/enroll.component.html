@@ -1,6 +1,6 @@
 <label for="">ผู้ใช้งาน : {{ details?.firstname }}</label> <br>
 <label for="" name="user_id">userid : {{ details?.user_id }}</label> <br>
-<button type="button" class="btn btn-dark" (click)="goBack()">กลับ</button>
+<button type="button" class="btn btn-dark btn-block" (click)="goBack()">กลับ</button>
 
 <hr>
 <div class="row mb-5">
@@ -11,6 +11,8 @@
           <input type="hidden" [(ngModel)]="item.class_id" name="class_id" class="form-control">
           <input type="hidden" [(ngModel)]="item.class_name" name="class_name" class="form-control">
           <input type="hidden" [(ngModel)]="details.user_id" name="user_id" class="form-control">
+          <input type="hidden" [(ngModel)]="item.class_Subject" name="class_Subject" class="form-control">
+          <input type="hidden" [(ngModel)]="item.teacher_name" name="teacher_name" class="form-control">
       
     <div class="card-body">
       <h5 class="card-title">{{item.class_name}}</h5>

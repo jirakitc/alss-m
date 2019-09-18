@@ -1,4 +1,4 @@
-<form #registerForm="ngForm" (submit)="onSubmit(registerForm.value)">
+<form #registerForm="ngForm">
     <div class="card">
       <div class="card-header">เพิ่มวิชา</div>
       <div class="card-body">
@@ -31,8 +31,9 @@
       </div>
       <div class="card-footer">
         <div class="row">
-          <div class="col"><button type="submit" class="btn btn-primary">เพิ่มวิชา</button></div>
-          <div class="col">เป็นสมาชิกอยู่แล้ว <a routerLink="/home">กลับหน้าแรก</a></div>
+          <div class="col"><button class="btn btn-primary" (click)="onSubmit(registerForm.value)">เพิ่มรายวิชา</button></div>
+          
+          <button class="btn btn-dark" (click)="goBack()">กลับ</button>
         </div>
       </div>
     </div>

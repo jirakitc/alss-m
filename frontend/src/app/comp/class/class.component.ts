@@ -79,8 +79,9 @@ export class ClassComponent implements OnInit {
         console.error(err)
       }
     )
-    this.getRooms();
     this.getRoomsData();
+    this.getRooms();
+    
   };
 
 }

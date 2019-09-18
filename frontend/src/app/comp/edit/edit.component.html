@@ -4,7 +4,7 @@
                 <h1 style="text-align: center">Edit Profile</h1>
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a routerLink="/user" class="btn btn-light btn-sm" role="button" routerLinkActive="active">แก้ไขข้อมูล</a>
+                        <a routerLink="/userad" class="btn btn-light btn-sm" role="button" routerLinkActive="active">แก้ไขข้อมูล</a>
                     </li>
                     <li class="nav-item">
                         <a routerLink="/user/add" class="btn btn-light btn-sm" role="button" routerLinkActive="active">เพิ่มผู้ใช้</a>
@@ -15,3 +15,5 @@
           </div>
 </div>
 <router-outlet></router-outlet>
+
+<button class="btn btn-dark btn-block" (click)="goBack()">กลับ</button>

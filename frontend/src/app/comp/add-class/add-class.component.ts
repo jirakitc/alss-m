@@ -33,17 +33,6 @@ export class AddClassComponent implements OnInit {
     this.getmaxID();
   }
 
-  onFileSelected(event){
-    this.selectedFile = <File> event.target.files[0];
-  }
-  onUpload(){
-    const fd = new FormData();
-    fd.append('image', this.selectedFile, this.selectedFile.name);
-    this.http.post('http://localhost:4200/upload', fd)
-      .subscribe(res => {
-        console.log(res);
-      });
-  }
 
   //แบบ 1 <---- ใช้อันนี้อยู่
   addClass(data){

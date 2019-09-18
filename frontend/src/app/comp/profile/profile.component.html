@@ -1,3 +1,4 @@
+
 <div class="row">
     <div class="col col-sm-3">
         <!-- ข้อมูลผู้ใช้ -->
@@ -37,27 +38,35 @@
                 <div class="btn btn-primary btn-lg btn-block btn-sm" (click)="toggleSubjectShow()" >ตรวจสอบรายวิชา</div>
             </div>
         </div>
-    </div>
-    <div class="col">
-        <!-- <div *ngIf="classShown" id="divshow">
-                <app-class></app-class>
+        <br>
+        <div class="card">
+            <div class="card-header" style="text-align: center">ส่วนจัดการ</div>
+            <div class="card-body">
+                <div class="btn btn-primary btn-lg btn-block btn-sm" routerLink="/edit">แก้ไขข้อมูลผู้ใช้</div>
+                <div class="btn btn-primary btn-lg btn-block btn-sm" routerLink="/add-class">สร้างห้องเรียน</div>
+                <div class="btn btn-primary btn-lg btn-block btn-sm" routerLink="/add_subject">สร้างรายวิชา</div>
+            </div>
         </div>
-        <div *ngIf="subjectShown" id="divshow">
-            <app-class-data></app-class-data>
-        </div> -->
+        <br>
+        
     </div>
-    <div class="col col-sm-3"></div>
+    <div class="col col-sm-9">
+            <div class="row">
+                    <div class="col">
+                        <div class="col">
+                            <div *ngIf="classShown" id="divshow">
+                                    <app-class></app-class>
+                            </div>
+                            <div *ngIf="subjectShown" id="divshow">
+                                <app-class-data></app-class-data>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    <!-- <div class="col col-sm-3">
+
+    </div> -->
 </div>
 <br>
-<div class="row">
-    <div class="col">
-        <div class="col">
-            <div *ngIf="classShown" id="divshow">
-                    <app-class></app-class>
-            </div>
-            <div *ngIf="subjectShown" id="divshow">
-                <app-class-data></app-class-data>
-            </div>
-        </div>
-    </div>
-</div>
+

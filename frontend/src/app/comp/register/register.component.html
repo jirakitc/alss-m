@@ -1,6 +1,9 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+
 <form #registerForm="ngForm" (submit)="onSubmit(registerForm.value)">
-  <div class="card">
-    <div class="card-header">สมัครสมากชิก</div>
+  <div class="card login-form btn">
+    <div class="card-header">สมัครสมาชิก</div>
     <div class="card-body">
 
       <div class="row">
@@ -11,7 +14,7 @@
           </div>
         </div>
         <div class="col">
-          <div class="form-group">
+          <div class="form-group invisible">
             <label for="">UID</label>
             <input [(ngModel)]="UID" name="user_id" type="text" class="form-control">
           </div>
@@ -50,7 +53,7 @@
     </div>
     <div class="card-footer">
       <div class="row">
-        <div class="col"><button type="submit" class="btn btn-primary">สมัครสมาชิก</button></div>
+        <div class="col"><button type="submit" class="btn btn-primary btn-block btn-lg">สมัครสมาชิก</button></div>
         <div class="col">เป็นสมาชิกอยู่แล้ว <a routerLink="/home">เข้าสู่ระบบ</a></div>
       </div>
     </div>

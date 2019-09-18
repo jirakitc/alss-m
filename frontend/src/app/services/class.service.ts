@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 
 
-import { Room , Subject , classStu } from './interface';
+import { Room , Subject , classStu, Content } from './interface';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,8 @@ import { Room , Subject , classStu } from './interface';
 export class ClassService {
   private getCSUrl = 'http://localhost:8080/api/getcs';
   private getClassDataUrl = 'http://localhost:8080/api/getClassID';
+  private getContentDataUrl = 'http://localhost:8080/api/getContentData'
+
 
   constructor(
     private http: HttpClient
@@ -19,6 +21,10 @@ export class ClassService {
 
   getRoom (): Observable<Room[]> {
     return this.http.get<Room[]>('http://localhost:8080/api/get-class')
+  }
+
+  getContent (): Observable<Content[]> {
+    return this.http.get<Content[]>('http://localhost:8080/api/getContentData')
   }
 
   getSubject (): Observable<Subject[]> {
@@ -33,5 +39,9 @@ export class ClassService {
   getClassData(classId : number): Observable<Room[]>{
     const url = `${this.getClassDataUrl}/${classId}`;
     return this.http.get<Room[]>(url); 
+  }
+  getContentData(classId : number): Observable<Content[]>{
+    const url = `${this.getContentDataUrl}/${classId}`;
+    return this.http.get<Content[]>(url); 
   }
 }

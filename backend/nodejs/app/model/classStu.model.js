@@ -7,7 +7,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         class_id: Sequelize.STRING,
         class_name:Sequelize.STRING,
-        user_id: Sequelize.STRING,          
+        user_id: Sequelize.STRING,
+        teacher_name: Sequelize.STRING,        
+        class_Subject: Sequelize.STRING, 
 		}, { timestamps: true });
 	
 	return classStu;

@@ -10,7 +10,7 @@ import { User } from '../../services/interface'
 })
 export class ProfileComponent implements OnInit {
   
-  classShown: boolean = false ;
+  classShown: boolean = true ;
   subjectShown: boolean = false ;
   details: User
 

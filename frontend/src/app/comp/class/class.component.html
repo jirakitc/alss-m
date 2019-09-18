@@ -1,9 +1,9 @@
 <h3>ห้องเรียน</h3>
-<div class="card-deck mr-md-3">
-<div class="row" *ngFor="let item of room">
-    <div class="card mb-3" style="width: 18rem;">
+<div class="card-group">
+<div *ngFor="let item of room">
+    <div class="h-100 card" style="width:200px">
         <img src="..." class="card-img-top" alt="...">
-        <h5 class="card-header bg-warning">{{item.class_name}}</h5>
+        <div class="card-header bg-warning h7">{{item.class_name}}</div>
         <form #enrollForm="ngForm" (submit)="onSubmit(enrollForm.value)">
           <!-- <form #enrollForm="ngForm" (submit)="enroll()"> -->
           <input type="hidden" [(ngModel)]="item.class_id" name="class_id" class="form-control">
@@ -12,9 +12,9 @@
           <div class="card-body">
             <div class="row">
             <div class="col">
-                <h6 class="card-text">{{item.class_id}}</h6>
-                <h6 class="card-subtitle mb-2 text-muted">รายวิชา : {{item.class_Subject}}</h6>
-                <h6 class="card-subtitle mb-2 text-muted">อาจารย์ผู้สอน : {{item.teacher_name}}</h6>
+                <div class="card-text h7">{{item.class_id}}</div>
+                <div class="card-subtitle mb-2 text-muted h7">รายวิชา : {{item.class_Subject}}</div>
+                <div class="card-subtitle mb-2 text-muted h7">ผู้สอน : {{item.teacher_name}}</div>
                 <p class="card-text">{{item.class_description}}</p>
             </div>
             <!-- <div class="col text-right">

@@ -4,7 +4,7 @@
         <div class="form-group">
             <label for="username"><b>Username</b></label>
             <input type="text" class="form-control" id="username" required
-            [(ngModel)]="customer.username" name="username" #username="ngModel" disabled>
+            [(ngModel)]="customer.username" name="username" #username="ngModel">
             <div [hidden]="username.valid || username.pristine"
                  class="alert alert-danger">
                 Username is required
@@ -24,7 +24,7 @@
       <div class="form-group">
           <label for="firstname">User ID</label>
           <input type="text" class="form-control" id="user_id" required
-          [(ngModel)]="customer.user_id" name="user_id" #user_id="ngModel" disabled>
+          [(ngModel)]="customer.user_id" name="user_id" #user_id="ngModel">
           <div [hidden]="firstname.valid || firstname.pristine"
                class="alert alert-danger">
               กรุณากรอก User ID
@@ -74,7 +74,7 @@
       </div> -->
       <div class="form-group">
           <label for="type">ประเภทผู้ใช้</label>
-          <select class="custom-select" id="type" [(ngModel)]="customer.type" name="type" aria-label="Example select with button addon" required disabled>
+          <select class="custom-select" id="type" [(ngModel)]="customer.type" name="type" aria-label="Example select with button addon" required>
               <option selected>ประเภทผู้ใช้</option>
               <option value="1">Student</option>
               <option value="2">Teacher</option>
@@ -87,7 +87,7 @@
         <div class="col-2">
           <div class="btn-group">
           <button type="submit" class="btn btn-warning" (click)="update()" [disabled]="!detailCustomerForm.form.valid">อัพเดท</button>
-          <!-- <button type="button" class="btn btn-danger" (click)="delete()">ลบข้อมูล</button> -->
+          <button type="button" class="btn btn-danger" (click)="delete()">ลบข้อมูล</button>
         </div>
         </div>
       </div>  

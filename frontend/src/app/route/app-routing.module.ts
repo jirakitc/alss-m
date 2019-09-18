@@ -24,11 +24,15 @@ import { RoleGuardService } from '../services/role-guard.service';
 import { ClassComponent } from '../comp/class/class.component';
 import { MainComponent } from '../class/main/main.component';
 import { UploadCoverComponent } from '../comp/upload-cover/upload-cover.component';
+import { UseradComponent } from '../comp/userad/userad.component';
+import { UseradDetailsComponent } from '../comp/userad-details/userad-details.component';
 
 const routes: Routes = [
   {path: 'user', component: UserComponent},
+  {path: 'userad', component: UseradComponent},
   {path: 'user/add', component: AddUserComponent},
   {path: 'users/:id',component: UserDetailsComponent},
+  {path: 'userad/:id',component: UseradDetailsComponent},
   {path: 'allclass',component: ClassComponent, canActivate: [AuthGuardService]},
   {path: 'edit',component: EditComponent},
   {path: 'profile',component: ProfileComponent, canActivate: [AuthGuardService]},

@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
+import { FileUploadModule} from 'ng2-file-upload'
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { AppRoutingModule } from './route/app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +30,8 @@ import { RoleGuardService } from './services/role-guard.service';
 import { ClassComponent } from './comp/class/class.component';
 import { MainComponent } from './class/main/main.component';
 import { UploadCoverComponent } from './comp/upload-cover/upload-cover.component';
+import { UseradComponent } from './comp/userad/userad.component';
+import { UseradDetailsComponent } from './comp/userad-details/userad-details.component';
 
 @NgModule({
   declarations: [
@@ -51,12 +55,16 @@ import { UploadCoverComponent } from './comp/upload-cover/upload-cover.component
     ClassComponent,
     MainComponent,
     UploadCoverComponent,
+    UseradComponent,
+    UseradDetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FileUploadModule,
+    PdfViewerModule,
   ],
   providers: [AuthService, AuthGuardService , RoleGuardService],
   bootstrap: [AppComponent]

@@ -24,6 +24,13 @@ export class Room {
     total_student: number;
 }
 
+export class Content{
+    content_id: number;
+    class_id: string;
+    content_name: string;
+    content_address: string;
+}
+
 export class Subject {
     id : number;
     subject_id: string;
@@ -36,6 +43,8 @@ export class classStu {
     class_id: string;
     class_name: string;
     user_id: string;
+    teacher_name : string;
+    class_Subject : string;
 }
 
 export interface TokenPayload {
