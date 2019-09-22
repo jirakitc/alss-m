@@ -15,6 +15,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use(bodyParser.json())
 app.use('/file',fileRoutes)
+app.use(express.static(__dirname + '/contents'))
 
 const db = require('./app/config/db.config.js');
 const connection = mysql.createConnection({

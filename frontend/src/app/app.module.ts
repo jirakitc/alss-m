@@ -32,6 +32,7 @@ import { MainComponent } from './class/main/main.component';
 import { UploadCoverComponent } from './comp/upload-cover/upload-cover.component';
 import { UseradComponent } from './comp/userad/userad.component';
 import { UseradDetailsComponent } from './comp/userad-details/userad-details.component';
+import { DialogflowComponent } from './chat/dialogflow/dialogflow.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { UseradDetailsComponent } from './comp/userad-details/userad-details.com
     UploadCoverComponent,
     UseradComponent,
     UseradDetailsComponent,
+    DialogflowComponent,
   ],
   imports: [
     BrowserModule,
