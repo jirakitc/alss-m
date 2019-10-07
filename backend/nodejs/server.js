@@ -1,3 +1,5 @@
+//$env:GOOGLE_APPLICATION_CREDENTIALS="[PATH]"
+'use strict';
 const express = require('express');
 const app = express();
 const mysql = require('mysql2');
@@ -31,8 +33,8 @@ require('./app/route/customer.route.js')(app);
 require('./app/route/subject.route.js')(app);
 require('./app/route/classStu.route.js')(app);
 require('./app/route/content.route.js')(app);
- 
-// Create a Server
+require('./dialogflow/route.js')(app)
+
 
 
 db.sequelize.sync().then(() => {
