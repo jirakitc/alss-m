@@ -30,15 +30,25 @@ module.exports = function(app){
             );
             console.log(`Created ${responses[0].name} entity type`);
           }
+        createEntityType()
     })
 
     //สร้าง Entity
-    app.post('',(req,res)=>{
+    app.post('/api/createEntity',(req,res)=>{
+      var v1 = ''
+      var v2 = ''
+      var v3 = ''
+      var v4 = ''
         async function createEntity(
             projectId = _projectId,
             entityTypeId = req.body.entityTypeId,
             entityValue = req.body.entityValue,
-            synonyms = req.body.synonyms
+            synonyms = [
+              v1=req.body.synonyms1,
+              v2=req.body.synonyms2,
+              v3=req.body.synonyms3,
+              v4=req.body.synonyms4,
+            ]
             ) {
             const dialogflow = require('dialogflow');
             const entityTypesClient = new dialogflow.EntityTypesClient({credentials: auth});
@@ -54,11 +64,10 @@ module.exports = function(app){
               entities: [entity],
             };
           
-            const [response] = await entityTypesClient.batchCreateEntities(
-              createEntitiesRequest
-            );
+            const [response] = await entityTypesClient.batchCreateEntities(createEntitiesRequest);
             console.log('Created entity type:');
             console.log(response);
+            res.json({ID : entityType.entityTypeId})
           }
           createEntity();
     })
@@ -76,14 +85,22 @@ module.exports = function(app){
             const request = {
               parent: agentPath,
             };
-
+            var eT = []
             const [response] = await entityTypesClient.listEntityTypes(request);
             response.forEach(entityType => {
               console.log(`Entity type name: ${entityType.name}`);
               console.log(`Entity type display name: ${entityType.displayName}`);
               console.log(`Number of entities: ${entityType.entities.length}\n`);
+              
+              var entityname = entityType.name
+              var entitynameSplit = entityname.split("projects/sunlit-descent-239004/agent/entityTypes/")
+
+              eT.push(entitynameSplit[1])
             });
+            
+            res.json(eT);
             return response;
+            
           }
           listEntityTypes();
     })
@@ -129,32 +146,40 @@ module.exports = function(app){
 
     //สร้าง Intent
     app.post('/api/createIntents',(req,res)=>{
+      const _displayName = req.body.displayName
+      const _text = req.body.text
+      const _entityType = req.body.entityType
+      const _alias = req.body.alias
+      const _messageTexts = req.body.messageText
+      const Xpart = {
+        displayName: _displayName,
+        text: _text,
+        entityType: _entityType,
+        alias: _alias
+      }
+
       async function createIntent(
         projectId = _projectId,
-        displayName = 'pizza',
-        trainingPhrasesParts = ['@city:New York'],
-        // https://github.com/googleapis/nodejs-dialogflow/issues/411   อ่านต่อ
-        messageTexts = ['yaaaa']
+        displayName = _displayName,
+        trainingPhrasesParts = [Xpart],
+        messageTexts = [_messageTexts]
       ) {
         const dialogflow = require('dialogflow');
-
         const intentsClient = new dialogflow.IntentsClient({credentials : auth});
-
-        const agentPath = intentsClient.projectAgentPath(projectId);
-      
+        const agentPath = intentsClient.projectAgentPath(projectId);    
         const trainingPhrases = [];
-      
-        trainingPhrasesParts.forEach(trainingPhrasesPart => {
+        
+        trainingPhrasesParts.forEach(Xpart => {
           const part = {
-            text: trainingPhrasesPart,
+            text: Xpart.text,
+            entityType: Xpart.entityType,
+            alias: Xpart.alias
           };
-      
-          // Here we create a new training phrase for each provided part.
+
           const trainingPhrase = {
             type: 'EXAMPLE',
             parts: [part],
           };
-      
           trainingPhrases.push(trainingPhrase);
         });
       

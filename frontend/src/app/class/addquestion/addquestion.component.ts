@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http'
 
 @Component({
   selector: 'app-addquestion',
@@ -7,9 +10,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddquestionComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private route : ActivatedRoute,
+    private http : HttpClient
+    ) { }
 
   ngOnInit() {
   }
-
+  createIntent(data){
+    this.http.post<any>('http://localhost:8080/api/CreateIntents',data)
+    .subscribe(result=>{
+      //alert(JSON.stringify(result))
+    })
+  };
+  
+  createEntityType(data){
+    this.http.post<any>('http://localhost:8080/api/createEntityType',data)
+    .subscribe(result=>{
+      //alert(JSON.stringify(result))
+    })
+  }
+  createEntity(data){
+    this.http.post<any>('http://localhost:8080/api/createEntity',data)
+    .subscribe(result=>{
+      //alert(JSON.stringify(result))
+    })
+  }
+  listEntity(){
+    this.http.get<any>('http://localhost:8080/api/listEntityType')
+    .subscribe(result=>{
+      alert(JSON.stringify(result))
+    })
+  }
 }

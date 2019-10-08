@@ -66,16 +66,4 @@ export class MainComponent implements OnInit {
       });
   }
 
-  listEntityType(){
-    this.http.get<any>('http://localhost:8080/api/listEntityType')
-    .subscribe(result=>{
-      //alert(JSON.stringify(result))
-    })
-  }
-  createIntent(data){
-    this.http.post<any>('http://localhost:8080/api/CreateIntents',data)
-    .subscribe(result=>{
-      //alert(JSON.stringify(result))
-    })
-  }
 }
