@@ -4,13 +4,11 @@
             <div class="card">
                 <div class="card-header bg-warning">คำถาม // Intent</div>
                 <div class="card-body">
-                    <input type="text" ngModel class="form-control form-control-sm" name="displayName" placeholder="displayName">
-                    <input type="text" ngModel class="form-control form-control-sm" name="text" placeholder="text">
-                    <input type="text" ngModel class="form-control form-control-sm" name="entityType"
-                        placeholder="entityType">
+                    <input type="text" ngModel class="form-control form-control-sm" name="displayName" placeholder="หัวข้อมคำถาม">
+                    <input type="text" ngModel class="form-control form-control-sm" name="text" placeholder="ประโยค">
+                    <input type="text" ngModel class="form-control form-control-sm" name="entityType" placeholder="หมวดหมู่คำถาม">
                     <!-- <input type="text" ngModel class="form-control form-control-sm" name="alias" placeholder="alias"> -->
-                    <input type="text" ngModel class="form-control form-control-sm" name="messageText"
-                        placeholder="messageText">
+                    <input type="text" ngModel class="form-control form-control-sm" name="messageText" placeholder="คำตอบที่จะแสดง">
                 </div>
                 <div class="card-footer">
                     <div class="button" class="btn btn-warning" (click)="createIntent(intentForm.value)">เพิ่มคำถาม</div>
@@ -23,7 +21,7 @@
             <div class="card">
                 <div class="card-header bg-success">หมวดหมู่ // Enitity Type</div>
                 <div class="card-body">
-                    <input type="text" ngModel class="form-control form-control-sm" name="displayName" placeholder="displayName">
+                    <input type="text" ngModel class="form-control form-control-sm" name="displayName" placeholder="หัวข้อมหมวดหมู่คำถาม">
                     <!-- <input type="text" ngModel class="form-control form-control-sm" name="kind" placeholder="KIND_MAP"> -->
                 </div>
                 <div class="card-footer">
@@ -40,13 +38,13 @@
             <div class="card">
                 <div class="card-header bg-info">หมวดหมู่ // Enitity</div>
                 <div class="card-body">
-                    <input type="text" ngModel class="form-control form-control-sm" name="entityTypeId" placeholder="entityTypeId">
-                    <input type="text" ngModel class="form-control form-control-sm" name="entityValue" placeholder="entityValue">
+                    <input type="text" ngModel class="form-control form-control-sm" name="entityTypeId" placeholder="รหัสหมวดหมู่">
+                    <input type="text" ngModel class="form-control form-control-sm" name="entityValue" placeholder="ประเภท">
                     <div class="form-row">
-                        <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="synonyms1" placeholder="synonyms1"></div>
-                        <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="synonyms2" placeholder="synonyms2"></div>
-                        <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="synonyms3" placeholder="synonyms3"></div>
-                        <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="synonyms4" placeholder="synonyms4"></div>
+                        <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="synonyms1" placeholder="ตัวอย่าง"></div>
+                        <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="synonyms2" placeholder="ตัวอย่าง"></div>
+                        <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="synonyms3" placeholder="ตัวอย่าง"></div>
+                        <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="synonyms4" placeholder="ตัวอย่าง"></div>
                     </div>
                     
                     

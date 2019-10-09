@@ -26,7 +26,6 @@ import { MainComponent } from '../class/main/main.component';
 import { UploadCoverComponent } from '../comp/upload-cover/upload-cover.component';
 import { UseradComponent } from '../comp/userad/userad.component';
 import { UseradDetailsComponent } from '../comp/userad-details/userad-details.component';
-import { DialogflowComponent } from '../chat/dialogflow/dialogflow.component';
 import { AddquestionComponent } from '../class/addquestion/addquestion.component';
 
 const routes: Routes = [
@@ -50,7 +49,6 @@ const routes: Routes = [
   {path: 'uploadc',component: UploadCoverComponent},
   {path: 'enroll',component: EnrollComponent, canActivate: [AuthGuardService]},
   {path: 'add_subject',component: AddSubjectComponent, canActivate: [AuthGuardService]},
-  {path: 'dialog',component: DialogflowComponent},
 
   {path: 'class/:classId' , component: MainComponent},
   {path: '**',component: HomeComponent},

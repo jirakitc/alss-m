@@ -15,11 +15,15 @@ export class AddquestionComponent implements OnInit {
   rows: Array<any>;
   constructor(
     private route : ActivatedRoute,
-    private http : HttpClient
+    private http : HttpClient,
+    private location : Location
     ) { }
 
   ngOnInit() {
     this.listEntity()
+  }
+  goBack(){
+    this.location.back()
   }
   createIntent(data){
     this.http.post<any>('http://localhost:8080/api/CreateIntents',data)
