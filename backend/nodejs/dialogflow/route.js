@@ -88,6 +88,7 @@ module.exports = function(app){
             var eT = []
             const [response] = await entityTypesClient.listEntityTypes(request);
             response.forEach(entityType => {
+
               console.log(`Entity type name: ${entityType.name}`);
               console.log(`Entity type display name: ${entityType.displayName}`);
               console.log(`Number of entities: ${entityType.entities.length}\n`);
@@ -148,8 +149,8 @@ module.exports = function(app){
     app.post('/api/createIntents',(req,res)=>{
       const _displayName = req.body.displayName
       const _text = req.body.text
-      const _entityType = req.body.entityType
-      const _alias = req.body.alias
+      const _entityType = `@`+req.body.entityType
+      const _alias = req.body.entityType
       const _messageTexts = req.body.messageText
       const Xpart = {
         displayName: _displayName,

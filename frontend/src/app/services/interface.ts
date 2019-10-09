@@ -56,3 +56,8 @@ export interface TokenPayload {
     password: string;
     type: string;
   }
+
+export class Entity{
+    displayName: string;
+    id: string;
+}  

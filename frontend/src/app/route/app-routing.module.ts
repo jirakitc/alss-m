@@ -31,7 +31,7 @@ import { AddquestionComponent } from '../class/addquestion/addquestion.component
 
 const routes: Routes = [
     //หน้าจัดการ dialogflow
-  {path: 'class/:classId/addQ',component: AddquestionComponent},
+  {path: 'class/manageQuestion',component: AddquestionComponent},
 
 
   {path: 'user', component: UserComponent},

@@ -41,6 +41,7 @@ export class ShowClassEnrolledComponent implements OnInit {
     this.classService.getCS(userId)
       .subscribe(data => {
         this.room = data
+        
       });
   }
 

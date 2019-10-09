@@ -3,19 +3,23 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http'
 
+import { Entity } from '../../services/interface'
+
 @Component({
   selector: 'app-addquestion',
   templateUrl: './addquestion.component.html',
   styleUrls: ['./addquestion.component.css']
 })
 export class AddquestionComponent implements OnInit {
-
+  data : Entity;
+  rows: Array<any>;
   constructor(
     private route : ActivatedRoute,
     private http : HttpClient
     ) { }
 
   ngOnInit() {
+    this.listEntity()
   }
   createIntent(data){
     this.http.post<any>('http://localhost:8080/api/CreateIntents',data)
@@ -39,7 +43,8 @@ export class AddquestionComponent implements OnInit {
   listEntity(){
     this.http.get<any>('http://localhost:8080/api/listEntityType')
     .subscribe(result=>{
-      alert(JSON.stringify(result))
+      //alert(JSON.stringify(result))
+      this.rows = result
     })
   }
 }
