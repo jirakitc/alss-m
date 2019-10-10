@@ -2,7 +2,7 @@
     <div class="col"><!-- Intent -->   
         <form #intentForm="ngForm">
             <div class="card">
-                <div class="card-header bg-warning">คำถาม // Intent</div>
+                <div class="card-header bg-warning">คำถาม</div>
                 <div class="card-body">
                     <input type="text" ngModel class="form-control form-control-sm" name="displayName" placeholder="หัวข้อมคำถาม">
                     <input type="text" ngModel class="form-control form-control-sm" name="text" placeholder="ประโยค">
@@ -19,7 +19,7 @@
     <div class="col"><!-- Entity Type -->
         <form #entityTypeForm="ngForm">
             <div class="card">
-                <div class="card-header bg-success">หมวดหมู่ // Enitity Type</div>
+                <div class="card-header bg-success">หมวดหมู่</div>
                 <div class="card-body">
                     <input type="text" ngModel class="form-control form-control-sm" name="displayName" placeholder="หัวข้อมหมวดหมู่คำถาม">
                     <!-- <input type="text" ngModel class="form-control form-control-sm" name="kind" placeholder="KIND_MAP"> -->
@@ -36,7 +36,7 @@
     <div class="col"><!-- Entity -->
         <form #entityForm="ngForm">
             <div class="card">
-                <div class="card-header bg-info">หมวดหมู่ // Enitity</div>
+                <div class="card-header bg-info">เนื้อหาภายในหมวดหมู่ </div>
                 <div class="card-body">
                     <input type="text" ngModel class="form-control form-control-sm" name="entityTypeId" placeholder="รหัสหมวดหมู่">
                     <input type="text" ngModel class="form-control form-control-sm" name="entityValue" placeholder="ประเภท">
@@ -67,10 +67,16 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of rows">
+                  <tr *ngFor="let item of data">
                       <td>xx</td>
-                      <td>{{item.id}}</td>
+                      <td>{{item.column1}}</td>
                   </tr>
                 </tbody>
               </table>
+</div>
+
+<!-- /////////////////////////////////////////// -->
+<div class="row">
+<div class="col"></div>
+<div class="col"></div>
 </div>

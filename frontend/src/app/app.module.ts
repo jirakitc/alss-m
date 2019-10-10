@@ -33,6 +33,13 @@ import { UploadCoverComponent } from './comp/upload-cover/upload-cover.component
 import { UseradComponent } from './comp/userad/userad.component';
 import { UseradDetailsComponent } from './comp/userad-details/userad-details.component';
 import { AddquestionComponent } from './class/addquestion/addquestion.component';
+import { MessageListComponent } from './chat/message-list/message-list.component';
+import { MessageItemComponent } from './chat/message-item/message-item.component';
+import { MessageFormComponent } from './chat/message-form/message-form.component';
+import { UiComponent } from './chat/ui/ui.component';
+import { DialogflowService } from './services/dialogflow.service';
+import { BotService } from './services/bot.service';
+import { SubContentComponent } from './class/sub-content/sub-content.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +66,11 @@ import { AddquestionComponent } from './class/addquestion/addquestion.component'
     UseradComponent,
     UseradDetailsComponent,
     AddquestionComponent,
+    MessageListComponent,
+    MessageItemComponent,
+    MessageFormComponent,
+    UiComponent,
+    SubContentComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,7 @@ import { Entity } from '../../services/interface'
 })
 export class AddquestionComponent implements OnInit {
   data : Entity;
-  rows: Array<any>;
+  rows: Entity;
   constructor(
     private route : ActivatedRoute,
     private http : HttpClient,
@@ -45,7 +45,7 @@ export class AddquestionComponent implements OnInit {
     })
   }
   listEntity(){
-    this.http.get<any>('http://localhost:8080/api/listEntityType')
+    this.http.get<Entity>('http://localhost:8080/api/listEntityType')
     .subscribe(result=>{
       //alert(JSON.stringify(result))
       this.rows = result

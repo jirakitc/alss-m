@@ -57,7 +57,17 @@ export interface TokenPayload {
     type: string;
   }
 
+  export class Message {
+    content: string;
+    timestamp: Date;
+    avatar: string;
+    constructor(content: string, avatar: string, timestamp?: Date){
+    this.content = content;
+    this.timestamp = timestamp;
+    this.avatar = avatar;
+    }
+    }
+    
 export class Entity{
-    displayName: string;
-    id: string;
+    column1: string;
 }  

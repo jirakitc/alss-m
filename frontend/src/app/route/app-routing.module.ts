@@ -27,11 +27,12 @@ import { UploadCoverComponent } from '../comp/upload-cover/upload-cover.componen
 import { UseradComponent } from '../comp/userad/userad.component';
 import { UseradDetailsComponent } from '../comp/userad-details/userad-details.component';
 import { AddquestionComponent } from '../class/addquestion/addquestion.component';
+import { UiComponent } from '../chat/ui/ui.component';
 
 const routes: Routes = [
     //หน้าจัดการ dialogflow
   {path: 'class/manageQuestion',component: AddquestionComponent},
-
+  {path: 'chat',component: UiComponent},
 
   {path: 'user', component: UserComponent},
   {path: 'userad', component: UseradComponent},

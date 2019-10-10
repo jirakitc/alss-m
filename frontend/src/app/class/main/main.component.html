@@ -1,57 +1,3 @@
-<div class="row">
-  <div class="col col-sm-3">
-    <div class="card">
-      <div class="card-header">
-        <button class="btn btn-dark" (click)="goBack()">กลับ</button>
-      </div>
-      <!-- <div class="card-body">
-        ตรงนี้ใส่เมนู กับรายชื่อ
-      </div> -->
-    </div>
-    <br>
-    <div class="card">
-      <div class="card-header">
-        Function
-      </div>
-      <div class="card-body">
-        <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#uploadModal">
-          เพิ่มเนื้อหา
-        </button>
-        <button type="button" class="btn btn-dark btn-block" routerLink="/class/manageQuestion"> 
-            จัดการคำถาม
-        </button>
-        <button type="button" class="btn btn-dark btn-block" routerLink="/class/manageQuestion"> 
-            Chat
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="col col-sm-9">
-    <!-- หน้าโชว์บท++++++++++++++++++++++++++++++++++++++++++ -->
-  <div class="card">
-    <h3 class="card-header bg-warning" *ngFor="let item of room">
-      {{item.class_name}}
-    </h3>
-    <div class="card-body">
-      <div *ngFor="let item of _content">
-        <button class="btn btn-outline-success btn-block btn-lg">{{item.content_name}}</button>
-        <br>
-      </div>
-            
-    </div>
-    </div>
-  </div>
-  <!-- หน้าโชว์บท++++++++++++++++++++++++++++++++++++++++++ -->
-
-  <!-- หน้าโชว์เนื้อหา++++++++++++++++++++++++++++++++++++++++++ -->
-  <div class="col scroll">
-    <div class="card">
-      <pdf-viewer [src]="pdf_src" [original-size]="false" [render-text]="true" style="display: block;"></pdf-viewer>
-    </div>
-  </div>
-    <!-- หน้าโชว์เนื้อหา++++++++++++++++++++++++++++++++++++++++++ -->
-</div>
 
 <!-- หน้าอัพโหลด -->
 <form #contentForm="ngForm">
@@ -86,4 +32,62 @@
 </form>
 
 
-<!-- หน้า Intent -->
+<div class="row">
+  <div class="col col-sm-3">
+    <div class="card">
+      <div class="card-header">
+        <button class="btn btn-dark btn-block" (click)="goBack()">กลับ</button>
+      </div>
+    </div><br>
+    <div class="card">
+      <div class="card-header">
+        Function
+      </div>
+      <div class="card-body">
+        <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#uploadModal">
+          เพิ่มเนื้อหา
+        </button>
+        <button type="button" class="btn btn-dark btn-block" routerLink="/class/manageQuestion"> 
+            จัดการคำถาม
+        </button>
+        <button type="button" class="btn btn-dark btn-block" (click)="toggleChatShow()"> 
+            Chat
+        </button>
+        <button type="button" class="btn btn-dark btn-block" (click)="toggleDataShow()"> 
+            เนื้อหาบทเรียน
+        </button>
+      </div>
+    </div>
+    <br>
+    <div class="card w-100">
+        <h3 class="card-header bg-warning" *ngFor="let item of room">
+          {{item.class_name}}
+        </h3>
+        <div class="card-body">
+          <div *ngFor="let item of _content">
+            <button class="btn btn-outline-success btn-block btn-sm">{{item.content_name}}</button>
+            
+          </div>
+      
+        </div>
+      </div>
+  </div>
+  <div class="col col-sm-9">
+    <div class="col">
+
+      <div *ngIf="chatShown" id="divshow">
+        <app-ui></app-ui>
+      </div>
+      <div *ngIf="dataShown" id="divshow">
+        <div class="row">เนื้อหา</div>
+        <div class="card scroll">
+          <pdf-viewer [src]="pdf_src" 
+          [render-text]="true"
+          style="display: block;"
+        ></pdf-viewer>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
