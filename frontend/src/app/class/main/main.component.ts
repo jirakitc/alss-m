@@ -28,7 +28,7 @@ export class MainComponent implements OnInit {
     dataShown: boolean = false ;
     // หน้าต่าง show div ต่างๆ //
 
-  pdf_src = "http://localhost:8080/512_1.pdf"
+  pdf_src = "http://localhost:8080/db_1.pdf"
   src = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf"
   constructor(
     private classService : ClassService,

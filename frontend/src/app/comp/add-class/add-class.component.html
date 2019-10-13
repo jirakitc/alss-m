@@ -48,16 +48,10 @@
     </div>
     <div class="card-footer">
       <div class="row">
-        <div class="col"><button type="button" class="btn btn-primary" (click)="addClass(registerForm.value)">เพิ่มห้องเรียน</button></div>
-        <button class="btn btn-dark" (click)="goBack()">กลับ</button>
+        <div class="col"><button class="btn btn-dark " (click)="goBack()">กลับ</button></div>
+        <div class="d-flex justify-content-end"><button type="button" class="btn btn-primary" (click)="addClass(registerForm.value)">เพิ่มห้องเรียน</button></div>
+        
       </div>
     </div>
   </div>
 </form>
-
-<!-- <div class="btn-group ">
-                <button type="button" class="btn btn-success" (click)="addCustomer()" [disabled]="!addCustomerForm.form.valid">สมัครสมาชิก</button>
-            </div>
-          </form>
-      </div>
-      </div> -->

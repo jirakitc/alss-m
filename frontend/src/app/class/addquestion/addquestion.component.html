@@ -1,62 +1,4 @@
-<div class="row">
-    <div class="col"><!-- Intent -->   
-        <form #intentForm="ngForm">
-            <div class="card">
-                <div class="card-header bg-warning">คำถาม</div>
-                <div class="card-body">
-                    <input type="text" ngModel class="form-control form-control-sm" name="displayName" placeholder="หัวข้อมคำถาม">
-                    <input type="text" ngModel class="form-control form-control-sm" name="text" placeholder="ประโยค">
-                    <input type="text" ngModel class="form-control form-control-sm" name="entityType" placeholder="หมวดหมู่คำถาม">
-                    <!-- <input type="text" ngModel class="form-control form-control-sm" name="alias" placeholder="alias"> -->
-                    <input type="text" ngModel class="form-control form-control-sm" name="messageText" placeholder="คำตอบที่จะแสดง">
-                </div>
-                <div class="card-footer">
-                    <div class="button" class="btn btn-warning" (click)="createIntent(intentForm.value)">เพิ่มคำถาม</div>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="col"><!-- Entity Type -->
-        <form #entityTypeForm="ngForm">
-            <div class="card">
-                <div class="card-header bg-success">หมวดหมู่</div>
-                <div class="card-body">
-                    <input type="text" ngModel class="form-control form-control-sm" name="displayName" placeholder="หัวข้อมหมวดหมู่คำถาม">
-                    <!-- <input type="text" ngModel class="form-control form-control-sm" name="kind" placeholder="KIND_MAP"> -->
-                </div>
-                <div class="card-footer">
-                    <div class="row">
-                        <div class="col"><div class="button" class="btn btn-success btn-block" (click)="createEntityType(entityTypeForm.value)">สร้างหมวดหมู่คำถาม</div></div>
-                        <div class="col"><div class="button" class="btn btn-success btn-block" (click)="listEntity()">รายชื่อหมวดหมู่คำถาม</div></div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="col"><!-- Entity -->
-        <form #entityForm="ngForm">
-            <div class="card">
-                <div class="card-header bg-info">เนื้อหาภายในหมวดหมู่ </div>
-                <div class="card-body">
-                    <input type="text" ngModel class="form-control form-control-sm" name="entityTypeId" placeholder="รหัสหมวดหมู่">
-                    <input type="text" ngModel class="form-control form-control-sm" name="entityValue" placeholder="ประเภท">
-                    <div class="form-row">
-                        <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="synonyms1" placeholder="ตัวอย่าง"></div>
-                        <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="synonyms2" placeholder="ตัวอย่าง"></div>
-                        <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="synonyms3" placeholder="ตัวอย่าง"></div>
-                        <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="synonyms4" placeholder="ตัวอย่าง"></div>
-                    </div>
-                    
-                    
-                </div>
-                <div class="card-footer">
-                    <div class="button" class="btn btn-info" (click)="createEntity(entityForm.value)">เพิ่มข้อมูล</div>
-                    <!-- <div class="button" class="btn btn-primary" (click)="listEntity()">List Entity</div> -->
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+<!-- 
 <br>
 <div class="row">
         <table class="table">
@@ -73,10 +15,98 @@
                   </tr>
                 </tbody>
               </table>
-</div>
+</div> -->
 
 <!-- /////////////////////////////////////////// -->
 <div class="row">
-<div class="col"></div>
-<div class="col"></div>
+<div class="col col-3">
+        <div class="card">
+                <div class="card-header">
+                  <button class="btn btn-dark btn-block" (click)="goBack()">กลับ</button>
+                </div>
+              </div><br>
+    <div class="card-header card-header-pp">Function</div>
+    <div class="card">
+        <br>
+        <button class="btn btn-outline-warning btn-block" (click)="toggleIntentShow()">คำถาม</button>
+        <button class="btn btn-outline-success btn-block" (click)="toggleEntityTypeShow()">หัวข้อหลัก</button>
+        <button class="btn btn-outline-info btn-block"(click)="toggleEntityShow()">เนื้อหาภายในหัวข้อ</button>
+    </div>
+</div>
+<div class="col col-9">
+    <!-- Intent -->
+    <div *ngIf="intentShown" id="divshow">
+            <form #intentForm="ngForm">
+                    <div class="card">
+                        <div class="card-header bg-warning">คำถาม</div>
+                        <div class="card-body">
+                            <input type="text" ngModel class="form-control form-control-sm" name="displayName" placeholder="หัวข้อคำถาม">
+                            <input type="text" ngModel class="form-control form-control-sm" name="text" placeholder="ประโยค">
+                            <input type="text" ngModel class="form-control form-control-sm" name="entityType" placeholder="หัวข้อหลัก">
+                            <!-- <input type="text" ngModel class="form-control form-control-sm" name="alias" placeholder="alias"> -->
+                            <input type="text" ngModel class="form-control form-control-sm" name="messageText" placeholder="คำตอบที่จะแสดง">
+                        </div>
+                        <div class="card-footer">
+                            <div class="button" class="btn btn-warning" (click)="createIntent(intentForm.value)">เพิ่มคำถาม</div>
+                        </div>
+                    </div>
+            </form>
+    </div>
+    <!-- Intent -->
+    <!-- EntityType -->
+    <div *ngIf="entityTypeShown" id="divshow">
+            <form #entityTypeForm="ngForm">
+                <div class="card">
+                    <div class="card-header bg-success">หัวข้อหลัก</div>
+                    <div class="card-body">
+                        <input type="text" ngModel class="form-control form-control-sm" name="displayName" placeholder="หัวข้อหลัก">
+                        <!-- <input type="text" ngModel class="form-control form-control-sm" name="kind" placeholder="KIND_MAP"> -->
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col">
+                                <div class="button" class="btn btn-success"
+                                    (click)="createEntityType(entityTypeForm.value)">สร้างหัวข้อคำถาม</div>
+                            </div>
+                            <div class="col">
+                                <div class="button" class="btn btn-success btn-block" (click)="listEntity()">รายชื่อหัวข้อ</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+    </div>
+    <!-- EntityType -->
+    <!-- Entity -->
+    <div *ngIf="entityShown">
+            <form #entityForm="ngForm">
+                <div class="card">
+                    <div class="card-header bg-info">เนื้อหาภายในหัวข้อ </div>
+                    <div class="card-body">
+                        <input type="text" ngModel class="form-control form-control-sm" name="entityTypeId"
+                            placeholder="รหัสหัวข้อ">
+                        <input type="text" ngModel class="form-control form-control-sm" name="entityValue"
+                            placeholder="หัวข้อเนื้อหา">
+                        <div class="form-row">
+                            <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="synonyms1"
+                                    placeholder="คีย์เวิร์ด"></div>
+                            <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="synonyms2"
+                                    placeholder="คีย์เวิร์ด"></div>
+                            <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="synonyms3"
+                                    placeholder="คีย์เวิร์ด"></div>
+                            <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="synonyms4"
+                                    placeholder="คีย์เวิร์ด"></div>
+                        </div>
+            
+            
+                    </div>
+                    <div class="card-footer">
+                        <div class="button" class="btn btn-info" (click)="createEntity(entityForm.value)">เพิ่มข้อมูล</div>
+                        <!-- <div class="button" class="btn btn-primary" (click)="listEntity()">List Entity</div> -->
+                    </div>
+                </div>
+            </form>
+    </div>
+    <!-- Entity -->
+</div>
 </div>

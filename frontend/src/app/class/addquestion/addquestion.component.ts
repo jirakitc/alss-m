@@ -13,6 +13,11 @@ import { Entity } from '../../services/interface'
 export class AddquestionComponent implements OnInit {
   data : Entity;
   rows: Entity;
+
+  intentShown : boolean = true;
+  entityTypeShown : boolean = false;
+  entityShown : boolean = false;
+
   constructor(
     private route : ActivatedRoute,
     private http : HttpClient,
@@ -22,6 +27,27 @@ export class AddquestionComponent implements OnInit {
   ngOnInit() {
     this.listEntity()
   }
+toggleIntentShow(){
+  this.intentShown = true
+  if (this.entityTypeShown = true)
+    this.entityTypeShown = false
+  if (this.entityShown = true)
+    this.entityShown = false
+}
+toggleEntityTypeShow(){
+  this.entityTypeShown = true
+  if (this.intentShown = true)
+    this.intentShown = false
+  if (this.entityShown = true)
+    this.entityShown = false
+}
+toggleEntityShow(){
+  this.entityShown = true
+  if (this.intentShown = true)
+    this.intentShown = false
+  if (this.entityTypeShown = true)
+    this.entityTypeShown = false
+}
   goBack(){
     this.location.back()
   }

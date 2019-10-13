@@ -41,15 +41,15 @@
     </div><br>
     <div class="card">
       <div class="card-header">
-        Function
+        แสดงเนื้อหา
       </div>
       <div class="card-body">
-        <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#uploadModal">
+        <!-- <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#uploadModal">
           เพิ่มเนื้อหา
         </button>
         <button type="button" class="btn btn-dark btn-block" routerLink="/class/manageQuestion"> 
             จัดการคำถาม
-        </button>
+        </button> -->
         <button type="button" class="btn btn-dark btn-block" (click)="toggleChatShow()"> 
             Chat
         </button>
@@ -71,6 +71,18 @@
       
         </div>
       </div>
+      <br>
+      <div class="card">
+        <div class="card-header">ส่วนจัดการ</div>
+        <div class="card-body">
+                  <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#uploadModal">
+                    เพิ่มเนื้อหา
+                  </button>
+                  <button type="button" class="btn btn-dark btn-block" routerLink="/class/manageQuestion">
+                    จัดการคำถาม
+                  </button>
+        </div>
+      </div>
   </div>
   <div class="col col-sm-9">
     <div class="col">
@@ -79,7 +91,7 @@
         <app-ui></app-ui>
       </div>
       <div *ngIf="dataShown" id="divshow">
-        <div class="row">เนื้อหา</div>
+        
         <div class="card scroll">
           <pdf-viewer [src]="pdf_src" 
           [render-text]="true"

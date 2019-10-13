@@ -10,13 +10,13 @@
         <div class="col">
           <div class="form-group">
             <label for="">Username</label>
-            <input ngModel name="username" type="text" class="form-control" placeholder="Username">
+            <input ngModel name="username" type="text" class="form-control" placeholder="Username" required>
           </div>
         </div>
         <div class="col">
-          <div class="form-group invisible">
+          <div class="form-group">
             <label for="">UID</label>
-            <input [(ngModel)]="UID" name="user_id" type="text" class="form-control">
+            <input [(ngModel)]="UID" name="user_id" type="text" class="form-control" readonly>
           </div>
         </div>
       </div>
@@ -26,24 +26,25 @@
         <div class="col">
           <div class="form-group">
             <label for="">ชื่อจริง</label>
-            <input ngModel name="firstname" type="text" class="form-control" placeholder="Firstname">
+            <input ngModel name="firstname" type="text" class="form-control" placeholder="Firstname" required>
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="">นามสกุล</label>
-            <input ngModel name="lastname" type="text" class="form-control" placeholder="Lastname">
+            <input ngModel name="lastname" type="text" class="form-control" placeholder="Lastname" required>
           </div>
         </div>
       </div>
 
       <div class="form-group">
         <label for="">อีเมลล์</label>
-        <input ngModel name="email" type="text" class="form-control" placeholder="Email">
+        <input ngModel name="email" type="text" class="form-control" placeholder="Email" required>
       </div>
       <div class="form-group">
         <label for="">รหัสผ่าน</label>
-        <input ngModel name="password" type="password" class="form-control" placeholder="Password">
+        <input ngModel name="password" type="password" class="form-control" placeholder="Password" required>
+        <input ngModel name="repassword" type="password" class="form-control" placeholder="Confirm Password" required>
       </div>
 
       <div class="form-group">
