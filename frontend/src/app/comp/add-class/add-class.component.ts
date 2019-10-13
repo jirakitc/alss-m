@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router'
+import {ToastrService} from 'ngx-toastr'
 
 import { Room , Subject} from '../../services/interface';
 import { UserService } from '../../user.service';
 import { ClassService } from 'src/app/services/class.service';
+import { from } from 'rxjs';
 @Component({
   selector: 'app-add-class',
   templateUrl: './add-class.component.html',
@@ -22,7 +25,9 @@ export class AddClassComponent implements OnInit {
     private location: Location,
     private http: HttpClient,
     private userService : UserService,
-    private classService : ClassService
+    private classService : ClassService,
+    private toastr : ToastrService,
+    private router : Router
   ) { }
   goBack(): void {
     this.location.back();
@@ -38,8 +43,11 @@ export class AddClassComponent implements OnInit {
   addClass(data){
     this.http.post<any>('http://localhost:8080/api/add-class',data)
     .subscribe(result=>{
-      alert(JSON.stringify(result))
+      //alert(JSON.stringify(result))
+      this.toastr.info(JSON.stringify(result))
+      this.router.navigateByUrl('/profile')
     })
+
   }
   
   //แบบ 2 

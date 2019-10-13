@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Location, JsonPipe } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 import { User } from '../../services/interface';
 import { UserService } from '../../user.service';
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private userService: UserService,
     private location: Location,
-    private http: HttpClient
+    private http: HttpClient,
+    private toastr: ToastrService
   ) { }
   goBack(): void {
     this.location.back();
@@ -29,7 +31,10 @@ export class RegisterComponent implements OnInit {
   onSubmit(data){
     this.http.post<any>('http://localhost:8080/api/register',data)
     .subscribe(result=>{
-      alert(JSON.stringify(result))
+      this.toastr.info(JSON.stringify(result))
+      //alert(JSON.stringify(result))
+    },err=>{
+      //this.AlertRegFailed()
     })
   }
   
@@ -45,4 +50,11 @@ export class RegisterComponent implements OnInit {
       this.UID++;
     })
   }
+
+  AlertRegFailed(){
+    this.toastr.error( 'Username นี้มีในระบบแล้ว');
+   } 
+   AlertRegSuccess(){
+    this.toastr.success( 'สมัครสมาชิกเรีอยบร้อย');
+   } 
 }

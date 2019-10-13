@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
+
 import { User ,TokenPayload } from '../../services/interface'
 import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +30,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private http:HttpClient,
     private auth : AuthService,
-    private router : Router
+    private router : Router,
+    private toastr: ToastrService
   ) { 
   }
 
@@ -41,8 +44,12 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/profile')
       },
       err => {
-        alert(JSON.stringify("login failed"))
+        this.AlertLoginFailed()
       }
     )
-  }
+    }
+
+    AlertLoginFailed(){
+    this.toastr.error( 'Username หรือ Password ไม่ถูกต้อง');
+   } 
 }

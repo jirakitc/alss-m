@@ -8,6 +8,7 @@ import { FileSelectDirective , FileUploader } from 'ng2-file-upload'
 
 import { ClassService } from 'src/app/services/class.service';
 import { Room , Content} from 'src/app/services/interface';
+import { ToastrService } from 'ngx-toastr';
 
 const uri = "http://localhost:8080/file/upload"
 
@@ -28,17 +29,22 @@ export class MainComponent implements OnInit {
     dataShown: boolean = false ;
     // หน้าต่าง show div ต่างๆ //
 
-  pdf_src = "http://localhost:8080/db_1.pdf"
-  src = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf"
+  pdf_src = ""
+
   constructor(
     private classService : ClassService,
     private location : Location,
     private route : ActivatedRoute,
-    private http : HttpClient
+    private http : HttpClient,
+    private toast : ToastrService
   ) {
     this.uploader.onCompleteItem = ( item:any, response:any , status:any, header:any) =>{
       this.attachmentList.push(JSON.parse(response));
+      this.toast.success('อัพโหลดไฟล์เรียบร้อย')
     }
+   }
+   addTodo(text){
+     console.log(text)
    }
 
   ngOnInit() {
@@ -57,7 +63,8 @@ export class MainComponent implements OnInit {
   upload(data){
     this.http.post<any>('http://localhost:8080/api/uploadcontent',data)
     .subscribe(result=>{
-      alert(JSON.stringify(result))
+      //alert(JSON.stringify(result))
+      this.toast.success('บันทึกเรียบร้อย')
     })
     console.log(this.subf);
   }
@@ -73,14 +80,23 @@ export class MainComponent implements OnInit {
 
 
   toggleChatShow() {
-    this.chatShown = ! this.chatShown;
+    this.chatShown = true
     if(this.dataShown = true)
         this.dataShown = false
   }
 
   toggleDataShow(){
-    this.dataShown = ! this.dataShown;
+    this.dataShown = true
     if(this.chatShown = true)
         this.chatShown = false
+  }
+
+  get_src(data){
+    // alert(data)
+    // this.http.post<any>('http://localhost:8080/api/get_src',data)
+    // .subscribe(src=>{
+    //   alert(JSON.stringify(src))
+    // })
+    this.pdf_src="http://localhost:8080/MS-Access2010.pdf"
   }
 }

@@ -17,7 +17,7 @@ module.exports = function(app) {
     // Delete a Customer with Id
     app.delete('/api/customers/:customerId', customers.delete);
 
-    app.post('/api/register', customers.create); 
+    app.post('/api/register', customers.create2); 
 
     app.post('/api/login2', customers.Login); //ล็อคอิน
 

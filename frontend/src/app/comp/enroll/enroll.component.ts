@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-
+import { ToastrService } from 'ngx-toastr';
 
 import { ClassService } from 'src/app/services/class.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Room , classStu, User } from 'src/app/services/interface';
 import { UserService } from 'src/app/user.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,17 +26,25 @@ export class EnrollComponent implements OnInit {
     private userService: UserService,
     private location : Location,
     private auth: AuthService,
-    private http: HttpClient
+    private http: HttpClient,
+    private toastr: ToastrService,
+    private router : Router
   ) { }
 
   ngOnInit() {
     this.getprofile()
   }
+  alertEnroll(){
+    this.toastr.info('555');
+  }
 
   enroll(){
     console.log(this.stuData);
     this.userService.enroll(this.stuData)
-        .subscribe();
+        .subscribe(res=>{
+
+        });
+        this.router.navigateByUrl('/profile')
   }
   update() {
     this.userService.enroll(this.stuData)

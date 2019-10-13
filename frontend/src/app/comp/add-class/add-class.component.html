@@ -8,13 +8,14 @@
           <div class="form-group">
             <label for="">ชื่อห้องเรียน</label>
             <input [(ngModel)]="room.class_name" name="class_name" type="text" class="form-control"
-              placeholder="ชื่อห้องเรียน" #class_name="ngModel">
+              placeholder="ชื่อห้องเรียน" #class_name="ngModel" required>
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="">รหัสห้องเรียน</label>
-            <input [(ngModel)]="classID" name="class_id" type="text" class="form-control">
+            <input [(ngModel)]="classID" name="class_id" type="text" class="form-control" readonly>
+            <input [(ngModel)]="classID" name="class_id" type="hidden" class="form-control">
           </div>
         </div>
       </div>
@@ -29,20 +30,13 @@
       <div class="form-group">
         <label for="">อาจารย์ผู้สอน</label>
         <input [(ngModel)]="room.teacher_name" name="teacher_name" type="text" class="form-control"
-          placeholder="ชื่ออาจารย์ผู้สอน">
+          placeholder="ชื่ออาจารย์ผู้สอน" required>
       </div>
-
-      <!-- อัพรูป -->
-      <!-- <div class="form-group">
-      <label for="">อัพโหลดรูปปก</label>
-      <input type="file" (change)="onFileSelected($event)" [(ngModel)]="room.img" name="img">
-      <button mat-raised-button color="primary" (click)="onUpload()">Register</button>
-      </div> -->
 
       <div class="form-group">
         <label for="">จำนวนผู้เรียน</label>
         <input [(ngModel)]="room.total_student" name="total_student" type="text" class="form-control"
-          placeholder="จำนวนผู้เรียน">
+          placeholder="จำนวนผู้เรียน" required>
       </div>
 
     </div>

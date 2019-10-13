@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http'
 
 import { Entity } from '../../services/interface'
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-addquestion',
@@ -11,8 +12,9 @@ import { Entity } from '../../services/interface'
   styleUrls: ['./addquestion.component.css']
 })
 export class AddquestionComponent implements OnInit {
-  data : Entity;
+
   rows: Entity;
+  name: any;
 
   intentShown : boolean = true;
   entityTypeShown : boolean = false;
@@ -21,7 +23,8 @@ export class AddquestionComponent implements OnInit {
   constructor(
     private route : ActivatedRoute,
     private http : HttpClient,
-    private location : Location
+    private location : Location,
+    private toast : ToastrService
     ) { }
 
   ngOnInit() {
@@ -54,14 +57,14 @@ toggleEntityShow(){
   createIntent(data){
     this.http.post<any>('http://localhost:8080/api/CreateIntents',data)
     .subscribe(result=>{
-      //alert(JSON.stringify(result))
+      this.toast.success(JSON.stringify(result))
     })
   };
   
   createEntityType(data){
     this.http.post<any>('http://localhost:8080/api/createEntityType',data)
     .subscribe(result=>{
-      //alert(JSON.stringify(result))
+      this.toast.success(JSON.stringify(result))
     })
   }
   createEntity(data){
@@ -75,6 +78,10 @@ toggleEntityShow(){
     .subscribe(result=>{
       //alert(JSON.stringify(result))
       this.rows = result
+      this.http.get<Entity>('http://localhost:8080/api/listEntityTypeN')
+      .subscribe(name=>{
+        this.name = name
+      })
     })
   }
 }

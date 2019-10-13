@@ -38,7 +38,7 @@ require('./dialogflow/route.js')(app)
 
 
 db.sequelize.sync().then(() => {
-  console.log(`Users db and user table have been created`);
+  console.log(`------------------------------Users db and user table have been created----------------------------`);
 });
 
 

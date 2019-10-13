@@ -4,6 +4,10 @@ import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
 import { FileUploadModule} from 'ng2-file-upload'
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
+
 
 import { AppRoutingModule } from './route/app-routing.module';
 import { AppComponent } from './app.component';
@@ -72,6 +76,12 @@ import { BotService } from './services/bot.service';
     FormsModule,
     FileUploadModule,
     PdfViewerModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut : 3000,
+      positionClass : 'toast-top-right',
+      preventDuplicates: true,
+    })
   ],
   providers: [AuthService, AuthGuardService , RoleGuardService],
   bootstrap: [AppComponent]

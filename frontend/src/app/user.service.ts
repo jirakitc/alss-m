@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User , Room , Subject , classStu } from './services/interface';
+import { Toast } from 'ngx-toastr'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,7 +14,9 @@ const httpOptions = {
 export class UserService {
   private customersUrl = 'http://localhost:8080/api/customers';
   
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private toastr : Toast) { }
 
   getCustomers (): Observable<User[]> {
     return this.http.get<User[]>(this.customersUrl)
@@ -50,5 +53,6 @@ export class UserService {
 
   enroll (enroll: classStu): Observable<classStu> {
     return this.http.post<classStu>('http://localhost:8080/api/enroll', enroll, httpOptions);
+    
   }
 }

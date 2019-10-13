@@ -15,7 +15,7 @@ exports.create = (req, res) => {
 		}
 	}).then(user =>{
 		if (user != null){
-			res.json('username already exists')
+			res.json('มีผู้ใช้ Username นี้ในระบบแล้ว')
 		} else {
 			Customer.create(customer).then(result => {		
 				// Send created customer to client
@@ -63,6 +63,7 @@ exports.delete = (req, res) => {
 
 exports.create2 = (req,res)=>{
     const data = {
+	  user_id: req.body.user_id,
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       email: req.body.email,
@@ -70,7 +71,7 @@ exports.create2 = (req,res)=>{
       password: req.body.password,
 	};
 	if(data.password === '' || data.username === ''){
-		res.json('โปรดกรอก username และ password');
+		res.json('โปรดกรอก Password');
 	} else 
 	Customer.findOne({
 		where : {
@@ -78,9 +79,11 @@ exports.create2 = (req,res)=>{
 		}
 	}).then(user =>{
 		if (user != null){
-			res.json('username already exists')
+			res.json('มีผู้ใช้ Username นี้ในระบบแล้ว')
+			//res.status(400).send({ message: 'user created' })
 		} else {
 			Customer.create({
+				user_id: req.body.user_id,
 				firstname: data.firstname,
 				lastname: data.lastname,
 				email: data.email,
@@ -88,8 +91,8 @@ exports.create2 = (req,res)=>{
 				password: data.password,
 				type: 1
 			  }).then(() => {
-				console.log('user created in db');
-				res.status(200).send({ message: 'user created' });
+				res.json('สมัครสมาชิกเรียบร้อย')
+				//res.status(200).send({ message: 'สมัครสมาชิกเรียบร้อย' });
 			  });
 		}
 	})

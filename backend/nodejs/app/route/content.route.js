@@ -7,4 +7,6 @@ module.exports = function(app) {
     app.get('/api/class/:classId', conTent.getClassId);
 
     app.get('/api/getContentData/:classId', conTent.getContentData);
+
+    app.post('/api/get_src',conTent.getAddress);
 }

@@ -20,12 +20,12 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   toggleClassShow() {
-    this.classShown = ! this.classShown;
+    this.classShown = true
     if(this.subjectShown = true)
       this.subjectShown = false
     }
   toggleSubjectShow() {
-      this.subjectShown = ! this.subjectShown;
+      this.subjectShown = true
       if(this.classShown = true)
         this.classShown = false
       }  

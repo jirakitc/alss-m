@@ -7,17 +7,23 @@ var upload = multer({ dest: 'uploads/' })
 const jwt = require('jsonwebtoken');
 process.env.SECRET_KEY = 'secret';
 
-
-exports.uploadCover = (req,res) =>{
-	let cover = upload.single('img')
-}
-
 exports.create_Class = (req,res) =>{
-	let class_Data = req.body
-
-	Room.create(class_Data).then(result => {		
-		res.json(result);
-	});
+	let class_Data = {
+		class_name : req.body.class_name,
+		class_id : req.body.class_id,
+		class_Subject : req.body.class_Subject,
+		teacher_name : req.body.teacher_name,
+		total_student : req.body.total_student
+	}
+	if(class_Data.class_name === ''){
+		res.json('โปรดกรอกชื่อวิชา');
+	} else {
+		Room.create(class_Data).then(result => {		
+			res.json('สร้างห้องเรียนเรียบร้อย');	
+			})
+	}
+		
+	
 }
 
 exports.getClass = (req, res) => {

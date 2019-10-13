@@ -29,6 +29,8 @@ module.exports = function(app){
               createEntityTypeRequest
             );
             console.log(`Created ${responses[0].name} entity type`);
+            //name = responses[0].name.split("projects/sunlit-descent-239004/agent/entityTypes/")
+            res.json(`สร้างหัวข้อ ${_displayName} เรียบร้อย`)
           }
         createEntityType()
     })
@@ -77,34 +79,54 @@ module.exports = function(app){
         async function listEntityTypes(projectId = _projectId) {
 
             const dialogflow = require('dialogflow');
-
             const entityTypesClient = new dialogflow.EntityTypesClient({credentials: auth});
-
-            const agentPath = entityTypesClient.projectAgentPath(projectId);
-          
+            const agentPath = entityTypesClient.projectAgentPath(projectId);      
             const request = {
               parent: agentPath,
             };
-            var eT = []
+            var entityID = []
+            var entityName = []
             const [response] = await entityTypesClient.listEntityTypes(request);
             response.forEach(entityType => {
-
               console.log(`Entity type name: ${entityType.name}`);
               console.log(`Entity type display name: ${entityType.displayName}`);
-              console.log(`Number of entities: ${entityType.entities.length}\n`);
-              
+              console.log(`Number of entities: ${entityType.entities.length}\n`);    
               var entityname = entityType.name
               var entitynameSplit = entityname.split("projects/sunlit-descent-239004/agent/entityTypes/")
 
-              eT.push(entitynameSplit[1])
-            });
-            
-            res.json(eT);
+              entityID.push(entitynameSplit[1])
+              entityName.push(entityType.displayName)
+            }); 
+            res.json(entityID);
+            console.log(entityName)
             return response;
-            
           }
           listEntityTypes();
     })
+    app.get('/api/listEntityTypeN',(req,res)=>{
+      async function listEntityTypesN(projectId = _projectId) {
+
+          const dialogflow = require('dialogflow');
+          const entityTypesClient = new dialogflow.EntityTypesClient({credentials: auth});
+          const agentPath = entityTypesClient.projectAgentPath(projectId);      
+          const request = {
+            parent: agentPath,
+          };
+          var entityName = []
+          const [response] = await entityTypesClient.listEntityTypes(request);
+          response.forEach(entityType => {
+            console.log(`Entity type name: ${entityType.name}`);
+            console.log(`Entity type display name: ${entityType.displayName}`);
+            console.log(`Number of entities: ${entityType.entities.length}\n`);    
+
+            entityName.push(entityType.displayName)
+          }); 
+          res.json(entityName);
+          console.log(entityName)
+          return response;
+        }
+        listEntityTypesN();
+  })
 
     //ดู Intent
     app.get('/api/listIntents',(req,res)=>{
@@ -148,13 +170,27 @@ module.exports = function(app){
     //สร้าง Intent
     app.post('/api/createIntents',(req,res)=>{
       const _displayName = req.body.displayName
-      const _text = req.body.text
+      const _text1 = req.body.text1
+      const _text2 = req.body.text2
+      const _text3 = req.body.text3
       const _entityType = `@`+req.body.entityType
       const _alias = req.body.entityType
       const _messageTexts = req.body.messageText
-      const Xpart = {
-        displayName: _displayName,
-        text: _text,
+      const Xpart1 = {
+        
+        text: _text1,
+        entityType: _entityType,
+        alias: _alias
+      }
+      const Xpart2 = {
+        
+        text: _text2,
+        entityType: _entityType,
+        alias: _alias
+      }
+      const Xpart3 = {
+        
+        text: _text3,
         entityType: _entityType,
         alias: _alias
       }
@@ -162,7 +198,7 @@ module.exports = function(app){
       async function createIntent(
         projectId = _projectId,
         displayName = _displayName,
-        trainingPhrasesParts = [Xpart],
+        trainingPhrasesParts = [Xpart1,Xpart2,Xpart3],
         messageTexts = [_messageTexts]
       ) {
         const dialogflow = require('dialogflow');
@@ -204,9 +240,10 @@ module.exports = function(app){
         };
       
         // Create the intent
+
         const responses = await intentsClient.createIntent(createIntentRequest);
         console.log(`Intent ${responses[0].name} created`);
-        // [END dialogflow_create_intent]
+        res.json(`สร้างคำถาม ${_displayName} เรียบร้อย`)
       }
       createIntent()
     })

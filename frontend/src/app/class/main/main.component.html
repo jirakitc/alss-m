@@ -14,7 +14,7 @@
         <label for="">ชื่อเรื่อง</label>
         <!-- ++++++++++++++++++ชื่อเรื่อง&บท++++++++++++++++++ -->
         <input type="text" ngModel class="form-control" name="content_name" id="content_name" placeholder="กรอกชื่อเรื่อง">
-        <!-- ++++++++++++++++++ ClassId ++++++++++++++++++ -->
+        <!-- ++++++++++++++++++ ทีอยู่ไฟล์ ++++++++++++++++++ -->
         <input type="hidden" name="class_id" id="class_id" *ngFor="let item of room" [(ngModel)]="item.class_id">
         <input class="form-control" name="content_address" [(ngModel)]="subf" placeholder="ที่อยู่ไฟล์" id="content_address" type="text">
 
@@ -65,7 +65,11 @@
         </h3>
         <div class="card-body">
           <div *ngFor="let item of _content">
-            <button class="btn btn-outline-success btn-block btn-sm">{{item.content_name}}</button>
+            <form>
+                <input #todo type="text" name="content_name" placeholder="Enter a todo" value="{{item.content_name}}">
+                <button type="button" class="btn btn-outline-success btn-block btn-sm" (click)="get_src(todo.value)">{{item.content_name}}</button>
+            </form>
+            
             
           </div>
       

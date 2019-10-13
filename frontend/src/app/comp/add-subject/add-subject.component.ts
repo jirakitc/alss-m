@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
+import { ToastrService } from 'ngx-toastr'
 
 import { Subject } from '../../services/interface';
 
@@ -17,6 +18,7 @@ export class AddSubjectComponent implements OnInit {
   constructor(
     private location: Location,
     private http: HttpClient,
+    private toastr : ToastrService
   ) { }
 
   ngOnInit() {
@@ -27,10 +29,10 @@ export class AddSubjectComponent implements OnInit {
   }
 
   onSubmit(data){
-    alert(JSON.stringify(data))
+
     this.http.post<any>('http://localhost:8080/api/create_subject',data)
     .subscribe(result=>{
-      alert(JSON.stringify(result))
+      this.toastr.info(JSON.stringify(result))
     })
   }
 
