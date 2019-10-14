@@ -26,16 +26,14 @@ import { UseradComponent } from '../comp/userad/userad.component';
 import { UseradDetailsComponent } from '../comp/userad-details/userad-details.component';
 import { AddquestionComponent } from '../class/addquestion/addquestion.component';
 import { UiComponent } from '../chat/ui/ui.component';
+import { TeacherComponent } from '../comp/teacher/teacher.component';
 
 const routes: Routes = [
     //หน้าจัดการ dialogflow
   {path: 'class/manageQuestion',component: AddquestionComponent,canActivate: [AuthGuardService]},
   {path: 'chat',component: UiComponent,canActivate: [AuthGuardService]},
-  {path: 'admin',
-    component: AdmincenterComponent,
-    canActivate: [AuthGuardService],
-  },
-
+  {path: 'admin',component: AdmincenterComponent,canActivate: [AuthGuardService]},
+  {path: 'teacher',component: TeacherComponent,canActivate: [AuthGuardService]},
   {path: 'user', component: UserComponent},
   {path: 'userad', component: UseradComponent},
   {path: 'user/add', component: AddUserComponent},

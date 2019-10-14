@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import decode from 'jwt-decode';
 
 
 import { User ,TokenPayload } from '../../services/interface'
@@ -35,25 +36,24 @@ export class LoginComponent implements OnInit {
     private toastr: ToastrService
   ) { 
   }
-
   ngOnInit() {
   }
   
   login() {
     this.auth.login(this.credentials).subscribe(
       () => {
-        if(this.credentials.type = '3') {
+        if(this.credentials.type='3') 
           this.router.navigateByUrl('/admin') 
-        }else if (this.credentials.type = '2') {
+        else
           this.router.navigateByUrl('/profile')   
-        } else
-        this.router.navigateByUrl('/profile')   
       },
       err => {
         this.AlertLoginFailed()
       }
     )
     }
+    // else if (this.credentials.type = '2') {
+    //   this.router.navigateByUrl('/teacher') 
 
     AlertLoginFailed(){
     this.toastr.error( 'Username หรือ Password ไม่ถูกต้อง');
