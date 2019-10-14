@@ -5,7 +5,7 @@ import { Router } from '@angular/router'
 import {ToastrService} from 'ngx-toastr'
 
 import { Room , Subject} from '../../services/interface';
-import { UserService } from '../../user.service';
+import { UserService } from '../../services/user.service';
 import { ClassService } from 'src/app/services/class.service';
 import { from } from 'rxjs';
 @Component({

@@ -4,7 +4,7 @@ import { Location, JsonPipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 
 import { User } from '../../services/interface';
-import { UserService } from '../../user.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-register',

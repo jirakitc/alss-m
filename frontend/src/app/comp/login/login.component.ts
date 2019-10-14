@@ -40,11 +40,9 @@ export class LoginComponent implements OnInit {
   }
   
   login() {
-    this.auth.login(this.credentials).subscribe(
+    this.auth.login(this.credentials)
+    .subscribe(
       () => {
-        if(this.credentials.type='3') 
-          this.router.navigateByUrl('/admin') 
-        else
           this.router.navigateByUrl('/profile')   
       },
       err => {

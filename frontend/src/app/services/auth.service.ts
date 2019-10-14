@@ -10,8 +10,6 @@ interface TokenResponse {
   token: string
 }
 
-
-
 @Injectable({
   providedIn: 'root'
 })

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User , Room , Subject , classStu } from './services/interface';
-import { Toast } from 'ngx-toastr'
+import { User , Room , Subject , classStu } from './interface';
+//import { Toast } from 'ngx-toastr'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,7 +16,7 @@ export class UserService {
   
   constructor(
     private http: HttpClient,
-    private toastr : Toast) { }
+    ) { }
 
   getCustomers (): Observable<User[]> {
     return this.http.get<User[]>(this.customersUrl)

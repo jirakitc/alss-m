@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ClassService } from 'src/app/services/class.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Room , classStu, User } from 'src/app/services/interface';
-import { UserService } from 'src/app/user.service';
+import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 
 
