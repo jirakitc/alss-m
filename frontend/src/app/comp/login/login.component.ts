@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   credentials: TokenPayload = {
     id: 0,
+    username:'',
     firstname: '',
     lastname: '',
     user_id: 0,
@@ -41,7 +42,12 @@ export class LoginComponent implements OnInit {
   login() {
     this.auth.login(this.credentials).subscribe(
       () => {
-        this.router.navigateByUrl('/profile')
+        if(this.credentials.type = '3') {
+          this.router.navigateByUrl('/admin') 
+        }else if (this.credentials.type = '2') {
+          this.router.navigateByUrl('/profile')   
+        } else
+        this.router.navigateByUrl('/profile')   
       },
       err => {
         this.AlertLoginFailed()

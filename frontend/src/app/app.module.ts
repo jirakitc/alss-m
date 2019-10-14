@@ -26,11 +26,11 @@ import { EnrollComponent } from './comp/enroll/enroll.component';
 import { AddSubjectComponent } from './comp/add-subject/add-subject.component';
 import { ClassDataComponent } from './comp/profile/class-data/class-data.component';
 import { ShowClassEnrolledComponent } from './comp/profile/show-class-enrolled/show-class-enrolled.component';
+import { TeacherComponent } from './comp/teacher/teacher.component'
 
 import { AuthGuardService } from './services/auth-guard.service'
 import { AuthService} from './services/auth.service';
 import { AdmincenterComponent } from './comp/admin/admincenter/admincenter.component'
-import { RoleGuardService } from './services/role-guard.service';
 import { ClassComponent } from './comp/class/class.component';
 import { MainComponent } from './class/main/main.component';
 import { UploadCoverComponent } from './comp/upload-cover/upload-cover.component';
@@ -38,8 +38,8 @@ import { UseradComponent } from './comp/userad/userad.component';
 import { UseradDetailsComponent } from './comp/userad-details/userad-details.component';
 import { AddquestionComponent } from './class/addquestion/addquestion.component';
 import { UiComponent } from './chat/ui/ui.component';
-import { DialogflowService } from './services/dialogflow.service';
 import { BotService } from './services/bot.service';
+
 
 
 @NgModule({
@@ -68,6 +68,7 @@ import { BotService } from './services/bot.service';
     UseradDetailsComponent,
     AddquestionComponent,
     UiComponent,
+    TeacherComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +84,7 @@ import { BotService } from './services/bot.service';
       preventDuplicates: true,
     })
   ],
-  providers: [AuthService, AuthGuardService , RoleGuardService],
+  providers: [AuthService, AuthGuardService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

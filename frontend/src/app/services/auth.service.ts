@@ -21,7 +21,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
   ) { }
 
   private saveToken(token: string): void {

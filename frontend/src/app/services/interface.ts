@@ -55,6 +55,7 @@ export interface TokenPayload {
     email: string;
     password: string;
     type: string;
+    username: string;
   }
 
   export class Message {

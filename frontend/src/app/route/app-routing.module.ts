@@ -12,6 +12,7 @@ import { AddClassComponent } from '../comp/add-class/add-class.component';
 import { EnrollComponent } from '../comp/enroll/enroll.component';
 import { AddSubjectComponent } from '../comp/add-subject/add-subject.component';
 import { ShowClassEnrolledComponent } from '../comp/profile/show-class-enrolled/show-class-enrolled.component';
+
 import { AuthService } from '../services/auth.service';
 
 import { AdmincenterComponent } from '../comp/admin/admincenter/admincenter.component';
@@ -30,6 +31,10 @@ const routes: Routes = [
     //หน้าจัดการ dialogflow
   {path: 'class/manageQuestion',component: AddquestionComponent,canActivate: [AuthGuardService]},
   {path: 'chat',component: UiComponent,canActivate: [AuthGuardService]},
+  {path: 'admin',
+    component: AdmincenterComponent,
+    canActivate: [AuthGuardService],
+  },
 
   {path: 'user', component: UserComponent},
   {path: 'userad', component: UseradComponent},
@@ -53,7 +58,6 @@ const routes: Routes = [
   {path: 'admin',
     component: AdmincenterComponent,
     canActivate: [AuthGuardService],
-    data: {Role : [3 , '3' , 'admin']}
   }
   // {path: '', redirectTo: 'home',pathMatch: 'full'}, 
 ];
