@@ -29,6 +29,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(data){
+ 
     this.http.post<any>('http://localhost:8080/api/register',data)
     .subscribe(result=>{
       this.toastr.info(JSON.stringify(result))

@@ -43,11 +43,17 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.credentials)
     .subscribe(
       () => {
-          this.router.navigateByUrl('/profile')   
+          if (this.credentials.type == '3'){
+            this.router.navigateByUrl('/admin')
+          } else {
+          this.router.navigateByUrl('/profile')
+          }
+          console.log(this.credentials.password);
       },
       err => {
         this.AlertLoginFailed()
       }
+      
     )
     }
     // else if (this.credentials.type = '2') {

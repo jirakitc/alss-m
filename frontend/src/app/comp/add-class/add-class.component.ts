@@ -45,7 +45,7 @@ export class AddClassComponent implements OnInit {
     .subscribe(result=>{
       //alert(JSON.stringify(result))
       this.toastr.info(JSON.stringify(result))
-      this.router.navigateByUrl('/profile')
+      this.location.back();
     })
 
   }

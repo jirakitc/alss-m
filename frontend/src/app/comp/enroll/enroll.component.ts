@@ -34,28 +34,18 @@ export class EnrollComponent implements OnInit {
   ngOnInit() {
     this.getprofile()
   }
-  alertEnroll(){
-    this.toastr.info('555');
-  }
 
-  enroll(){
-    console.log(this.stuData);
-    this.userService.enroll(this.stuData)
-        .subscribe(res=>{
-
-        });
-        this.router.navigateByUrl('/profile')
-  }
   update() {
     this.userService.enroll(this.stuData)
         .subscribe(result => alert(JSON.stringify(result)));
   }
 
   onSubmit(data){   //ใช้อันนี้อยู่
-    //alert('ลงทะเบียนสำเร็จ')
+    // alert(JSON.stringify(data))
     this.http.post<any>('http://localhost:8080/api/enroll',data)
     .subscribe(result=>{
        //alert(JSON.stringify(result))
+       this.router.navigateByUrl('/profile')
     })
   }
 

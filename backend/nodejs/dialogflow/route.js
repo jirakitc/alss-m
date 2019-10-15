@@ -69,7 +69,8 @@ module.exports = function(app){
             const [response] = await entityTypesClient.batchCreateEntities(createEntitiesRequest);
             console.log('Created entity type:');
             console.log(response);
-            res.json({ID : entityType.entityTypeId})
+            // res.json({ID : entityType.entityTypeId})
+            res.json(`เพิ่มข้อมูลเรียบร้อยเรียบร้อย`)
           }
           createEntity();
     })

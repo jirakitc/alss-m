@@ -112,7 +112,6 @@ exports.Login = (req,res) =>{
 			})
 			res.json({ token: token })
 		  } else {
-			console.log('user not exit')
 			res.send('User does not exist')
 		  }
 		})

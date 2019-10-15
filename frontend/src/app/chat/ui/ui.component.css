@@ -22,19 +22,19 @@
 }
 
 .messages .message.left .avatar {
-    background-color: #a70fff;
+    background-color: #D35400;
     float: left;
 }
 
 .messages .message.left .text_wrapper {
-    background-color: #a70fff;
+    background-color: #FCF3CF;
     margin-left: 20px;
 }
 
 .messages .message.left .text_wrapper::after,
 .messages .message.left .text_wrapper::before {
     right: 100%;
-    border-right-color: #a70fff;
+    border-right-color: #FCF3CF;
 }
 
 .messages .message.left .text {

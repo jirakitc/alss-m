@@ -33,6 +33,7 @@ export class AddSubjectComponent implements OnInit {
     this.http.post<any>('http://localhost:8080/api/create_subject',data)
     .subscribe(result=>{
       this.toastr.info(JSON.stringify(result))
+      this.location.back();
     })
   }
 

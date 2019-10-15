@@ -29,6 +29,7 @@ export class AddquestionComponent implements OnInit {
 
   ngOnInit() {
     this.listEntity()
+    
   }
 toggleIntentShow(){
   this.intentShown = true
@@ -58,6 +59,7 @@ toggleEntityShow(){
     this.http.post<any>('http://localhost:8080/api/CreateIntents',data)
     .subscribe(result=>{
       this.toast.success(JSON.stringify(result))
+      this.listEntity()
     })
   };
   
@@ -65,12 +67,15 @@ toggleEntityShow(){
     this.http.post<any>('http://localhost:8080/api/createEntityType',data)
     .subscribe(result=>{
       this.toast.success(JSON.stringify(result))
+      this.listEntity()
     })
   }
   createEntity(data){
     this.http.post<any>('http://localhost:8080/api/createEntity',data)
     .subscribe(result=>{
       //alert(JSON.stringify(result))
+      this.toast.success(JSON.stringify(result))
+      this.listEntity()
     })
   }
   listEntity(){

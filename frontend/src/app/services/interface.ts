@@ -30,6 +30,9 @@ export class Content{
     content_name: string;
     content_address: string;
 }
+export interface src{
+    content_address: string;
+}
 
 export class Subject {
     id : number;

@@ -1,40 +1,42 @@
-
 <!-- หน้าอัพโหลด -->
 <form #contentForm="ngForm">
-<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">อัพโหลดเนื้อหา</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <label for="">ชื่อเรื่อง</label>
-        <!-- ++++++++++++++++++ชื่อเรื่อง&บท++++++++++++++++++ -->
-        <input type="text" ngModel class="form-control" name="content_name" id="content_name" placeholder="กรอกชื่อเรื่อง">
-        <!-- ++++++++++++++++++ ทีอยู่ไฟล์ ++++++++++++++++++ -->
-        <input type="hidden" name="class_id" id="class_id" *ngFor="let item of room" [(ngModel)]="item.class_id">
-        <input class="form-control" name="content_address" [(ngModel)]="subf" placeholder="ที่อยู่ไฟล์" id="content_address" type="text">
+  <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">อัพโหลดเนื้อหา</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label for="">ชื่อเรื่อง</label>
+          <!-- ++++++++++++++++++ชื่อเรื่อง&บท++++++++++++++++++ -->
+          <input type="text" ngModel class="form-control" name="content_name" id="content_name"
+            placeholder="กรอกชื่อเรื่อง">
+          <!-- ++++++++++++++++++ ทีอยู่ไฟล์ ++++++++++++++++++ -->
+          <input type="hidden" name="class_id" id="class_id" *ngFor="let item of room" [(ngModel)]="item.class_id">
+          <input class="form-control" name="content_address" [(ngModel)]="subf" placeholder="ที่อยู่ไฟล์"
+            id="content_address" type="text">
 
-        <!-- ++++++++++++++++++ชื่อไฟล์++++++++++++++++++ -->
-        <input type="file" name="fileUpload" id="fileUpload" [(ngModel)]="subf" ng2FileSelect [uploader]="uploader">
-        <button type="button" class="btn btn-dark" (click)="uploader.uploadAll()">อัพโหลด</button>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
-        <button type="button" class="btn btn-primary" (click)="upload(contentForm.value)">บันทึก</button>
+          <!-- ++++++++++++++++++ชื่อไฟล์++++++++++++++++++ -->
+          <input type="file" name="fileUpload" id="fileUpload" [(ngModel)]="subf" ng2FileSelect [uploader]="uploader">
+          <button type="button" class="btn btn-dark" (click)="uploader.uploadAll()">อัพโหลด</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+          <button type="button" class="btn btn-primary" (click)="upload(contentForm.value)">บันทึก</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </form>
-
 
 <div class="row">
   <div class="col col-sm-3">
     <div class="card">
+
       <div class="card-header">
         <button class="btn btn-dark btn-block" (click)="goBack()">กลับ</button>
       </div>
@@ -44,66 +46,92 @@
         แสดงเนื้อหา
       </div>
       <div class="card-body">
-        <!-- <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#uploadModal">
-          เพิ่มเนื้อหา
+        <button type="button" class="btn btn-warning btn-lg btn-block" data-toggle="modal" data-target="#ChatModal">
+          Smart Chat
         </button>
-        <button type="button" class="btn btn-dark btn-block" routerLink="/class/manageQuestion"> 
-            จัดการคำถาม
-        </button> -->
-        <button type="button" class="btn btn-dark btn-block" (click)="toggleChatShow()"> 
-            Chat
-        </button>
-        <button type="button" class="btn btn-dark btn-block" (click)="toggleDataShow()"> 
-            เนื้อหาบทเรียน
+        <button type="button" class="btn btn-primary btn-block" (click)="toggleDataShow()">
+          เนื้อหาบทเรียน
         </button>
       </div>
     </div>
     <br>
-    <div class="card w-100">
-        <h3 class="card-header bg-warning" *ngFor="let item of room">
-          {{item.class_name}}
-        </h3>
-        <div class="card-body">
-          <div *ngFor="let item of _content">
-            <form>
-                <input #todo type="text" name="content_name" placeholder="Enter a todo" value="{{item.content_name}}">
-                <button type="button" class="btn btn-outline-success btn-block btn-sm" (click)="get_src(todo.value)">{{item.content_name}}</button>
-            </form>
-            
-            
+    <!-- <div class="card w-100">
+      <h3 class="card-header bg-warning" *ngFor="let item of room">
+        {{item.class_name}}
+      </h3>
+      <div class="card-body">
+        <div *ngFor="let item of _content">
+          <form>
+            <input #todo type="hidden" name="content_name" placeholder="Enter a todo" value="{{item.content_name}}">
+            <button type="button" class="btn btn-outline-success btn-block btn-sm"
+              (click)="get_src(todo.value)">{{item.content_name}}</button>
+          </form>   
           </div>
-      
         </div>
+      </div> -->
+
+
+    <div class="card">
+      <div class="card-header">ส่วนจัดการ</div>
+      <div class="card-body">
+        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#uploadModal">
+          เพิ่มเนื้อหา
+        </button>
+        <button type="button" class="btn btn-primary btn-block" routerLink="/class/manageQuestion">
+          จัดการคำถาม
+        </button>
       </div>
-      <br>
-      <div class="card">
-        <div class="card-header">ส่วนจัดการ</div>
-        <div class="card-body">
-                  <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#uploadModal">
-                    เพิ่มเนื้อหา
-                  </button>
-                  <button type="button" class="btn btn-dark btn-block" routerLink="/class/manageQuestion">
-                    จัดการคำถาม
-                  </button>
-        </div>
-      </div>
+    </div>
   </div>
   <div class="col col-sm-9">
     <div class="col">
+      <div class="card-header bg-warning" *ngFor="let item of room">
+        <h3>{{item.class_name}}</h3>
+      </div>
+      <!-- ส่วนหัวแสดงบท -->
+      <!-- <div class="row"> -->
+          <div *ngIf="dataShown" id="divshow">
+              <div class="card scroll">
+                <pdf-viewer [src]="pdf_src" [render-text]="true" style="display: block;"></pdf-viewer>
+              </div>
+            </div>
+        <div class="card-columns">
+          <div class="card bg-light border-success mb-3" style="width: 15rem;" *ngFor="let item of _content">
+            <form #todoForm="ngForm" (submit)="get_src(todoForm.value)">
+              <div class="card-body">
+                <input type="hidden" [(ngModel)]="item.content_name" name="content_name" class="form-control">
+                <div class="card-text">{{item.content_name}}</div>
+                <button type="submit" class="btn btn-success">ดูเนื้อหา</button>
+              </div>
+            </form>
 
-      <div *ngIf="chatShown" id="divshow">
-        <app-ui></app-ui>
-      </div>
-      <div *ngIf="dataShown" id="divshow">
-        
-        <div class="card scroll">
-          <pdf-viewer [src]="pdf_src" 
-          [render-text]="true"
-          style="display: block;"
-        ></pdf-viewer>
+          </div>
         </div>
-      </div>
+      <!-- </div> -->
+      <!-- หน้าแสดงบท -->
 
     </div>
   </div>
 </div>
+
+<!-- หน้าแชท -->
+<div class="modal fade" id="ChatModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-ui></app-ui>
+      </div>
+      <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+        </div> -->
+    </div>
+  </div>
+</div>
+<!-- หน้าแชท -->

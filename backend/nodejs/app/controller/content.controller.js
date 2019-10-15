@@ -40,16 +40,14 @@ exports.getContentData = (req,res) =>{
 }
 
 exports.getAddress = (req,res) =>{
-	const scr_data = {
-		content_name : req.body.class_id
-	}
-	console.log(scr_data)
+	let _content_name = req.body.content_name	
+
 	conTent.findAll({
 		where : {
-			class_id : scr_data.content_name
-		}
-	}).then(resu =>{
-		res.json(resu)
+			content_name : _content_name
+		} ,	attributes: ['content_address']
+	}).then(result =>{
+		res.json(result)
 	})
 
 }

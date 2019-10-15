@@ -21,26 +21,24 @@
                         <div class="card-header bg-warning">คำถาม</div>
                         <div class="card-body">
                             <input type="text" ngModel class="form-control form-control-sm" name="displayName" placeholder="หัวข้อคำถาม">
-                            <div class="row">
-                                <div class="col">
-                                    ชุดคำถามที่ 1
-                                    <input type="text" ngModel class="form-control form-control-sm" name="text1" placeholder="ประโยคคำถาม">
-                                    
-                                </div>
-                                <div class="col">
-                                        ชุดคำถามที่ 2
-                                    <input type="text" ngModel class="form-control form-control-sm" name="text2" placeholder="ประโยคคำถาม">
-                                    
-                                </div>
-                                <div class="col">
-                                        ชุดคำถามที่ 3
-                                    <input type="text" ngModel class="form-control form-control-sm" name="text3" placeholder="ประโยคคำถาม">
-                                    
-                                </div>
-                            </div>
+                            <br>
+                            <input type="text" ngModel class="form-control form-control-sm" name="text1" placeholder="ตัวอย่างคำถามที่ 1">
+                            
+                            <input type="text" ngModel class="form-control form-control-sm" name="text2" placeholder="ตัวอย่างคำถามที่ 2">
+                            
+                            <input type="text" ngModel class="form-control form-control-sm" name="text3" placeholder="ตัวอย่างคำถามที่ 3">
                             <!-- <input type="text" ngModel class="form-control form-control-sm" name="alias" placeholder="alias"> -->
                             <br>
-                            <input type="text" ngModel class="form-control form-control-sm" name="entityType" placeholder="หัวข้อหลัก">
+                            <!-- <input type="text" ngModel class="form-control form-control-sm" name="entityType" placeholder="หัวข้อหลัก"> -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">หัวข้อหลัก</label>
+                                </div>
+                                <select class="custom-select custom-select" ngModel name="entityType" id="class_Subject" required>
+                            
+                                    <option *ngFor="let item of name" value={{item}}>{{item}}</option>
+                                </select>
+                            </div>
                             <br>
                             <input type="text" ngModel class="form-control form-control-sm" name="messageText" placeholder="คำตอบที่จะแสดง">
                         </div>
@@ -82,8 +80,16 @@
                 <div class="card">
                     <div class="card-header bg-info">เนื้อหาภายในหัวข้อ </div>
                     <div class="card-body">
-                        <input type="text" ngModel class="form-control form-control-sm" name="entityTypeId"
-                            placeholder="รหัสหัวข้อ">
+                        <!-- <input type="text" ngModel class="form-control form-control-sm" name="entityTypeId" placeholder="รหัสหัวข้อ"> -->
+                        <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">รหัสหัวข้อ</label>
+                                </div>
+                                <select class="custom-select custom-select" ngModel name="entityTypeId" id="entityTypeId" required>
+                            
+                                    <option *ngFor="let item of rows" value={{item}}>{{item}}</option>
+                                </select>
+                            </div>
                         <input type="text" ngModel class="form-control form-control-sm" name="entityValue"
                             placeholder="หัวข้อเนื้อหา">
                         <div class="form-row">
@@ -113,7 +119,7 @@
 </div>
 <div class="row">
     <div class="col">
-        <table class="table">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">รายการชื่อ"หัวข้อหลัก"</th>
@@ -127,7 +133,7 @@
         </table>
     </div>
     <div class="col">
-        <table class="table">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">รหัสหัวข้อ</th>
