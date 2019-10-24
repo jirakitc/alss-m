@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   uDataArray:any[] = []
-  formData : User
+  userDetail : User
 
   constructor(
     private http:HttpClient,
@@ -43,12 +43,21 @@ export class LoginComponent implements OnInit {
     this.auth.login(this.credentials)
     .subscribe(
       () => {
-          if (this.credentials.type == '3'){
-            this.router.navigateByUrl('/admin')
-          } else {
-          this.router.navigateByUrl('/profile')
+        this.auth.profile().subscribe(
+          user => {
+            this.userDetail = user
+            if (this.userDetail.type == 1){
+              this.router.navigateByUrl('/profile')
+
+            } else if (this.userDetail.type == 2) {
+              this.router.navigateByUrl('/teacher')
+            } else {
+              this.router.navigateByUrl('/admin')
+            }
+            console.log(this.userDetail)
           }
-          console.log(this.credentials.password);
+
+          )
       },
       err => {
         this.AlertLoginFailed()

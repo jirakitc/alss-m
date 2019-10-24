@@ -39,6 +39,8 @@ import { UseradDetailsComponent } from './comp/userad-details/userad-details.com
 import { AddquestionComponent } from './class/addquestion/addquestion.component';
 import { UiComponent } from './chat/ui/ui.component';
 import { BotService } from './services/bot.service';
+import { TmainComponent } from './comp/teacher/tmain/tmain.component';
+import { TclassComponent } from './comp/teacher/tclass/tclass.component';
 
 
 
@@ -68,7 +70,9 @@ import { BotService } from './services/bot.service';
     UseradDetailsComponent,
     AddquestionComponent,
     UiComponent,
-    TeacherComponent
+    TeacherComponent,
+    TmainComponent,
+    TclassComponent
   ],
   imports: [
     BrowserModule,

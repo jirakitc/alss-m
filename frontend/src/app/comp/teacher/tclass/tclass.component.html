@@ -71,7 +71,7 @@
       </div> -->
 
 
-    <!-- <div class="card">
+    <div class="card">
       <div class="card-header">ส่วนจัดการ</div>
       <div class="card-body">
         <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#uploadModal">
@@ -81,7 +81,7 @@
           จัดการคำถาม
         </button>
       </div>
-    </div> -->
+    </div>
   </div>
   <div class="col col-sm-9">
     <div class="col">
@@ -96,15 +96,15 @@
               </div>
             </div>
         <div class="card-columns">
-          <div class="card bg-light mb-3" style="width: 15rem;" *ngFor="let item of _content">
-            <form #todoForm="ngForm" (submit)="get_src(todoForm.value)">
-              <div class="card-header">
-                <input type="hidden" [(ngModel)]="item.content_name" name="content_name" class="form-control">
-                <!-- <div class="card-text">{{item.content_name}}</div> -->
-                <button type="submit" class="btn btn-success btn-block">{{item.content_name}}</button>
+            <div class="card bg-light mb-3" style="width: 15rem;" *ngFor="let item of _content">
+                <form #todoForm="ngForm" (submit)="get_src(todoForm.value)">
+                  <div class="card-header">
+                    <input type="hidden" [(ngModel)]="item.content_name" name="content_name" class="form-control">
+                    <!-- <div class="card-text">{{item.content_name}}</div> -->
+                    <button type="submit" class="btn btn-success btn-block">{{item.content_name}}</button>
+                  </div>
+                </form>
               </div>
-            </form>
-          </div>
         </div>
       <!-- </div> -->
       <!-- หน้าแสดงบท -->

@@ -5,7 +5,6 @@ export interface Message {
   remetente?: string;
   mensagem: string;
   data?: Date;
-
 }
 
 @Component({
@@ -41,6 +40,9 @@ export class UiComponent implements OnInit {
       .subscribe((lista: any) => {
         lista.result.fulfillment.messages.forEach((element) => {
           this.resultados.push({ remetente: 'boot', mensagem: element.speech, data: lista.timestamp })
+          
+          console.log(lista)
+          //console.log("score :"+lista.result.score)
         });
       })
 

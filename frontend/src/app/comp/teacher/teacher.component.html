@@ -1,3 +1,74 @@
-<p>
-  teacher works!
-</p>
+
+<div class="row">
+    <div class="col col-sm-3">
+        <!-- ข้อมูลผู้ใช้ -->
+        <div class="card">
+            <div class="card-header" style="text-align: center">ข้อมูลผู้ใช้</div>
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col" style="text-align: right">ชื่อผู้ใช้ : </div>
+                    <div class="col">{{ details?.firstname }}</div>
+                </div>
+                <div class="row">
+                    <div class="col" style="text-align: right">นามสกุล :</div>
+                    <div class="col">{{ details?.lastname }}</div>
+                </div>
+                <div class="row">
+                    <div class="col" style="text-align: right">Email :</div>
+                    <div class="col">{{ details?.email }}</div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="btn btn-warning btn-sm" [routerLink]="['/users', details?.id]">แก้ไขข้อมูล</div>
+                    </div>
+                    <div class="col">
+                        <div class="btn btn-danger btn-sm" (click)="auth.logout()">Logout</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- ฟังชั่น -->
+        <div class="card">
+            <div class="card-header" style="text-align: center">เมนู</div>
+            <div class="card-body">
+                <div class="btn btn-primary btn-lg btn-block btn-sm" routerLink="/enroll">ลงทะเบียนเรียน</div>
+                <div class="btn btn-primary btn-lg btn-block btn-sm" (click)="toggleClassShow()" >ห้องเรียน</div>
+                <!-- <div class="btn btn-primary btn-lg btn-block btn-sm" (click)="toggleSubjectShow()" >ตรวจสอบรายวิชา</div> -->
+                <div class="btn btn-info btn-lg btn-block btn-sm" routerLink="/add-class">สร้างห้องเรียน</div>
+              <div class="btn btn-info btn-lg btn-block btn-sm" routerLink="/add_subject">สร้างรายวิชา</div>
+            </div>
+        </div>
+        <br>
+        <!-- <div class="card">
+            <div class="card-header" style="text-align: center">ส่วนจัดการ</div>
+            <div class="card-body">
+                <div class="btn btn-primary btn-lg btn-block btn-sm" routerLink="/edit">แก้ไขข้อมูลผู้ใช้</div>
+                <div class="btn btn-primary btn-lg btn-block btn-sm" routerLink="/add-class">สร้างห้องเรียน</div>
+                <div class="btn btn-primary btn-lg btn-block btn-sm" routerLink="/add_subject">สร้างรายวิชา</div>
+            </div>
+        </div> -->
+        <br>
+        
+    </div>
+    <div class="col col-sm-9">
+            <div class="row">
+                    <div class="col">
+                        <div class="col">
+                            <div *ngIf="classShown" id="divshow">
+                                    <app-tmain></app-tmain>
+                            </div>
+                            <div *ngIf="subjectShown" id="divshow">
+                                <app-class-data></app-class-data>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    <!-- <div class="col col-sm-3">
+
+    </div> -->
+</div>
+<br>
+

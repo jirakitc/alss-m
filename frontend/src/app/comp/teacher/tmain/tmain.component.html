@@ -1,0 +1,30 @@
+<h3>ห้องเรียน</h3>
+<div class="card-group">
+<div *ngFor="let item of room">
+    <div class="h-100 card" style="width:200px">
+        <div class="card-header bg-warning h7">{{item.class_name}}</div>
+        <form #enrollForm="ngForm" (submit)="onSubmit(enrollForm.value)">
+          <!-- <form #enrollForm="ngForm" (submit)="enroll()"> -->
+          <input type="hidden" [(ngModel)]="item.class_id" name="class_id" class="form-control">
+          <input type="hidden" [(ngModel)]="item.class_name" name="class_name" class="form-control">
+          <input type="hidden" [(ngModel)]="details.user_id" name="user_id" class="form-control">
+          <div class="card-body">
+            <div class="row">
+            <div class="col">
+                <div class="card-text h7">{{item.class_id}}</div>
+                <div class="card-subtitle mb-2 text-muted h7">รายวิชา : {{item.class_Subject}}</div>
+                <div class="card-subtitle mb-2 text-muted h7">ผู้สอน : {{item.teacher_name}}</div>
+                <p class="card-text">{{item.class_description}}</p>
+            </div>
+            <!-- <div class="col text-right">
+                <button class="btn btn-info btn-sm" [routerLink]="['/class', item.class_id]">เข้าสู่ห้องเรียน</button>
+            </div> -->
+          </div>
+          </div>
+          <div class="card-footer">
+              <button class="btn btn-info btn-sm btn-block" [routerLink]="['/tclass', item.class_id]">เข้าสู่ห้องเรียน</button>
+          </div>
+        </form>
+      </div>
+</div>
+</div>
