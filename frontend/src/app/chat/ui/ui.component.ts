@@ -2,9 +2,10 @@ import { Component, ViewChild, ElementRef , OnInit } from '@angular/core';
 import { BotService } from '../../services/bot.service'
 
 export interface Message {
-  remetente?: string;
-  mensagem: string;
+  sender?: string;
+  message: string;
   data?: Date;
+  //score: number;
 }
 
 @Component({
@@ -15,38 +16,38 @@ export interface Message {
 export class UiComponent implements OnInit {
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
-  msg: string;
-  resultados: Message[]
+  message: string;
+  result: Message[]
 
-  constructor(private chatBoot: BotService) {
+  constructor(private chatBot: BotService) {
     this.initBoot()
   }
   ngOnInit() {
   }
 
   initBoot() {
-    this.resultados = []
-    this.chatBoot.getResponse('')
-      .subscribe((lista: any) => {
-        lista.result.fulfillment.messages.forEach((element) => {
-          this.resultados.push({ remetente: 'boot', mensagem: element.speech, data: lista.timestamp })
+    this.result = []
+    this.chatBot.getResponse('')
+      .subscribe((list: any) => {
+        list.result.fulfillment.messages.forEach((element) => {
+          this.result.push({ sender: 'boot', message: element.speech, data: list.timestamp })
         });
       })
   }
 
   sendMessage() {
-    this.resultados.push({ remetente: 'th', mensagem: this.msg, data: new Date() })
-    this.chatBoot.getResponse(this.removerAcentos(this.msg))
-      .subscribe((lista: any) => {
-        lista.result.fulfillment.messages.forEach((element) => {
-          this.resultados.push({ remetente: 'boot', mensagem: element.speech, data: lista.timestamp })
+    this.result.push({ sender: 'th', message: this.message, data: new Date() })
+    this.chatBot.getResponse(this.removerAccents(this.message))
+      .subscribe((list: any) => {
+        list.result.fulfillment.messages.forEach((element) => {
+          this.result.push({ sender: 'boot', message: element.speech, data: list.timestamp })
           
-          console.log(lista)
-          //console.log("score :"+lista.result.score)
+          console.log(list)
+          console.log("score :"+list.result.score)
         });
       })
 
-    this.msg = '';
+    this.message = '';
   }
   ngAfterViewChecked() {
     this.scrollToBottom();
@@ -57,7 +58,7 @@ export class UiComponent implements OnInit {
     } catch (err) { }
   }
 
-  private removerAcentos(s) {
+  private removerAccents(s) {
     return s.normalize('NFD').replace(/[\u0300-\u036f]/g, "")
   }
 

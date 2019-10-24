@@ -9,14 +9,14 @@
   <div class="row align-items-center justify-content-center">
     <div class="col">
       <ul #scrollMe class="messages">
-        <div *ngFor="let msg of resultados ">
-          <li class="message appeared" [ngClass]="{'left':msg.remetente === 'boot',
-                        'right':msg.remetente === 'eu'     }">
+        <div *ngFor="let message of result ">
+          <li class="message appeared" [ngClass]="{'left':message.sender === 'boot',
+                        'right':message.sender === 'eu'     }">
             <div class="avatar"></div>
             <div class="text_wrapper">
               <div class="text">
-                <p class="time"> ({{msg.data | date:'HH:mm:ss'}})</p>
-                {{msg.mensagem}}
+                <p class="time"> ({{message.data | date:'HH:mm:ss'}})</p>
+                {{message.message}}
               </div>
             </div>
           </li>
@@ -27,7 +27,7 @@
 
   <div class="row align-items-center justify-content-center">
     <div class="col">
-      <input type="text" class="form-control" (keyup.enter)="sendMessage()" [(ngModel)]="msg" placeholder="กรอกคำถามที่นี่"/>
+      <input type="text" class="form-control" (keyup.enter)="sendMessage()" [(ngModel)]="message" placeholder="กรอกคำถามที่นี่"/>
     </div>
     <div class="col-sm-3">
       <button class="btn btn-success" (click)="sendMessage()"><i class="far fa-share-square"></i> ส่งข้อความ</button>
