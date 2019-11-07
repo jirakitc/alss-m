@@ -48,7 +48,6 @@ export class LoginComponent implements OnInit {
             this.userDetail = user
             if (this.userDetail.type == 1){
               this.router.navigateByUrl('/profile')
-
             } else if (this.userDetail.type == 2) {
               this.router.navigateByUrl('/teacher')
             } else {

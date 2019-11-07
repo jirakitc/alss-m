@@ -35,8 +35,6 @@ require('./app/route/classStu.route.js')(app);
 require('./app/route/content.route.js')(app);
 require('./dialogflow/route.js')(app)
 
-
-
 db.sequelize.sync().then(() => {
   console.log(`------------------------------Users db and user table have been created----------------------------`);
 });
