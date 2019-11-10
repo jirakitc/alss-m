@@ -12,8 +12,8 @@ import { Room , Subject , classStu, Content } from './interface';
 export class ClassService {
   private getCSUrl = 'http://localhost:8080/api/getcs';
   private getClassDataUrl = 'http://localhost:8080/api/getClassID';
-  private getContentDataUrl = 'http://localhost:8080/api/getContentData'
-
+  private getContentDataUrl = 'http://localhost:8080/api/getContentData';
+  private getQuizUrl = 'http://localhost:8080/api/getQuiz';
 
   constructor(
     private http: HttpClient
@@ -43,5 +43,10 @@ export class ClassService {
   getContentData(classId : number): Observable<Content[]>{
     const url = `${this.getContentDataUrl}/${classId}`;
     return this.http.get<Content[]>(url); 
+  }
+
+  getQuiz(classId : number): Observable<any[]>{
+    const url = `${this.getQuizUrl}/${classId}`;
+    return this.http.get<any[]>(url);
   }
 }

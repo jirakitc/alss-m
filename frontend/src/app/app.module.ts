@@ -33,7 +33,6 @@ import { AuthService} from './services/auth.service';
 import { AdmincenterComponent } from './comp/admin/admincenter/admincenter.component'
 import { ClassComponent } from './comp/class/class.component';
 import { MainComponent } from './class/main/main.component';
-import { UploadCoverComponent } from './comp/upload-cover/upload-cover.component';
 import { UseradComponent } from './comp/userad/userad.component';
 import { UseradDetailsComponent } from './comp/userad-details/userad-details.component';
 import { AddquestionComponent } from './class/addquestion/addquestion.component';
@@ -65,7 +64,6 @@ import { TclassComponent } from './comp/teacher/tclass/tclass.component';
     AdmincenterComponent,
     ClassComponent,
     MainComponent,
-    UploadCoverComponent,
     UseradComponent,
     UseradDetailsComponent,
     AddquestionComponent,

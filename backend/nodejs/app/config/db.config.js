@@ -25,6 +25,7 @@ db.class = require('../model/class.model.js')(sequelize, Sequelize);
 db.subject = require('../model/subject.model.js')(sequelize, Sequelize);
 db.classStu = require('../model/classStu.model.js')(sequelize, Sequelize);
 db.conTent = require('../model/content.model.js')(sequelize, Sequelize);
+db.quiz = require('../model/dialogflow.model.js')(sequelize, Sequelize);
 
 
 module.exports = db;

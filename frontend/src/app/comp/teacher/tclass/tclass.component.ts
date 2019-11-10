@@ -20,6 +20,7 @@ const uri = "http://localhost:8080/file/upload"
 export class TclassComponent implements OnInit {
   room : Room[];
   _content : Content[];
+  _quiz : any[];
   @Input() _src : src;
   uploader:FileUploader = new FileUploader({url:uri})
   attachmentList:any = [];
@@ -51,6 +52,7 @@ export class TclassComponent implements OnInit {
         this.room = data
       });
       this.getContent();
+      this.getQuiz();
   }
   goBack(){
     this.location.back()
@@ -88,5 +90,14 @@ export class TclassComponent implements OnInit {
       this.pdf_src=`http://localhost:8080/${this._src[0].content_address}`
       //this.pdf_src=`http://localhost:8080/บทที่ 1 DBMS.pdf`
     })   
+  }
+
+  getQuiz(){
+    const classId = +this.route.snapshot.paramMap.get('classId');
+    this.classService.getQuiz(classId)
+      .subscribe(data => {
+        //alert(JSON.stringify(data))
+        this._quiz = data
+      });
   }
 }

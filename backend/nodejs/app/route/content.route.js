@@ -9,4 +9,6 @@ module.exports = function(app) {
     app.get('/api/getContentData/:classId', conTent.getContentData);
 
     app.post('/api/get_src',conTent.getAddress);
+
+    app.get('/api/getQuiz/:classId', conTent.getQuiz);
 }

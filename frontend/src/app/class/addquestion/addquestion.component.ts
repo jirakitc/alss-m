@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http'
 
 import { Entity } from '../../services/interface'
 import { ToastrService } from 'ngx-toastr';
+import { allResolved } from 'q';
 
 @Component({
   selector: 'app-addquestion',
@@ -15,6 +16,7 @@ export class AddquestionComponent implements OnInit {
 
   rows: Entity;
   name: any;
+  className: any[];
 
   intentShown : boolean = true;
   entityTypeShown : boolean = false;
@@ -29,7 +31,7 @@ export class AddquestionComponent implements OnInit {
 
   ngOnInit() {
     this.listEntity()
-    
+    this.listClassID()
   }
 toggleIntentShow(){
   this.intentShown = true
@@ -56,6 +58,7 @@ toggleEntityShow(){
     this.location.back()
   }
   createIntent(data){
+    //alert(JSON.stringify(data))
     this.http.post<any>('http://localhost:8080/api/CreateIntents',data)
     .subscribe(result=>{
       this.toast.success(JSON.stringify(result))
@@ -87,6 +90,13 @@ toggleEntityShow(){
       .subscribe(name=>{
         this.name = name
       })
+    })
+  }
+  listClassID(){
+    this.http.get<any>('http://localhost:8080/api/getClassID')
+    .subscribe(result=>{
+      //alert(JSON.stringify(result))
+      this.className = result
     })
   }
 }

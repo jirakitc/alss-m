@@ -72,16 +72,30 @@
 
 
     <div class="card">
-      <div class="card-header">ส่วนจัดการ</div>
+      <div class="card-header">รายการหมวดคำถาม</div>
       <div class="card-body">
-        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#uploadModal">
-          เพิ่มเนื้อหา
-        </button>
-        <button type="button" class="btn btn-primary btn-block" routerLink="/class/manageQuestion">
-          จัดการคำถาม
-        </button>
+        <ul>
+          <li *ngFor="let item of _quiz">{{item.quiz_name}}</li>
+        </ul>
+
+
+
+
       </div>
     </div>
+    <br>
+    <div class="card">
+        <div class="card-header">ส่วนจัดการ</div>
+        <div class="card-body">
+          <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#uploadModal">
+            เพิ่มเนื้อหา
+          </button>
+          <button type="button" class="btn btn-primary btn-block" routerLink="/class/manageQuestion">
+            จัดการคำถาม
+          </button>
+        </div>
+      </div>
+
   </div>
   <div class="col col-sm-9">
     <div class="col">

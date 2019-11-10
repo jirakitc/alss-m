@@ -20,7 +20,21 @@
                     <div class="card">
                         <div class="card-header bg-warning">คำถาม</div>
                         <div class="card-body">
-                            <input type="text" ngModel class="form-control form-control-sm" name="displayName" placeholder="หัวข้อคำถาม">
+                            <div class="row">
+                                    <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="displayName" placeholder="หัวข้อคำถาม"></div>
+                                    <div class="col">
+                                            <div class="input-group input-group-sm mb-3">
+                                                    <div class="input-group-prepend">
+                                                    <label class="input-group-text" for="inputGroupSelect01">ห้องเรียน</label>
+                                                    </div>
+                                                    <select class="custom-select" id="inputGroupSelect01" name="class_id" [(ngModel)]="class_id">
+                                                        <option *ngFor="let item of className" value={{item.class_id}}>{{item.class_name}}</option>
+                                                    </select>
+                                                  </div>
+                                    </div>
+                            </div>
+                            
+                            
                             <br>
                             <input type="text" ngModel class="form-control form-control-sm" name="text1" placeholder="ตัวอย่างคำถามที่ 1">
                             

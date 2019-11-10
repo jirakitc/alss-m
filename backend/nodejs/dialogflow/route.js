@@ -168,8 +168,21 @@ module.exports = function(app){
           listIntents()
     })
 
+    //เอาเลข ClassID
+    app.get('/api/getClassID',(req,res)=>{
+    const db = require('../app/config/db.config');  
+    const Class = db.class;
+      Class.findAll({
+        attributes: ['class_name','class_id']
+      }).then(result => {
+        res.json(result);
+      });
+    })
+
     //สร้าง Intent
     app.post('/api/createIntents',(req,res)=>{
+      const _class_id = req.body.class_id
+
       const _displayName = req.body.displayName
       const _text1 = req.body.text1
       const _text2 = req.body.text2
@@ -245,69 +258,18 @@ module.exports = function(app){
         const responses = await intentsClient.createIntent(createIntentRequest);
         console.log(`Intent ${responses[0].name} created`);
         res.json(`สร้างคำถาม ${_displayName} เรียบร้อย`)
+
+        const db = require('../app/config/db.config.js');
+        const Quiz = db.quiz;
+  
+          Quiz.create({
+            class_id : _class_id,
+            quiz_name : _displayName
+          })
       }
       createIntent()
+      
     })
 
-    app.post('/api/send2',(req,res)=>{
-      async function runSample(projectId = 'sunlit-descent-239004') {
-        const sessionId = uuid.v4();
 
-        const sessionClient = new dialogflow.SessionsClient();
-        const sessionPath = sessionClient.sessionPath(projectId, sessionId);
-
-        const request = {
-          session: sessionPath,
-          queryInput: {
-            text: {
-
-              text: 'น้อยไปมาก',
-
-              languageCode: 'th',
-            },
-          },
-        };
-        const responses = await sessionClient.detectIntent(request);
-        console.log('Detected intent');
-        const result = responses[0].queryResult;
-        console.log(`  Query: ${result.queryText}`);
-        console.log(`  Response: ${result.fulfillmentText}`);
-        if (result.intent) {
-          console.log(`  Intent: ${result.intent.displayName}`);
-        } else {
-          console.log(`ไม่พบคำตอบ`);
-        }
-      }
-      runSample()
-    })
-}//end
-
-async function runSample(projectId = 'sunlit-descent-239004') {
-  const sessionId = uuid.v4();
-
-  const sessionClient = new dialogflow.SessionsClient();
-  const sessionPath = sessionClient.sessionPath(projectId, sessionId);
-
-  const request = {
-    session: sessionPath,
-    queryInput: {
-      text: {
-
-        text: 'น้อยไปมาก',
-
-        languageCode: 'th',
-      },
-    },
-  };
-  const responses = await sessionClient.detectIntent(request);
-  console.log('Detected intent');
-  const result = responses[0].queryResult;
-  console.log(`  Query: ${result.queryText}`);
-  console.log(`  Response: ${result.fulfillmentText}`);
-  if (result.intent) {
-    console.log(`  Intent: ${result.intent.displayName}`);
-  } else {
-    console.log(`ไม่พบคำตอบ`);
   }
-}
-

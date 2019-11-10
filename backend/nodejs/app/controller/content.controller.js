@@ -1,5 +1,6 @@
 const db = require('../config/db.config.js');
 const conTent = db.conTent;
+const quiz = db.quiz
 
 exports.uploadConTent = (req,res) =>{
 	let content_data = {
@@ -50,4 +51,14 @@ exports.getAddress = (req,res) =>{
 		res.json(result)
 	})
 
+}
+
+exports.getQuiz = (req,res) =>{
+	quiz.findAll({
+		where :{
+			class_id : req.params.classId
+		}
+	}).then(result =>{
+		res.json(result)
+	})
 }
