@@ -1,5 +1,6 @@
 const db = require('../config/db.config.js');
 const Room = db.class;
+const classStu = db.classStu;
 var multer  = require('multer');
 var upload = multer({ dest: 'uploads/' })
 
@@ -63,4 +64,19 @@ exports.getClassID = (req, res) => {
 		}
 	})
 	.then(data =>res.json(data))
+}
+
+exports.delClass = (req,res) => {
+	let _class_id = req.body.class_id
+	console.log(_class_id)
+	Room.destroy({
+		where : {
+			class_id : _class_id
+		}
+	})
+	classStu.destroy({
+		where : {
+			class_id : _class_id
+		}
+	})
 }

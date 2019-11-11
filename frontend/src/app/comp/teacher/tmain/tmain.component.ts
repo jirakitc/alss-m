@@ -56,7 +56,7 @@ export class TmainComponent implements OnInit {
   }
 
   getRooms() {
-    return this.auth.class_Profile()
+    return this.auth.TCclass_Profile()
       .subscribe(
         room => {
           this.room = room

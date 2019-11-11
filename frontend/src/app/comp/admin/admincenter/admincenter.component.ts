@@ -10,8 +10,8 @@ import { User } from '../../../services/interface'
 export class AdmincenterComponent implements OnInit {
 
 
-  classShown: boolean = true ;
-  subjectShown: boolean = false ;
+  editUserShown: boolean = true ;
+  delClassShown: boolean = false ;
   details: User
 
 
@@ -19,17 +19,14 @@ export class AdmincenterComponent implements OnInit {
     private auth:AuthService
   ) { }
 
-  toggleClassShow() {
-    this.classShown = true
-    if(this.subjectShown = true)
-      this.subjectShown = false
-    }
-  toggleSubjectShow() {
-      this.subjectShown = true
-      if(this.classShown = true)
-        this.classShown = false
-      }  
-
+  toggleeditUserShow() {
+    this.editUserShown = true
+    this.delClassShown = false
+  }
+  toggledelClassShown() {
+      this.delClassShown = true
+      this.editUserShown = false
+  }
 
   ngOnInit() {
     this.getProfile()

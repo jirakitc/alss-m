@@ -55,6 +55,15 @@
       </div>
     </div>
     <br>
+    <div class="card">
+      <div class="card-header">รายการหมวดคำถาม</div>
+      <div class="card-body">
+        <ul>
+          <li *ngFor="let item of _quiz">{{item.quiz_name}}</li>
+        </ul>
+      </div>
+    </div>
+   <br>
     <!-- <div class="card w-100">
       <h3 class="card-header bg-warning" *ngFor="let item of room">
         {{item.class_name}}

@@ -256,19 +256,25 @@ module.exports = function(app){
         // Create the intent
 
         const responses = await intentsClient.createIntent(createIntentRequest);
-        console.log(`Intent ${responses[0].name} created`);
+        //console.log(`Intent ${responses[0].name} created`);
         res.json(`สร้างคำถาม ${_displayName} เรียบร้อย`)
+
+        var Intentname = responses[0].name
+        var IntentnameSplit = Intentname.split("projects/sunlit-descent-239004/agent/intents/")
+        var _Intentname = (IntentnameSplit[1])
+        
 
         const db = require('../app/config/db.config.js');
         const Quiz = db.quiz;
   
           Quiz.create({
             class_id : _class_id,
-            quiz_name : _displayName
+            quiz_name : _displayName,
+            intent_id : _Intentname
           })
+          //console.log(_Intentname)
       }
       createIntent()
-      
     })
 
 

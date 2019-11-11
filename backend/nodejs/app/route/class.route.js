@@ -12,4 +12,5 @@ module.exports = function(app) {
 
     app.get('/api/getClassID/:classId', class_Data.getClassID)
 
+    app.post('/api/delClass', class_Data.delClass)
 }

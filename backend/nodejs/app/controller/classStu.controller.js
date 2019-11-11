@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const db = require('../config/db.config.js');
 const classStu = db.classStu;
+const Class = db.class;
 
 
 process.env.SECRET_KEY = 'secret';
@@ -49,3 +50,12 @@ exports.getClassStu = (req, res) => {
 	  })
 }
 
+exports.TCgetclass = (req,res) => {
+	var decoded = jwt.verify(req.headers['classauth'], process.env.SECRET_KEY)
+	Class.findAll({
+	})
+	.then(data =>res.json(data))
+	.catch(err => {
+		res.send('error: ' + err)
+	  })
+}

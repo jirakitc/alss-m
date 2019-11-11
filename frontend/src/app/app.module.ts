@@ -40,6 +40,7 @@ import { UiComponent } from './chat/ui/ui.component';
 import { BotService } from './services/bot.service';
 import { TmainComponent } from './comp/teacher/tmain/tmain.component';
 import { TclassComponent } from './comp/teacher/tclass/tclass.component';
+import { DelClassComponent } from './comp/admin/del-class/del-class.component';
 
 
 
@@ -70,7 +71,8 @@ import { TclassComponent } from './comp/teacher/tclass/tclass.component';
     UiComponent,
     TeacherComponent,
     TmainComponent,
-    TclassComponent
+    TclassComponent,
+    DelClassComponent
   ],
   imports: [
     BrowserModule,

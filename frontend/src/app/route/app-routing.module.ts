@@ -29,6 +29,7 @@ import { UiComponent } from '../chat/ui/ui.component';
 import { TeacherComponent } from '../comp/teacher/teacher.component';
 import { TmainComponent } from '../comp/teacher/tmain/tmain.component';
 import { TclassComponent } from '../comp/teacher/tclass/tclass.component';
+import { DelClassComponent } from '../comp/admin/del-class/del-class.component';
 
 const routes: Routes = [
     //หน้าจัดการ dialogflow
@@ -55,6 +56,7 @@ const routes: Routes = [
   {path: 'add-class',component: AddClassComponent, canActivate: [AuthGuardService]},
   {path: 'enroll',component: EnrollComponent, canActivate: [AuthGuardService]},
   {path: 'add_subject',component: AddSubjectComponent, canActivate: [AuthGuardService]},
+  {path: 'delclass',component: DelClassComponent},
 
   {path: 'class/:classId' , component: MainComponent},
   {path: '**',component: HomeComponent},

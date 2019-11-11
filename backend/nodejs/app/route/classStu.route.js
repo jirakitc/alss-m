@@ -7,4 +7,6 @@ module.exports = function(app) {
     //app.get('/api/getcs/:userId' , classStu.getClassStu)
 
     app.get('/api/getcs' , classStu.getClassStu)
+
+    app.get('/api/tcgetcs' , classStu.TCgetclass)
 }

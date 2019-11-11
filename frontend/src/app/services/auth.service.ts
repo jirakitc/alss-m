@@ -81,6 +81,11 @@ export class AuthService {
       headers: { classAuth: ` ${this.getToken()}` }
     })
   }
+  public TCclass_Profile(): Observable<any> {
+    return this.http.get('http://localhost:8080/api/tcgetcs', {
+      headers: { classAuth: ` ${this.getToken()}` }
+    })
+  }
 
 
   public logout(): void {

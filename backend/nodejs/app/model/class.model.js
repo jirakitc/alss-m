@@ -7,7 +7,6 @@ module.exports = (sequelize, Sequelize) => {
 		class_name: Sequelize.STRING,
 		class_Subject: Sequelize.STRING,
 		teacher_name: Sequelize.STRING,
-		total_student: Sequelize.INTEGER,
 
 	}, { timestamps: false });
 

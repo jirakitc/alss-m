@@ -1,0 +1,23 @@
+<h5>จัดการห้องเรียน</h5>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">รหัสห้องเรียน</th>
+      <th scope="col">ชื่อห้องเรียน</th>
+      <th scope="col">ผู้สอน</th>
+      <th scope="col">ส่วนจัดการ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of room">
+      <td>{{item.class_id}}</td>
+      <td>{{item.class_name}}</td>
+      <td>{{item.teacher_name}}</td>
+      <td>
+        <form #class_id="ngForm" (submit)="delClass(class_id.value)">
+            <input type="hidden" ngModel name="class_id" [(ngModel)]="item.class_id">
+            <button type="submit" class="btn btn-warning btn-sm" name="class_id">ลบห้องเรียน</button>
+        </form></td>
+    </tr>
+  </tbody>
+</table>

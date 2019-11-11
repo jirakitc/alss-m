@@ -6,7 +6,8 @@ module.exports = (sequelize, Sequelize) => {
 			autoIncrement: true,
 		},
 		class_id: Sequelize.STRING,
-        quiz_name: Sequelize.STRING,
+		quiz_name: Sequelize.STRING,
+		intent_id: Sequelize.STRING,
     }, { timestamps: false });
 	return Quiz;
 }

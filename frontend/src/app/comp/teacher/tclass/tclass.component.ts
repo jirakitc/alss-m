@@ -60,7 +60,6 @@ export class TclassComponent implements OnInit {
   upload(data){
     this.http.post<any>('http://localhost:8080/api/uploadcontent',data)
     .subscribe(result=>{
-      //alert(JSON.stringify(result))
       this.toast.success('บันทึกเรียบร้อย')
     })
     console.log(this.subf);
@@ -88,7 +87,6 @@ export class TclassComponent implements OnInit {
     .subscribe(result=>{
       this._src = result
       this.pdf_src=`http://localhost:8080/${this._src[0].content_address}`
-      //this.pdf_src=`http://localhost:8080/บทที่ 1 DBMS.pdf`
     })   
   }
 
@@ -96,7 +94,6 @@ export class TclassComponent implements OnInit {
     const classId = +this.route.snapshot.paramMap.get('classId');
     this.classService.getQuiz(classId)
       .subscribe(data => {
-        //alert(JSON.stringify(data))
         this._quiz = data
       });
   }
