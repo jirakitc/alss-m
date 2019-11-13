@@ -32,6 +32,7 @@ export class AddquestionComponent implements OnInit {
   ngOnInit() {
     this.listEntity()
     this.listClassID()
+    this.yolo()
   }
 toggleIntentShow(){
   this.intentShown = true
@@ -98,5 +99,14 @@ toggleEntityShow(){
       //alert(JSON.stringify(result))
       this.className = result
     })
+  }
+  yolo(){
+    var v1 = 'ก'
+var v2 = 'ข'
+var v3 = 'ค'
+var v4 = 'ง'
+
+var vall = `${v1},${v2},${v3},${v4}`
+console.log(vall)
   }
 }

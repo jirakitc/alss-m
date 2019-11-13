@@ -71,14 +71,7 @@
       </div> -->
 
 
-    <div class="card">
-      <div class="card-header">รายการหมวดคำถาม</div>
-      <div class="card-body">
-        <ul>
-          <li *ngFor="let item of _quiz">{{item.quiz_name}}</li>
-        </ul>
-      </div>
-    </div>
+    
     <br>
     <div class="card">
         <div class="card-header">ส่วนจัดการ</div>
@@ -104,7 +97,8 @@
               <div class="card scroll">
                 <pdf-viewer [src]="pdf_src" [render-text]="true" style="display: block;"></pdf-viewer>
               </div>
-            </div>
+          </div>
+          
         <div class="card-columns">
             <div class="card bg-light mb-3" style="width: 15rem;" *ngFor="let item of _content">
                 <form #todoForm="ngForm" (submit)="get_src(todoForm.value)">
@@ -116,6 +110,15 @@
                 </form>
               </div>
         </div>
+        <br><div class="card">
+      <div class="card-header">รายการหมวดคำถาม</div>
+      <div class="card-body">
+        <ul>
+          <li *ngFor="let item of _quiz">{{item.quiz_name}} : <span style="color:gray;">{{item.keyword}}</span></li>
+
+        </ul>
+      </div>
+    </div>
       <!-- </div> -->
       <!-- หน้าแสดงบท -->
 

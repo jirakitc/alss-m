@@ -7,7 +7,8 @@ module.exports = (sequelize, Sequelize) => {
 		},
 		class_id: Sequelize.STRING,
 		quiz_name: Sequelize.STRING,
-		intent_id: Sequelize.STRING,
+		keyword: Sequelize.STRING,
+		chapter: Sequelize.STRING,
     }, { timestamps: false });
 	return Quiz;
 }

@@ -24,13 +24,21 @@
                                     <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="displayName" placeholder="หัวข้อคำถาม"></div>
                                     <div class="col">
                                             <div class="input-group input-group-sm mb-3">
-                                                    <div class="input-group-prepend">
+                                                <div class="input-group-prepend">
                                                     <label class="input-group-text" for="inputGroupSelect01">ห้องเรียน</label>
+                                                </div>
+                                                <select class="custom-select" id="inputGroupSelect01" name="class_id" [(ngModel)]="class_id">
+                                                    <option *ngFor="let item of className" value={{item.class_id}}>{{item.class_name}}</option>
+                                                </select>
+                                            </div>
+                                    </div>
+                                    <div class="col">
+                                            <div class="input-group input-group-sm mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <label class="input-group-text" for="inputGroupSelect01">บทที่ </label>
                                                     </div>
-                                                    <select class="custom-select" id="inputGroupSelect01" name="class_id" [(ngModel)]="class_id">
-                                                        <option *ngFor="let item of className" value={{item.class_id}}>{{item.class_name}}</option>
-                                                    </select>
-                                                  </div>
+                                                    <input type="text" ngModel class="form-control form-control-sm" name="chapter" placeholder="บทที่">
+                                                </div>
                                     </div>
                             </div>
                             
@@ -94,16 +102,43 @@
                 <div class="card">
                     <div class="card-header bg-info">เนื้อหาภายในหัวข้อ </div>
                     <div class="card-body">
-                        <!-- <input type="text" ngModel class="form-control form-control-sm" name="entityTypeId" placeholder="รหัสหัวข้อ"> -->
-                        <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">รหัสหัวข้อ</label>
-                                </div>
-                                <select class="custom-select custom-select" ngModel name="entityTypeId" id="entityTypeId" required>
-                            
-                                    <option *ngFor="let item of rows" value={{item}}>{{item}}</option>
-                                </select>
+                        <div class="row">
+                            <div class="col">
+                                    <div class="input-group input-group-sm mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect01">รหัสหัวข้อ</label>
+                                            </div>
+                                            <select class="custom-select custom-select" ngModel name="entityTypeId" id="entityTypeId" required>
+                                        
+                                                <option *ngFor="let item of rows" value={{item}}>{{item}}</option>
+                                            </select>
+                                        </div>
                             </div>
+                            <div class="col">
+                                    <div class="col">
+                                            <div class="input-group input-group-sm mb-3">
+                                                    <div class="input-group-prepend">
+                                                    <label class="input-group-text" for="inputGroupSelect01">ห้องเรียน</label>
+                                                    </div>
+                                                    <select class="custom-select" id="inputGroupSelect01" name="class_id" [(ngModel)]="class_id">
+                                                        <option *ngFor="let item of className" value={{item.class_id}}>{{item.class_name}}</option>
+                                                    </select>
+                                                  </div>
+                                    </div>
+                            </div>
+                            <div class="col">
+                                    <div class="input-group input-group-sm mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="inputGroupSelect01">บทที่</label>
+                                            </div>
+                                            <input type="text" ngModel class="form-control form-control-sm" name="chapter" placeholder="บทที่">
+                                        </div>
+                            </div>
+                            
+
+                            
+                        </div>
+                        
                         <input type="text" ngModel class="form-control form-control-sm" name="entityValue"
                             placeholder="หัวข้อเนื้อหา">
                         <div class="form-row">

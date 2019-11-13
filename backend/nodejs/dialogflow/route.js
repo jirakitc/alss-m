@@ -41,6 +41,10 @@ module.exports = function(app){
       var v2 = ''
       var v3 = ''
       var v4 = ''
+      var vall = `${req.body.synonyms1}, ${req.body.synonyms2}, ${req.body.synonyms3}, ${req.body.synonyms4}`
+      const _chapter = req.body.chapter
+      const _class_id = req.body.class_id
+
         async function createEntity(
             projectId = _projectId,
             entityTypeId = req.body.entityTypeId,
@@ -71,6 +75,15 @@ module.exports = function(app){
             console.log(response);
             // res.json({ID : entityType.entityTypeId})
             res.json(`เพิ่มข้อมูลเรียบร้อยเรียบร้อย`)
+
+            const db = require('../app/config/db.config.js');
+            const Quiz = db.quiz;
+  
+          Quiz.update
+          (
+            { keyword : vall },
+            { where: { class_id : _class_id, chapter : _chapter}}
+          );
           }
           createEntity();
     })
@@ -182,6 +195,7 @@ module.exports = function(app){
     //สร้าง Intent
     app.post('/api/createIntents',(req,res)=>{
       const _class_id = req.body.class_id
+      const _chapter = req.body.chapter
 
       const _displayName = req.body.displayName
       const _text1 = req.body.text1
@@ -270,7 +284,8 @@ module.exports = function(app){
           Quiz.create({
             class_id : _class_id,
             quiz_name : _displayName,
-            intent_id : _Intentname
+            intent_id : _Intentname,
+            chapter : _chapter
           })
           //console.log(_Intentname)
       }
