@@ -21,6 +21,9 @@ export class TclassComponent implements OnInit {
   room : Room[];
   _content : Content[];
   _quiz : any[];
+
+  className : any;
+  chapter : any;
   @Input() _src : src;
   uploader:FileUploader = new FileUploader({url:uri})
   attachmentList:any = [];
@@ -53,6 +56,7 @@ export class TclassComponent implements OnInit {
       });
       this.getContent();
       this.getQuiz();
+      this.listClassID();
   }
   goBack(){
     this.location.back()
@@ -96,5 +100,20 @@ export class TclassComponent implements OnInit {
       .subscribe(data => {
         this._quiz = data
       });
+  }
+
+  listClassID(){
+    this.http.get<any>('http://localhost:8080/api/getClassID')
+    .subscribe(result=>{
+      //alert(JSON.stringify(result))
+      this.className = result
+    })
+  }
+
+  listchapter(){
+    this.http.get<any>('')
+    .subscribe(result=>{
+      this.chapter = result
+    })
   }
 }

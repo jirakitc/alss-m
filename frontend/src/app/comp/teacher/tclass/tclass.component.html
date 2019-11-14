@@ -110,15 +110,84 @@
                 </form>
               </div>
         </div>
-        <br><div class="card">
-      <div class="card-header">รายการหมวดคำถาม</div>
-      <div class="card-body">
-        <ul>
-          <li *ngFor="let item of _quiz">{{item.quiz_name}} : <span style="color:gray;">{{item.keyword}}</span></li>
+        <br>
+        <!-- เพื่มคำถามของอาจารย์ -->
+        <div>
+          <form #intentForm="ngForm">
+              <div class="card">
+                  <div class="card-header bg-warning">คำถาม</div>
+                  <div class="card-body">
+                      <div class="row">
+                          <div class="col"><input type="text" ngModel class="form-control form-control-sm"
+                                  name="displayName" placeholder="หัวข้อคำถาม"></div>
+                          <div class="col">
+                              <div class="input-group input-group-sm mb-3">
+                                  <div class="input-group-prepend">
+                                      <label class="input-group-text" for="inputGroupSelect01">ห้องเรียน</label>
+                                  </div>
+                                  <select class="custom-select" id="inputGroupSelect01" name="class_id"
+                                      [(ngModel)]="class_id">
+                                      <option *ngFor="let item of className" value={{item.class_id}}>
+                                          {{item.class_name}}</option>
+                                  </select>
+                              </div>
+                          </div>
+                          <div class="col">
+                              <div class="input-group input-group-sm mb-3">
+                                  <div class="input-group-prepend">
+                                      <label class="input-group-text" for="inputGroupSelect01">บทที่ </label>
+                                  </div>
+                                  <input type="text" ngModel class="form-control form-control-sm" name="chapter"
+                                      placeholder="บทที่">
+                              </div>
+                          </div>
+                      </div>
 
-        </ul>
+
+                      <br>
+                      <input type="text" ngModel class="form-control form-control-sm" name="text1"
+                          placeholder="ตัวอย่างคำถามที่ 1">
+
+                      <input type="text" ngModel class="form-control form-control-sm" name="text2"
+                          placeholder="ตัวอย่างคำถามที่ 2">
+
+                      <input type="text" ngModel class="form-control form-control-sm" name="text3"
+                          placeholder="ตัวอย่างคำถามที่ 3">
+                      <!-- <input type="text" ngModel class="form-control form-control-sm" name="alias" placeholder="alias"> -->
+                      <br>
+                      <!-- <input type="text" ngModel class="form-control form-control-sm" name="entityType" placeholder="หัวข้อหลัก"> -->
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <label class="input-group-text" for="inputGroupSelect01">หัวข้อหลัก</label>
+                          </div>
+                          <select class="custom-select custom-select" ngModel name="entityType" id="class_Subject"
+                              required>
+
+                              <option *ngFor="let item of name" value={{item}}>{{item}}</option>
+                          </select>
+                      </div>
+                      <br>
+                      <input type="text" ngModel class="form-control form-control-sm" name="messageText"
+                          placeholder="คำตอบที่จะแสดง">
+                  </div>
+                  <div class="card-footer">
+                      <div class="button" class="btn btn-warning" (click)="createIntent(intentForm.value)">เพิ่มคำถาม
+                      </div>
+                  </div>
+              </div>
+          </form>
       </div>
-    </div>
+      <!-- เพื่มคำถามของอาจารย์ -->
+        <br>
+        <div class="card">
+          <div class="card-header">รายการหมวดคำถาม | คำสำคัญ</div>
+          <div class="card-body">
+            <ul>
+              <li *ngFor="let item of _quiz">{{item.quiz_name}} | <span style="color:blue;">{{item.keyword}}</span></li>
+        
+            </ul>
+          </div>
+        </div>
       <!-- </div> -->
       <!-- หน้าแสดงบท -->
 
