@@ -124,7 +124,7 @@
                       <!-- <th scope="col">keyword</th> -->
                       <th scope="col">บทที่</th>
                       <th scope="col">คำตอบ</th>
-                      <th scope="col">ส่วนจัดการ</th>
+                      
                     </tr>
                   </thead>
                   <tbody>
@@ -133,12 +133,6 @@
                       <!-- <td>{{item.keyword}}</td> -->
                       <td>{{item.chapter}}</td>
                       <td>{{item.answer}}</td>
-                      <td>
-                        <form #quiz_id="ngForm" (submit)="deleteQuiz(quiz_id.value)">
-                          <input type="hidden" ngModel name="intent_id" [(ngModel)]="item.intent_id">
-                          <button type="submit" class="btn btn-warning btn-sm" name="quiz_id">ลบ</button>
-                        </form>
-                      </td>
                     </tr>
                   </tbody>
                 </table>
