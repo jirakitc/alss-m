@@ -9,6 +9,7 @@ import { FileSelectDirective , FileUploader } from 'ng2-file-upload'
 import { ClassService } from 'src/app/services/class.service';
 import { Room , Content , src} from 'src/app/services/interface';
 import { ToastrService } from 'ngx-toastr';
+import { Entity } from 'src/app/services/interface'
 
 const uri = "http://localhost:8080/file/upload"
 
@@ -21,6 +22,8 @@ export class TclassComponent implements OnInit {
   room : Room[];
   _content : Content[];
   _quiz : any[];
+  rows: Entity;
+  name: any;
 
   className : any;
   chapter : any;
@@ -57,6 +60,8 @@ export class TclassComponent implements OnInit {
       this.getContent();
       this.getQuiz();
       this.listClassID();
+      this.listchapter();
+      this.listEntity();
   }
   goBack(){
     this.location.back()
@@ -68,14 +73,17 @@ export class TclassComponent implements OnInit {
     })
     console.log(this.subf);
   }
+
   getContent(){
     const classId = +this.route.snapshot.paramMap.get('classId');
     return this.classService.getContentData(classId)
     .subscribe(
       contentData => {
         this._content = contentData
+        // alert(JSON.stringify(contentData))
       });
   }
+
   toggleChatShow() {
     this.chatShown = true
     if(this.dataShown = true)
@@ -103,17 +111,49 @@ export class TclassComponent implements OnInit {
   }
 
   listClassID(){
-    this.http.get<any>('http://localhost:8080/api/getClassID')
-    .subscribe(result=>{
-      //alert(JSON.stringify(result))
+    const classId = +this.route.snapshot.paramMap.get('classId');
+    this.classService.getClassData(classId)
+    .subscribe(result =>{
       this.className = result
+      console.log(result)
     })
+    // this.http.get<any>('http://localhost:8080/api/getClassID')
+    // .subscribe(result=>{
+    //   //alert(JSON.stringify(result))
+    //   this.className = result
+    // })
   }
 
   listchapter(){
-    this.http.get<any>('')
+    const classId = +this.route.snapshot.paramMap.get('classId');
+    this.classService.getChapter(classId)
     .subscribe(result=>{
       this.chapter = result
+      console.log(result)
     })
   }
+        // =================================dialogflow==============================
+  listEntity(){
+    this.http.get<Entity>('http://localhost:8080/api/listEntityType')
+    .subscribe(result=>{
+      //alert(JSON.stringify(result))
+      this.rows = result
+      this.http.get<Entity>('http://localhost:8080/api/listEntityTypeN')
+      .subscribe(name=>{
+        this.name = name
+      })
+    })
+  }
+  createIntent(data){
+    //alert(JSON.stringify(data))
+    this.http.post<any>('http://localhost:8080/api/CreateIntents',data)
+    .subscribe(result=>{
+      this.toast.success(JSON.stringify(result))
+      this.listEntity()
+    })
+  };
+
+
+  // =================================dialogflow==============================
+
 }

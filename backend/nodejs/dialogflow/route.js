@@ -285,7 +285,8 @@ module.exports = function(app){
             class_id : _class_id,
             quiz_name : _displayName,
             intent_id : _Intentname,
-            chapter : _chapter
+            chapter : _chapter,
+            answer : _messageTexts
           })
           //console.log(_Intentname)
       }

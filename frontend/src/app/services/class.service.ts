@@ -14,6 +14,7 @@ export class ClassService {
   private getClassDataUrl = 'http://localhost:8080/api/getClassID';
   private getContentDataUrl = 'http://localhost:8080/api/getContentData';
   private getQuizUrl = 'http://localhost:8080/api/getQuiz';
+  private classchapterUrl = 'http://localhost:8080/api/getContentData';
 
   constructor(
     private http: HttpClient
@@ -47,6 +48,11 @@ export class ClassService {
 
   getQuiz(classId : number): Observable<any[]>{
     const url = `${this.getQuizUrl}/${classId}`;
+    return this.http.get<any[]>(url);
+  }
+
+  getChapter(classId : number): Observable<any[]>{
+    const url = `${this.classchapterUrl}/${classId}`;
     return this.http.get<any[]>(url);
   }
 }

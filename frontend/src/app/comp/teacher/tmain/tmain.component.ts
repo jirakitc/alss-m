@@ -7,6 +7,7 @@ import { ClassService } from 'src/app/services/class.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Room , classStu, User } from 'src/app/services/interface';
 import { UserService } from 'src/app/services/user.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class TmainComponent implements OnInit {
     private classService : ClassService,  
     private location : Location,
     private auth: AuthService,
-    private http: HttpClient
+    private http: HttpClient,
   ) { }
 
   ngOnInit() {
@@ -84,5 +85,7 @@ export class TmainComponent implements OnInit {
     this.getRooms();
     
   };
+
+
 
 }

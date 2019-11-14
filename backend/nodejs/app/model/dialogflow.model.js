@@ -9,6 +9,8 @@ module.exports = (sequelize, Sequelize) => {
 		quiz_name: Sequelize.STRING,
 		keyword: Sequelize.STRING,
 		chapter: Sequelize.STRING,
+		intent_id : Sequelize.STRING,
+		answer : Sequelize.STRING
     }, { timestamps: false });
 	return Quiz;
 }
