@@ -102,9 +102,9 @@ module.exports = function(app){
             var entityName = []
             const [response] = await entityTypesClient.listEntityTypes(request);
             response.forEach(entityType => {
-              console.log(`Entity type name: ${entityType.name}`);
-              console.log(`Entity type display name: ${entityType.displayName}`);
-              console.log(`Number of entities: ${entityType.entities.length}\n`);    
+              // console.log(`Entity type name: ${entityType.name}`);
+              // console.log(`Entity type display name: ${entityType.displayName}`);
+              // console.log(`Number of entities: ${entityType.entities.length}\n`);    
               var entityname = entityType.name
               var entitynameSplit = entityname.split("projects/sunlit-descent-239004/agent/entityTypes/")
 
@@ -129,14 +129,14 @@ module.exports = function(app){
           var entityName = []
           const [response] = await entityTypesClient.listEntityTypes(request);
           response.forEach(entityType => {
-            console.log(`Entity type name: ${entityType.name}`);
-            console.log(`Entity type display name: ${entityType.displayName}`);
-            console.log(`Number of entities: ${entityType.entities.length}\n`);    
+            // console.log(`Entity type name: ${entityType.name}`);
+            // console.log(`Entity type display name: ${entityType.displayName}`);
+            // console.log(`Number of entities: ${entityType.entities.length}\n`);    
 
             entityName.push(entityType.displayName)
           }); 
           res.json(entityName);
-          console.log(entityName)
+          //console.log(entityName)
           return response;
         }
         listEntityTypesN();
@@ -173,7 +173,7 @@ module.exports = function(app){
           
               console.log('Output contexts:');
               intent.outputContexts.forEach(outputContext => {
-                console.log(`\tName: ${outputContext.name}`);
+              console.log(`\tName: ${outputContext.name}`);
               });
             });
             // [END dialogflow_list_intents]
@@ -293,5 +293,27 @@ module.exports = function(app){
       createIntent()
     })
 
+  // ลบ Intent
+    app.post('/api/deleteIntents',(req,res)=>{
+      const _IntentId = req.body.intent_id
+      async function deleteIntent(projectId = _projectId, intentId = _IntentId) {
+        const dialogflow = require('dialogflow');
+      
+        // Instantiates clients
+        const intentsClient = new dialogflow.IntentsClient({credentials: auth});
+      
+        const intentPath = intentsClient.intentPath(projectId, intentId);
+      
+        const request = {name: intentPath};
+      
+        // Send the request for deleting the intent.
+        const result = await intentsClient.deleteIntent(request);
+        console.log(`Intent ${intentPath} deleted`);
+        res.json(`ลบคำถามเรียบร้อย`)
+        return result;
+        
+      }
+      deleteIntent()
+    })
 
   }

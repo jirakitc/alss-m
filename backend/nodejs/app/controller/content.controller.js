@@ -62,3 +62,23 @@ exports.getQuiz = (req,res) =>{
 		res.json(result)
 	})
 }
+exports.getQuizPerId = (req,res) =>{
+	quiz.findAll({
+		where :{
+			// class_id : req.params.classId,
+			chapter : req.body.content_name
+		}
+	}).then(result =>{
+		res.json(result)
+		// console.log(result)
+	})
+}
+
+
+exports.deleteQuiz = (req,res)=>{
+	quiz.destroy({
+		where:{
+			intent_id : req.body.intent_id
+		}
+	})
+}

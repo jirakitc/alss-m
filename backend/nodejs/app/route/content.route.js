@@ -11,4 +11,8 @@ module.exports = function(app) {
     app.post('/api/get_src',conTent.getAddress);
 
     app.get('/api/getQuiz/:classId', conTent.getQuiz);
+
+    app.post('/api/getQuizPerId', conTent.getQuizPerId);
+
+    app.post('/api/delQuiz',conTent.deleteQuiz)
 }

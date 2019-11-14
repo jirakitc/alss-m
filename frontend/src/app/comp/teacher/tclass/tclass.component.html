@@ -71,19 +71,20 @@
       </div> -->
 
 
-    
+
     <br>
     <div class="card">
-        <div class="card-header">ส่วนจัดการ</div>
-        <div class="card-body">
-          <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#uploadModal">
-            เพิ่มเนื้อหา
-          </button>
-          <button type="button" class="btn btn-primary btn-block" routerLink="/class/manageQuestion">
-            จัดการคำถาม
-          </button>
-        </div>
+      <div class="card-header">ส่วนจัดการ</div>
+      <div class="card-body">
+        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#uploadModal">
+          เพิ่มเนื้อหา
+        </button>
+        <button type="button" class="btn btn-primary btn-block" routerLink="/class/manageQuestion">
+          จัดการคำถาม
+        </button>
+        <button type="button" class="btn btn-warning btn-block" (click)="togglelistQuiz()">เพิ่มคำถาม</button>
       </div>
+    </div>
 
   </div>
   <div class="col col-sm-9">
@@ -93,129 +94,216 @@
       </div>
       <!-- ส่วนหัวแสดงบท -->
       <!-- <div class="row"> -->
-          <div *ngIf="dataShown" id="divshow">
-              <div class="card scroll">
-                <pdf-viewer [src]="pdf_src" [render-text]="true" style="display: block;"></pdf-viewer>
-              </div>
-          </div>
-          
-        <div class="card-columns">
-            <div class="card bg-light mb-3" style="width: 15rem;" *ngFor="let item of _content">
-                <form #todoForm="ngForm" (submit)="get_src(todoForm.value)">
-                  <div class="card-header">
-                    <input type="hidden" [(ngModel)]="item.content_name" name="content_name" class="form-control">
-                    <!-- <div class="card-text">{{item.content_name}}</div> -->
-                    <button type="submit" class="btn btn-success btn-block">{{item.content_name}}</button>
-                  </div>
-                </form>
-              </div>
+      <div *ngIf="dataShown" id="divshow">
+        <div class="card scroll">
+          <pdf-viewer [src]="pdf_src" [render-text]="true" style="display: block;"></pdf-viewer>
         </div>
-        <br>
-        <!-- เพื่มคำถามของอาจารย์ -->
+        <div class="card-columns">
+          <div class="card bg-light mb-3" style="width: 15rem;" *ngFor="let item of _content">
+            <form #todoForm="ngForm" (submit)="get_src(todoForm.value)">
+              <div class="card-header">
+                <input type="hidden" [(ngModel)]="item.content_name" name="content_name" class="form-control">
+                <!-- <div class="card-text">{{item.content_name}}</div> -->
+                <button type="submit" class="btn btn-success btn-block">{{item.content_name}}</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- table แสดงคำถาม -->
+        <div>
+            <div class="card">
+              <div class="card-header">
+                รายการหมวดคำถาม
+              </div>
+              <div class="card-body">
+  
+                <table class="table table-hover table-sm table-bordered">
+                  <thead>
+                    <tr>
+                      <th scope="col">หมวดคำถาม</th>
+                      <!-- <th scope="col">keyword</th> -->
+                      <th scope="col">บทที่</th>
+                      <th scope="col">คำตอบ</th>
+                      <th scope="col">ส่วนจัดการ</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of _quizPerId">
+                      <td>{{item.quiz_name}}</td>
+                      <!-- <td>{{item.keyword}}</td> -->
+                      <td>{{item.chapter}}</td>
+                      <td>{{item.answer}}</td>
+                      <td>
+                        <form #quiz_id="ngForm" (submit)="deleteQuiz(quiz_id.value)">
+                          <input type="hidden" ngModel name="intent_id" [(ngModel)]="item.intent_id">
+                          <button type="submit" class="btn btn-warning btn-sm" name="quiz_id">ลบ</button>
+                        </form>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+  
+              </div>
+  
+            </div>
+          </div>
+        <!-- table แสดงคำถาม -->
+
+
+      </div>
+
+
+      <br>
+      <!-- เพื่มคำถามของอาจารย์ -->
+      <div *ngIf="addQuizShow" id="divshow">
         <div>
           <form #intentForm="ngForm">
-              <div class="card">
-                  <div class="card-header bg-warning">คำถาม</div>
-                  <div class="card-body">
-                      <div class="row">
-                          <div class="col"><input type="text" ngModel class="form-control form-control-sm"
-                                  name="displayName" placeholder="หัวข้อคำถาม"></div>
-                          <div class="col">
-                              <div class="input-group input-group-sm mb-3">
-                                  <div class="input-group-prepend">
-                                      <label class="input-group-text" for="inputGroupSelect01">ห้องเรียน</label>
-                                  </div>
-                                  <select class="custom-select" id="inputGroupSelect01" name="class_id"
-                                        [(ngModel)]="class_id">
-                                        <option selected *ngFor="let item of className" value={{item.class_id}}>
-                                            {{item.class_name}}</option>
-                                    </select>
-                              </div>
-                          </div>
-                          <div class="col">
-                              <div class="input-group input-group-sm mb-3">
-                                  <div class="input-group-prepend">
-                                      <label class="input-group-text" for="inputGroupSelect01">บทที่ </label>
-                                  </div>
-                                  <select class="custom-select" id="inputGroupSelect01" name="chapter"
-                                      [(ngModel)]="content_id">
-                                      <option selected *ngFor="let item of chapter" value={{item.content_name}}>
-                                          {{item.content_name}}</option>
-                                  </select>
-                              </div>
-                          </div>
+            <div class="card">
+              <div class="card-header bg-warning">คำถาม</div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col"><input type="text" ngModel class="form-control form-control-sm" name="displayName"
+                      placeholder="หัวข้อคำถาม"></div>
+                  <div class="col">
+                    <div class="input-group input-group-sm mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">ห้องเรียน</label>
                       </div>
-
-
-                      <br>
-                      <input type="text" ngModel class="form-control form-control-sm" name="text1"
-                          placeholder="ตัวอย่างคำถามที่ 1">
-
-                      <input type="text" ngModel class="form-control form-control-sm" name="text2"
-                          placeholder="ตัวอย่างคำถามที่ 2">
-
-                      <input type="text" ngModel class="form-control form-control-sm" name="text3"
-                          placeholder="ตัวอย่างคำถามที่ 3">
-                      <!-- <input type="text" ngModel class="form-control form-control-sm" name="alias" placeholder="alias"> -->
-                      <br>
-                      <!-- <input type="text" ngModel class="form-control form-control-sm" name="entityType" placeholder="หัวข้อหลัก"> -->
-                      <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                              <label class="input-group-text" for="inputGroupSelect01">หัวข้อหลัก</label>
-                          </div>
-                          <select class="custom-select custom-select" ngModel name="entityType" id="class_Subject"
-                              required>
-
-                              <option *ngFor="let item of name" value={{item}}>{{item}}</option>
-                          </select>
-                      </div>
-                      <br>
-                      <input type="text" ngModel class="form-control form-control-sm" name="messageText"
-                          placeholder="คำตอบที่จะแสดง">
+                      <!-- <select class="custom-select" id="inputGroupSelect01" name="class_id" [(ngModel)]="class_id">
+                        <option selected *ngFor="let item of className" value={{item.class_id}}>
+                          {{item.class_name}}</option>
+                      </select> -->
+                      <input *ngFor="let item of className" [(ngModel)]="item.class_id" name="class_id" type="text" class="form-control" value={{item.class_id}} type="hidden">
+                      <input *ngFor="let item of className" name="class_id_fake" type="text" class="form-control" value={{item.class_name}} readonly>
+                    </div>
                   </div>
-                  <div class="card-footer">
-                      <div class="button" class="btn btn-warning" (click)="createIntent(intentForm.value)">เพิ่มคำถาม
+                  <div class="col">
+                    <div class="input-group input-group-sm mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">บทที่ </label>
                       </div>
+                      <select class="custom-select" id="inputGroupSelect01" name="chapter" [(ngModel)]="content_id">
+                        <option selected *ngFor="let item of chapter" value={{item.content_name}}>
+                          {{item.content_name}}</option>
+                      </select>
+                    </div>
                   </div>
+                </div>
+
+
+                <br>
+                <input type="text" ngModel class="form-control form-control-sm" name="text1"
+                  placeholder="ตัวอย่างคำถามที่ 1">
+
+                <input type="text" ngModel class="form-control form-control-sm" name="text2"
+                  placeholder="ตัวอย่างคำถามที่ 2">
+
+                <input type="text" ngModel class="form-control form-control-sm" name="text3"
+                  placeholder="ตัวอย่างคำถามที่ 3">
+                <!-- <input type="text" ngModel class="form-control form-control-sm" name="alias" placeholder="alias"> -->
+                <br>
+                <!-- <input type="text" ngModel class="form-control form-control-sm" name="entityType" placeholder="หัวข้อหลัก"> -->
+                <div class="input-group mb-3 input-group-sm">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">หัวข้อหลัก</label>
+                  </div>
+                  <select class="custom-select custom-select" ngModel name="entityType" id="class_Subject" required>
+
+                    <option *ngFor="let item of name" value={{item}}>{{item}}</option>
+                  </select>
+                </div>
+                <br>
+                <input type="text" ngModel class="form-control form-control-sm" name="messageText"
+                  placeholder="คำตอบที่จะแสดง">
               </div>
+              <div class="card-footer">
+                <div class="button" class="btn btn-warning" (click)="createIntent(intentForm.value)">เพิ่มคำถาม
+                </div>
+              </div>
+            </div>
           </form>
-      </div>
-      <!-- เพื่มคำถามของอาจารย์ -->
+        </div>
+
+        <!-- เพื่มคำถามของอาจารย์ -->
         <br>
         <div class="card">
           <div class="card-header">รายการหมวดคำถาม | คำสำคัญ</div>
           <div class="card-body">
             <ul>
               <li *ngFor="let item of _quiz">{{item.quiz_name}} | <span style="color:blue;">{{item.keyword}}</span></li>
-        
+
             </ul>
           </div>
         </div>
-      <!-- </div> -->
-      <!-- หน้าแสดงบท -->
+        <br>
+        <!-- ตารางแสดงคำถาม -->
+        <div>
+          <div class="card">
+            <div class="card-header">
+              รายการหมวดคำถาม
+            </div>
+            <div class="card-body">
 
+              <table class="table table-hover table-sm table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">หมวดคำถาม</th>
+                    <!-- <th scope="col">keyword</th> -->
+                    <th scope="col">บทที่</th>
+                    <th scope="col">คำตอบ</th>
+                    <th scope="col">ส่วนจัดการ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of _quiz">
+                    <td>{{item.quiz_name}}</td>
+                    <!-- <td>{{item.keyword}}</td> -->
+                    <td>{{item.chapter}}</td>
+                    <td>{{item.answer}}</td>
+                    <td>
+                      <form #quiz_id="ngForm" (submit)="deleteQuiz(quiz_id.value)">
+                        <input type="hidden" ngModel name="intent_id" [(ngModel)]="item.intent_id">
+                        <button type="submit" class="btn btn-warning btn-sm" name="quiz_id">ลบ</button>
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+
+          </div>
+        </div>
+
+        </div>
+
+
+
+
+        <!-- หน้าแสดงบท -->
+
+      </div>
     </div>
   </div>
-</div>
 
-<!-- หน้าแชท -->
-<div class="modal fade" id="ChatModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <app-ui></app-ui>
-      </div>
-      <!-- <div class="modal-footer">
+  <!-- หน้าแชท -->
+  <div class="modal fade" id="ChatModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-ui></app-ui>
+        </div>
+        <!-- <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
         </div> -->
+      </div>
     </div>
   </div>
-</div>
-<!-- หน้าแชท -->
+  <!-- หน้าแชท -->
