@@ -21,7 +21,7 @@
     "multer": "^1.4.2",
     "mysql2": "^1.5.3",
     "node-tfidf": "0.0.2",
-    "sequelize": "^4.37.6",
+    "sequelize": "^5.15.1",
     "uuid": "^3.3.3"
   }
 }
